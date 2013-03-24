@@ -4,7 +4,7 @@
   <title><![CDATA[Category: events | OpenKore]]></title>
   <link href="http://openkorer.github.com/blog/categories/events/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T05:27:45+08:00</updated>
+  <updated>2013-03-25T05:30:36+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,7 +18,16 @@
     <link href="http://openkorer.github.com/blog/2013/03/25/hihi/"/>
     <updated>2013-03-25T04:46:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/25/hihi</id>
-    <content type="html"><![CDATA[<p>dsadsa</p>
+    <content type="html"><![CDATA[<p>``` ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
+class Fixnum
+  def prime?</p>
+
+<pre><code>('1' * self) !~ /^1?$|^(11+?)\1+$/
+</code></pre>
+
+<p>  end
+end
+```</p>
 ]]></content>
   </entry>
   
