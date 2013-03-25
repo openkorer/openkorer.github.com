@@ -4,7 +4,7 @@
   <title><![CDATA[Category: guild | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/guild/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T20:14:20+08:00</updated>
+  <updated>2013-03-25T20:17:21+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,18 +18,30 @@
     <link href="http://openkorer.github.com/blog/2013/03/25/sync/"/>
     <updated>2013-03-25T07:06:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
-    <content type="html"><![CDATA[<p>本巨集主要是利用隊伍和公會頻道對多個外掛下達指令。使用時建議隊伍和公會只有自己的外掛。</p>
+    <content type="html"><![CDATA[<p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
-<p>以下是利用隊伍頻道送出同步指令的巨集</p>
+<p>``` perl sync
+automacro guildcmd {</p>
 
-<p>好處:</p>
+<pre><code>guild /cmd (.*)/
+exclusive 1
+call {
+$do = $.lastMatch1
+do $do
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>好處:</h3>
 
 <ul>
 <li>只要同一隊伍即可。</li>
 </ul>
 
 
-<p>壞處:</p>
+<h3>壞處:</h3>
 
 <ul>
 <li>最多支持12人。</li>
@@ -37,50 +49,58 @@
 </ul>
 
 
-<p>``` perl guildcmd
-automacro guildcmd {</p>
+<blockquote><h2>以下是利用公會頻道送出同步指令的巨集</h2>
 
-<pre><code>guild /cmd (.*)/
-exclusive 1
-call {
-$do = $.lastMatch1
-do $cmd
-}
-</code></pre>
-
-<p>}
-```</p>
-
-<p>以下是利用公會頻道送出同步指令的巨集</p>
-
-<p>好處:</p>
+<h3>好處:</h3>
 
 <ul>
 <li>不需要同一隊伍，只需同一公會即可。</li>
 <li>最多支持50人，看擴充組合體制等級而定。</li>
 </ul>
+</blockquote>
 
-
-<p>壞處:</p>
+<h3>壞處:</h3>
 
 <ul>
 <li>同公會的人也會看到指令，還可以對你的外掛下達任何指令。</li>
 </ul>
 
 
-<p>``` perl partycmd
+<p>``` perl sync
 automacro partycmd {</p>
 
 <pre><code>party /cmd (.*)/
 exclusive 1
 call {
-$cmd= $.lastMatch1
-do $cmd
+$do = $.lastMatch1
+do $do
 }
 </code></pre>
 
 <p>}
 ```</p>
+
+<blockquote><h2>This is a header.</h2>
+
+<ul>
+<li>This is the first list item.</li>
+<li>This is the second list item.</li>
+</ul>
+
+
+<p>Here's some example code:</p>
+
+<pre><code>return shell_exec("echo $input | $markdown_script");
+</code></pre></blockquote>
+
+<pre><code>    do move prontera
+do move prontera
+</code></pre>
+
+<p>I strongly recommend against using any <code>&lt;blink&gt;</code> tags.</p>
+
+<p>I wish SmartyPants used named entities like <code>&amp;mdash;</code>
+instead of decimal-encoded entites like <code>&amp;#8212;</code>.</p>
 ]]></content>
   </entry>
   

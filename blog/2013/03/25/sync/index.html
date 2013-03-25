@@ -9,15 +9,16 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="本巨集主要是利用隊伍和公會頻道對多個外掛下達指令。使用時建議隊伍和公會只有自己的外掛。 以下是利用隊伍頻道送出同步指令的巨集 好處: 只要同一隊伍即可。 壞處: 最多支持12人。
-隊伍中的人也會看到指令，還可以對你的外掛下達任何指令。 guildcmd1
+  <meta name="description" content="以下是利用隊伍頻道送出同步指令的巨集 sync1
 2
 3
 4
 5
 6
 7
-8 &hellip;">
+8
+automacro guildcmd { guild /cmd (.*)/ exclusive 1 call { $do = $.lastMatch1 do $do }
+} 好處: 只要同一隊伍即可。 壞處: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -98,26 +99,9 @@
   </header>
 
 
-<div class="entry-content"><p>本巨集主要是利用隊伍和公會頻道對多個外掛下達指令。使用時建議隊伍和公會只有自己的外掛。</p>
+<div class="entry-content"><p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
-<p>以下是利用隊伍頻道送出同步指令的巨集</p>
-
-<p>好處:</p>
-
-<ul>
-<li>只要同一隊伍即可。</li>
-</ul>
-
-
-<p>壞處:</p>
-
-<ul>
-<li>最多支持12人。</li>
-<li>隊伍中的人也會看到指令，還可以對你的外掛下達任何指令。</li>
-</ul>
-
-
-<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -130,30 +114,45 @@
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nv">$do</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$do</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>以下是利用公會頻道送出同步指令的巨集</p>
+<h3>好處:</h3>
 
-<p>好處:</p>
+<ul>
+<li>只要同一隊伍即可。</li>
+</ul>
+
+
+<h3>壞處:</h3>
+
+<ul>
+<li>最多支持12人。</li>
+<li>隊伍中的人也會看到指令，還可以對你的外掛下達任何指令。</li>
+</ul>
+
+
+<blockquote><h2>以下是利用公會頻道送出同步指令的巨集</h2>
+
+<h3>好處:</h3>
 
 <ul>
 <li>不需要同一隊伍，只需同一公會即可。</li>
 <li>最多支持50人，看擴充組合體制等級而定。</li>
 </ul>
+</blockquote>
 
-
-<p>壞處:</p>
+<h3>壞處:</h3>
 
 <ul>
 <li>同公會的人也會看到指令，還可以對你的外掛下達任何指令。</li>
 </ul>
 
 
-<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -165,12 +164,34 @@
 </span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span><span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
+</span><span class='line'>  <span class="nv">$do</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$do</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<blockquote><h2>This is a header.</h2>
+
+<ul>
+<li>This is the first list item.</li>
+<li>This is the second list item.</li>
+</ul>
+
+
+<p>Here&#8217;s some example code:</p>
+
+<pre><code>return shell_exec("echo $input | $markdown_script");
+</code></pre></blockquote>
+
+<pre><code>    do move prontera
+do move prontera
+</code></pre>
+
+<p>I strongly recommend against using any <code>&lt;blink&gt;</code> tags.</p>
+
+<p>I wish SmartyPants used named entities like <code>&amp;mdash;</code>
+instead of decimal-encoded entites like <code>&amp;#8212;</code>.</p>
 </div>
 
 
