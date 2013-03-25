@@ -4,7 +4,7 @@
   <title><![CDATA[Category: party | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/party/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T23:49:27+08:00</updated>
+  <updated>2013-03-25T23:58:14+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -14,11 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[利用隊伍和公會頻道控制多個外掛]]></title>
+    <title type="html"><![CDATA[利用隊伍和公會頻道控制多個openkore]]></title>
     <link href="http://openkorer.github.com/blog/2013/03/25/sync/"/>
     <updated>2013-03-25T07:06:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
-    <content type="html"><![CDATA[<p>本教學可以對多個以上的外掛同時下達指令，我分別寫了<code>partycmd</code>同<code>guildcmd</code>兩個automacro。其實如果利用<code>console</code>作觸發只需一個automacro就可以，寫法如下。</p>
+    <content type="html"><![CDATA[<p>本教學可以對多個以上的openkore同時下達指令，我分別寫了<code>partycmd</code>同<code>guildcmd</code>兩個automacro。其實如果利用<code>console</code>作觸發只需一個automacro就可以，寫法如下。</p>
 
 <p>``` perl cmd
 automacro cmd {</p>
@@ -73,7 +73,7 @@ do $cmd                     # 執行指令串
 
 <ul>
 <li>最多支持12人。</li>
-<li>所有隊伍成員也會看到指令，還可以對你的外掛下達任何指令。</li>
+<li>所有隊伍成員也會看到指令，還可以對你的openkore下達任何指令。</li>
 </ul>
 
 
@@ -114,7 +114,7 @@ do $cmd                     # 執行指令串
 <p>壞處:</p>
 
 <ul>
-<li>所有公會成員也會看到指令，還可以對你的外掛下達任何指令。</li>
+<li>所有公會成員也會看到指令，還可以對你的openkore下達任何指令。</li>
 </ul>
 
 
