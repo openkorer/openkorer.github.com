@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-26T00:58:39+08:00</updated>
+  <updated>2013-03-26T00:59:21+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -30,7 +30,7 @@
 <li>最少已學習了<code>盾咒LV1</code></li>
 <li>身上帶有<code>薔薇鋼盾 [1]</code>並在<code>item_control.txt</code>設不存倉</li>
 <li>身上帶有其他盾(盾咒後換用，看個人需要)</li>
-<li>看個人需要修改第8,9,17行</li>
+<li>看個人需要修改第<strong>8</strong>,<strong>9</strong>,<strong>17</strong>行</li>
 </ul>
 
 
