@@ -4,7 +4,7 @@
   <title><![CDATA[Category: party | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/party/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T20:12:45+08:00</updated>
+  <updated>2013-03-25T20:14:20+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -22,14 +22,14 @@
 
 <p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
-<h3>好處:</h3>
+<p>好處:</p>
 
 <ul>
 <li>只要同一隊伍即可。</li>
 </ul>
 
 
-<h3>壞處:</h3>
+<p>壞處:</p>
 
 <ul>
 <li>最多支持12人。</li>
@@ -53,7 +53,7 @@ do $cmd
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
-<h3>好處:</h3>
+<p>好處:</p>
 
 <ul>
 <li>不需要同一隊伍，只需同一公會即可。</li>
@@ -61,7 +61,7 @@ do $cmd
 </ul>
 
 
-<h3>壞處:</h3>
+<p>壞處:</p>
 
 <ul>
 <li>同公會的人也會看到指令，還可以對你的外掛下達任何指令。</li>
