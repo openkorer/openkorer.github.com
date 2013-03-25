@@ -17,8 +17,7 @@
 6
 7
 8
-automacro partycmd { party /cmd (.*)/ exclusive 1 call { $cmd = $.lastMatch1 do $cmd }
-} 使用方法 e.g. 移動到中央 &hellip;">
+automacro partycmd { party /cmd (.*)/ #隊頻中有cmd字串時觸發巨集 exclusive 1 call { $cmd = $.lastMatch1 #把cmd後的指令串代入$ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,11 +109,11 @@ automacro partycmd { party /cmd (.*)/ exclusive 1 call { $cmd = $.lastMatch1 do 
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>
+</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>         <span class="c1">#隊頻中有cmd字串時觸發巨集</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1">#把cmd後的指令串代入$cmd中</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1">#執行指令串</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -126,9 +125,9 @@ automacro partycmd { party /cmd (.*)/ exclusive 1 call { $cmd = $.lastMatch1 do 
 
 <p>openkore: <code>g cmd move prontera</code></p>
 
-<p>xkore: 在隊伍聊天直接輸入<code>cmd move prontera</code>或在公開聊天輸入<code>cmd move prontera</code>+<code>Ctrl+P</code></p>
+<p>xkore mode: 在隊頻直接輸入<code>cmd move prontera</code>+<code>enter</code>或在公頻輸入<code>cmd move prontera</code>+<code>Ctrl+P</code></p>
 
-<p><strong>支援所有 openkore 的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></strong></p>
+<p>支援所有 openkore 的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
 
 <p>好處:</p>
 
