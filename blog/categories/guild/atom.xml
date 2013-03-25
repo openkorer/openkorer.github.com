@@ -4,7 +4,7 @@
   <title><![CDATA[Category: guild | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/guild/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T18:52:25+08:00</updated>
+  <updated>2013-03-25T19:02:37+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -34,11 +34,15 @@ do $do
 <p>}
 ```</p>
 
-<p>以下是利用公會頻道送出同步指令的巨集</p>
+<h1>以下是利用公會頻道送出同步指令的巨集</h1>
 
-<p>好處: \n
-1. 不需要同一隊伍，只需同一公會即可。
-2. 最多支持50人，看擴充組合體制等級而定。</p>
+<blockquote><h1>好處:</h1>
+
+<ol>
+<li>不需要同一隊伍，只需同一公會即可。</li>
+<li>最多支持50人，看擴充組合體制等級而定。</li>
+</ol>
+</blockquote>
 
 <p>壞處：
 1.</p>
