@@ -9,15 +9,7 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="本巨集可以對多個以上的外掛同時下達指令，觸犯條件不建議使用console /\[(隊伍|公會)\] (.*) \: cmd (.*)/，因為並不安全。 以下是利用隊伍頻道送出同步指令的巨集 partycmd1
-2
-3
-4
-5
-6
-7
-8
-automacro partycmd { party / &hellip;">
+  <meta name="description" content="本巨集可以對多個以上的外掛同時下達指令，我分別寫了partycmd同guildcmd兩個巨集。其實如果利用console作觸發只需一個automacro就可以，寫法如下。 console /\[(隊伍|公會)\] (.*) \: cmd (.*)/ 但我不建議使用，因為並不安全， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -98,7 +90,12 @@ automacro partycmd { party / &hellip;">
   </header>
 
 
-<div class="entry-content"><p>本巨集可以對多個以上的外掛同時下達指令，觸犯條件不建議使用<code>console /\[(隊伍|公會)\] (.*) \: cmd (.*)/</code>，因為並不安全。</p>
+<div class="entry-content"><p>本巨集可以對多個以上的外掛同時下達指令，我分別寫了<code>partycmd</code>同<code>guildcmd</code>兩個巨集。其實如果利用<code>console</code>作觸發只需一個automacro就可以，寫法如下。</p>
+
+<pre><code>    console /\[(隊伍|公會)\] (.*) \: cmd (.*)/
+</code></pre>
+
+<p>但我不建議使用，因為並不安全，如果別人利用密頻對你輸入<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。</p>
 
 <p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
