@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T20:19:47+08:00</updated>
+  <updated>2013-03-25T20:20:49+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -20,7 +20,7 @@
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
     <content type="html"><![CDATA[<p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
-<figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -32,8 +32,8 @@
 </span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$do</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$do</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -56,7 +56,7 @@
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
-<figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -68,8 +68,8 @@
 </span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$do</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$do</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>

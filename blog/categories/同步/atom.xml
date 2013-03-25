@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 同步 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/同步/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T20:19:47+08:00</updated>
+  <updated>2013-03-25T20:20:49+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -20,14 +20,14 @@
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
     <content type="html"><![CDATA[<p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
-<p>``` perl sync
+<p>``` perl guildcmd
 automacro guildcmd {</p>
 
 <pre><code>guild /cmd (.*)/
 exclusive 1
 call {
-$do = $.lastMatch1
-do $do
+$cmd = $.lastMatch1
+do $cmd
 }
 </code></pre>
 
@@ -51,14 +51,14 @@ do $do
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
-<p>``` perl sync
+<p>``` perl partycmd
 automacro partycmd {</p>
 
 <pre><code>party /cmd (.*)/
 exclusive 1
 call {
-$do = $.lastMatch1
-do $do
+$cmd = $.lastMatch1
+do $cmd
 }
 </code></pre>
 

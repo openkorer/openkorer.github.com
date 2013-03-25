@@ -9,7 +9,7 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="以下是利用隊伍頻道送出同步指令的巨集 sync1
+  <meta name="description" content="以下是利用隊伍頻道送出同步指令的巨集 guildcmd1
 2
 3
 4
@@ -17,8 +17,8 @@
 6
 7
 8
-automacro guildcmd { guild /cmd (.*)/ exclusive 1 call { $do = $.lastMatch1 do $do }
-} 好處: 只要同一隊伍即可。 壞處: &hellip;">
+automacro guildcmd { guild /cmd (.*)/ exclusive 1 call { $cmd = $.lastMatch1 do $cmd }
+} 好處: 只要同一隊伍即可。 壞處 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,7 +101,7 @@ automacro guildcmd { guild /cmd (.*)/ exclusive 1 call { $do = $.lastMatch1 do $
 
 <div class="entry-content"><p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
-<figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -113,8 +113,8 @@ automacro guildcmd { guild /cmd (.*)/ exclusive 1 call { $do = $.lastMatch1 do $
 </span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$do</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$do</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -137,7 +137,7 @@ automacro guildcmd { guild /cmd (.*)/ exclusive 1 call { $do = $.lastMatch1 do $
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
-<figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -149,8 +149,8 @@ automacro guildcmd { guild /cmd (.*)/ exclusive 1 call { $do = $.lastMatch1 do $
 </span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$do</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$do</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
