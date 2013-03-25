@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T21:27:29+08:00</updated>
+  <updated>2013-03-25T21:30:58+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -28,8 +28,8 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: cmd (.*)/</span>   <span class="c1"># 隊伍或公會頻道中有cmd字串時觸發巨集</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">cmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: cmd (.*)/</span>   <span class="c1"># 任何人在隊伍或公會頻道中以cmd開始的字串時觸發巨集</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
@@ -39,7 +39,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>但我不建議使用，因為並不安全，如果別人利用密頻對你輸入<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。</p>
+<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。</p>
 
 <p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
