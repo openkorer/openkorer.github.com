@@ -131,6 +131,35 @@ automacro questcheck { console /questcheck (\d+)/ call { #$qt = questcheck($. &h
 
 
 
+<figure class='code'><figcaption><span>Discover if a number is prime</span><a href='http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/'>Source Article</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">gotogeffen</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="nb">time</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1">#location not geffen 120 110</span>
+</span><span class='line'>  <span class="n">location</span> <span class="n">hgeffen</span> <span class="mi">120</span> <span class="mi">110</span>
+</span><span class='line'>  <span class="c1">#inventory &quot;愛情魔法棒&quot; == 0</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="n">gef_tower</span> <span class="mi">52</span> <span class="mi">177</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">5</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">[</span><span class="n">rectangle</span> <span class="nl">setX:</span> <span class="mi">10</span> <span class="nl">y:</span> <span class="mi">10</span> <span class="nl">width:</span> <span class="mi">20</span> <span class="nl">height:</span> <span class="mi">20</span><span class="p">];</span>
 </span></code></pre></td></tr></table></div></figure>
