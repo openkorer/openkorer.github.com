@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 皇家 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/皇家/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-26T00:51:23+08:00</updated>
+  <updated>2013-03-26T00:53:14+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -33,7 +33,7 @@
 </ul>
 
 
-<p>``` perl      <br/>
+<p>``` perl shieldspell
 automacro shieldspell {</p>
 
 <pre><code>class Royal Guard
@@ -43,7 +43,7 @@ status not 卸除盾牌狀態
 status not 盾咒技能延遲
 status not 動作延遲
 eval $::char-&gt;{'attack_bonus'} &lt; 180        # 數值設280跟150之間就可以
-location man_fild02                         # 觸發地圖
+location man_fild01,man_fild02              # 觸發地圖
 inventory "薔薇鋼盾 [1]" &gt; 0
 aggressives &lt; 1
 exclusive 1
