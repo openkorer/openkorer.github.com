@@ -259,6 +259,37 @@ automacro cmd { console /\[(隊伍|公會 &hellip;">
 <p>簡單說明一下運作，利用openkore登入後<code>gotogeffen</code>就會偵測任務限制時間是否到達了，如果現在位置不是在吉分塔外就會前往。然後<code>getitem</code>向賢者華倫泰領取10個愛情魔法棒，
 <code>talktogirl</code>再對失戀的少女使用愛情魔法棒將可以破除獸人女戰士的詛咒，當身上的愛情魔法棒換完後<code>charselect</code>就會自動把身上巧克力存倉，完成存倉後轉換上一個人物繼續，直至到第一人物也完成後自動關閉openkore。</p>
 
+<p>使用條件及注意事項:
+- 必須滿6個人物及20級以上
+- 身上有足夠金錢及正確路線前往吉分
+- 最少解過一次這活動
+- 盡量使用新的config.txt，因為6人會共用同一config.txt。不要用打怪的config.txt
+- config.txt中txt中storageAuto_password
+- 身上負重及倉儲空間最少要有5個</p>
+
+<figure class='code'><figcaption><span>config.txt 要修改的地方</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">char</span> <span class="mi">5</span>                        <span class="c1"># 由第六(5)個人物到到第一(0)人物，當第一(0)人物完成會變回5。</span>
+</span><span class='line'><span class="n">XKore</span> <span class="mi">0</span>                        <span class="c1"># 如果XKore 1會卡住在人物選單</span>
+</span><span class='line'><span class="n">follow</span> <span class="mi">0</span>                   <span class="c1"># 防止跟主人亂走</span>
+</span><span class='line'><span class="n">itemsGatherAuto</span> <span class="mi">0</span>          <span class="c1"># 不撿別人掉地上的物品</span>
+</span><span class='line'><span class="n">lockMap</span>                        <span class="c1"># 不設地圖</span>
+</span><span class='line'><span class="n">route_randomWalk_inTown</span> <span class="mi">0</span>  <span class="c1"># 不在城中亂走</span>
+</span><span class='line'><span class="n">statsAddAuto</span> <span class="mi">0</span>             <span class="c1"># 防止點其他人物的素質</span>
+</span><span class='line'><span class="n">skillsAddAuto</span> <span class="mi">0</span>                <span class="c1"># 防止點其他人物的技能</span>
+</span><span class='line'><span class="n">storageAuto_password</span> <span class="n">xxx</span>    <span class="c1"># 你自己的倉庫密碼</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
 <figure class='code'><figcaption><span> (q2303.txt)</span> <a href='/downloads/code/q2303.txt'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
