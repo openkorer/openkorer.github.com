@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T19:16:12+08:00</updated>
+  <updated>2013-03-25T19:17:50+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -22,18 +22,18 @@
 
 <h3>好處:</h3>
 
-<ul>
+<blockquote><ul>
 <li>只要同一隊伍即可。</li>
 </ul>
-
+</blockquote>
 
 <h3>壞處:</h3>
 
-<ul>
+<blockquote><ul>
 <li>最多支持12人。</li>
 <li>隊伍中的人也會看到指令，還可以對你的外掛下達任何指令。</li>
 </ul>
-
+</blockquote>
 
 <figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -58,11 +58,11 @@
 
 <h3>好處:</h3>
 
-<ul>
+<blockquote><ul>
 <li>不需要同一隊伍，只需同一公會即可。</li>
 <li>最多支持50人，看擴充組合體制等級而定。</li>
 </ul>
-
+</blockquote>
 
 <h3>壞處:</h3>
 
