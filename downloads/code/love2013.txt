@@ -1,0 +1,68 @@
+automacro love {
+	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} > time)
+	location dgeffen 120 110
+	inventory "愛情魔法棒" >= 1
+	exclusive 1
+	console /失戀的女孩\#(.*) \((\d+)\): \*(天哪！|哭泣)\*/
+	call {
+	do talk $.lastMatch2
+	pause 5
+	do talk resp 0
+	log 愛情魔法棒: @invamount(愛情魔法棒)
+	}
+}
+
+automacro gotogeffen {
+	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} < time)
+	#location not geffen 120 110
+	location hgeffen 120 110
+	#inventory "愛情魔法棒" == 0
+	exclusive 1
+	call {
+	do move gef_tower 52 177
+	pause 5
+	do move geffen 120 110
+	}
+}
+
+automacro takelove {
+	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} < time)
+	location dgeffen 120 110
+	#inventory "愛情魔法棒" == 0
+	exclusive 1
+	call {
+	do talknpc 120 98 r0
+	}
+}
+
+automacro questcharselect {
+	inventory "愛情魔法棒" == 0
+	inventory "愛情魔法棒" != -1
+	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} > time)
+	location dgeffen 120 110
+	call {
+	do move geffen @eval(@random("-2","-1","1","2") + 120) @eval(@random("-2","-1","1","2") + 65)
+	do talknpc 120 62 r1 n
+	pause 3
+	do storage add 巧克力
+	pause 1
+	do storage add 白色情人巧克力
+	pause 1
+	do storage add 手製巧克力(黑)
+	pause 1
+	do storage add 手製巧克力(白)
+	pause 1
+	do storage add 巧克力飲料
+	
+	if (@config(char) == 0) goto char5
+	do conf char @eval(@config(char) - 1)
+	do charselect
+	stop
+	
+	:char5
+	do conf char 5
+	do quit
+	stop
+	}
+	timeout 15
+}
