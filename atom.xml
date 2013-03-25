@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-26T00:59:21+08:00</updated>
+  <updated>2013-03-26T01:03:25+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[<p>本巨集完全由automacro觸發，並無須修改其他檔案。</p>
 
 <p>簡單說明一下運作，當在指定地圖時沒被怪打，<code>後ATK</code>低過某數值就會觸發。
-假設你用正使在用長角槍ATK是150，裝備薔薇鋼盾(DEF130)咒成功後<code>後ATK</code>會變成150+130=280。
+假設你用正使在用長角槍ATK是150，裝備薔薇鋼盾(DEF130)盾咒成功後<code>後ATK</code>會變成150+130=280。
 那觸發數值設280跟150之間就可以。</p>
 
 <p>巨集使用條件及注意事項:</p>
