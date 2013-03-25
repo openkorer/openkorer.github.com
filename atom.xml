@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T19:02:37+08:00</updated>
+  <updated>2013-03-25T19:09:46+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -39,18 +39,22 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>以下是利用公會頻道送出同步指令的巨集</h1>
+<p>以下是利用公會頻道送出同步指令的巨集</p>
 
-<blockquote><h1>好處:</h1>
+<p>好處:</p>
 
-<ol>
+<ul>
 <li>不需要同一隊伍，只需同一公會即可。</li>
 <li>最多支持50人，看擴充組合體制等級而定。</li>
-</ol>
-</blockquote>
+</ul>
 
-<p>壞處：
-1.</p>
+
+<p>壞處:</p>
+
+<ul>
+<li>同公會的人也會看到指令，還可以對你的外掛下達任何指令。</li>
+</ul>
+
 
 <figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
