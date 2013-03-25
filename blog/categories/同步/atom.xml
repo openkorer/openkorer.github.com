@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 同步 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/同步/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T21:23:27+08:00</updated>
+  <updated>2013-03-25T21:27:29+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -20,8 +20,19 @@
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
     <content type="html"><![CDATA[<p>本巨集可以對多個以上的外掛同時下達指令，我分別寫了<code>partycmd</code>同<code>guildcmd</code>兩個巨集。其實如果利用<code>console</code>作觸發只需一個automacro就可以，寫法如下。</p>
 
-<pre><code>    console /\[(隊伍|公會)\] (.*) \: cmd (.*)/
+<p>``` perl cmd
+automacro partycmd {</p>
+
+<pre><code>console /\[(隊伍|公會)\] (.*) \: cmd (.*)/  # 隊伍或公會頻道中有cmd字串時觸發巨集
+exclusive 1
+call {
+$cmd = $.lastMatch3
+do $cmd
+}
 </code></pre>
+
+<p>}
+```</p>
 
 <p>但我不建議使用，因為並不安全，如果別人利用密頻對你輸入<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。</p>
 

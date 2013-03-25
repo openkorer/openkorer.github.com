@@ -9,7 +9,15 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="本巨集可以對多個以上的外掛同時下達指令，我分別寫了partycmd同guildcmd兩個巨集。其實如果利用console作觸發只需一個automacro就可以，寫法如下。 console /\[(隊伍|公會)\] (.*) \: cmd (.*)/ 但我不建議使用，因為並不安全， &hellip;">
+  <meta name="description" content="本巨集可以對多個以上的外掛同時下達指令，我分別寫了partycmd同guildcmd兩個巨集。其實如果利用console作觸發只需一個automacro就可以，寫法如下。 cmd1
+2
+3
+4
+5
+6
+7
+8
+automacro partycmd { console /\[(隊伍|公會 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,8 +100,24 @@
 
 <div class="entry-content"><p>本巨集可以對多個以上的外掛同時下達指令，我分別寫了<code>partycmd</code>同<code>guildcmd</code>兩個巨集。其實如果利用<code>console</code>作觸發只需一個automacro就可以，寫法如下。</p>
 
-<pre><code>    console /\[(隊伍|公會)\] (.*) \: cmd (.*)/
-</code></pre>
+<figure class='code'><figcaption><span>cmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: cmd (.*)/</span>   <span class="c1"># 隊伍或公會頻道中有cmd字串時觸發巨集</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>但我不建議使用，因為並不安全，如果別人利用密頻對你輸入<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。</p>
 
