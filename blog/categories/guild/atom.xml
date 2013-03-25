@@ -4,7 +4,7 @@
   <title><![CDATA[Category: guild | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/guild/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T20:30:48+08:00</updated>
+  <updated>2013-03-25T20:31:41+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -32,10 +32,11 @@ do $cmd
 </code></pre>
 
 <p>}
-<code>``
-使用方法:
-openkore:輸入</code>g cmd move prontera<code>下達收到指令我外掛移動到中央
-xkore:輸入</code>cmd move prontera<code>+</code>Ctrl+P`下達收到指令我外掛移動到中央</p>
+```</p>
+
+<p>使用方法
+openkore:輸入<code>g cmd move prontera</code>下達收到指令我外掛移動到中央
+xkore:輸入<code>cmd move prontera</code>+<code>Ctrl+P</code>下達收到指令我外掛移動到中央</p>
 
 <p>好處:</p>
 
