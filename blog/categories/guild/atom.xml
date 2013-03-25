@@ -4,7 +4,7 @@
   <title><![CDATA[Category: guild | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/guild/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T19:44:21+08:00</updated>
+  <updated>2013-03-25T19:50:40+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -79,6 +79,22 @@ do $do
 
 <p>}
 ```</p>
+
+<blockquote><h2>This is a header.</h2>
+
+<ul>
+<li>This is the first list item.</li>
+<li>This is the second list item.</li>
+</ul>
+
+
+<p>Here's some example code:</p>
+
+<pre><code>return shell_exec("echo $input | $markdown_script");
+</code></pre></blockquote>
+
+<pre><code>    do move prontera
+</code></pre>
 ]]></content>
   </entry>
   
