@@ -1,212 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[唔好巨集]]></title>
-  <link href="http://openkorer.github.com/atom.xml" rel="self"/>
-  <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-26T07:25:25+08:00</updated>
-  <id>http://openkorer.github.com/</id>
-  <author>
-    <name><![CDATA[openkorer]]></name>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>唔好巨集</title>
+  <meta name="author" content="openkorer">
+
+  
+  <meta name="description" content="本巨集分別由gotogeffen,getitem,helpgirl和charselect組成，推薦有6個20級或以上人物使用。 簡單說明一下運作，利用openkore登入後gotogeffen就會偵測任務限制時間是否到達了，如果現在位置不是在吉芬塔外就會前往。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://openkorer.github.com/blog/page/2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="唔好巨集" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">唔好巨集</a></h1>
+  
+    <h2>由零開始學巨集</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:openkorer.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
     
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+      <h1 class="entry-title"><a href="/blog/2013/03/13/q2303/">白色情人節活動 2013</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
 
   
-  <entry>
-    <title type="html"><![CDATA[皇家盾咒ATK上升]]></title>
-    <link href="http://openkorer.github.com/blog/2013/03/26/shieldspell/"/>
-    <updated>2013-03-26T00:20:00+08:00</updated>
-    <id>http://openkorer.github.com/blog/2013/03/26/shieldspell</id>
-    <content type="html"><![CDATA[<p>本巨集完全由automacro觸發，並無須修改其他檔案。</p>
-
-<p>簡單說明一下運作，當在指定地圖時沒被怪打，<code>後ATK</code>低過某數值就會觸發。
-假設你用正使在用長角槍ATK是150，裝備薔薇鋼盾(DEF130)盾咒成功後<code>後ATK</code>會變成150+130=280。
-那觸發數值設280跟150之間就可以。</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li>最少已學習了<code>盾咒LV1</code></li>
-<li>身上帶有<code>薔薇鋼盾 [1]</code>並在<code>item_control.txt</code>設不存倉</li>
-<li>身上帶有其他盾(盾咒後換用，看個人需要)</li>
-<li>看個人需要修改第<strong>8</strong>,<strong>9</strong>,<strong>17</strong>行</li>
-</ul>
 
 
-<figure class='code'><figcaption><span>shieldspell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">shieldspell</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">class</span> <span class="n">Royal</span> <span class="n">Guard</span>
-</span><span class='line'>  <span class="n">hp</span> <span class="o">&gt;</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">sp</span> <span class="o">&gt;</span> <span class="mi">50</span>
-</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">卸除盾牌狀態</span>
-</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">盾咒技能延遲</span>
-</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">動作延遲</span>
-</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;attack_bonus&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="mi">180</span>       <span class="c1"># 數值設280跟150之間就可以</span>
-</span><span class='line'>  <span class="n">location</span> <span class="n">man_fild01</span><span class="p">,</span><span class="n">man_fild02</span>              <span class="c1"># 觸發地圖</span>
-</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;薔薇鋼盾 [1]&quot;</span> <span class="o">&gt;</span> <span class="mi">0</span>
-</span><span class='line'>  <span class="n">aggressives</span> <span class="o">&lt;</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">@inventory</span><span class="p">(</span><span class="err">薔薇鋼盾</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">ss</span> <span class="mi">2315</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">pause</span> <span class="mi">3</span>
-</span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">@inventory</span><span class="p">(</span><span class="err">巴基力亞鋼盾</span> <span class="p">[</span><span class="err">突變蛙卡片</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 如果不需要轉盾可刪除</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[一次控制多個openkore]]></title>
-    <link href="http://openkorer.github.com/blog/2013/03/25/sync/"/>
-    <updated>2013-03-25T07:06:00+08:00</updated>
-    <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
-    <content type="html"><![CDATA[<p>本教學可以對多個以上的openkore同時下達指令，我分別寫了<code>partycmd</code>同<code>guildcmd</code>兩個automacro。其實如果利用<code>console</code>作觸發只需一個automacro就可以，寫法如下。</p>
-
-<figure class='code'><figcaption><span>cmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">cmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: cmd (.*)/</span>   <span class="c1"># 任何人在隊伍或公會頻道中以cmd開始的字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<time datetime="2013-03-13T16:00:00+08:00" pubdate data-updated="true">Mar 13<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/13/q2303/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
 
 
-<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。如果你正在用<code>console</code>就要考慮一下要不要繼續用。</p>
-
-<p>以下是利用隊伍頻道送出同步指令的巨集</p>
-
-<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 隊伍頻道中有cmd字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>使用方法</p>
-
-<p>e.g. 移動到中央</p>
-
-<p>openkore: <code>p cmd move prontera</code></p>
-
-<p>xkore: 在隊伍頻道直接輸入<code>cmd move prontera</code>+<code>enter</code>或在公開頻道輸入<code>cmd move prontera</code>+<code>Ctrl+P</code></p>
-
-<p>支援所有 openkore 的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
-
-<p>好處:</p>
-
-<ul>
-<li>只要同一隊伍即可。</li>
-</ul>
-
-
-<p>壞處:</p>
-
-<ul>
-<li>最多支持12人。</li>
-<li>所有隊伍成員也會看到指令，還可以對你的openkore下達任何指令。</li>
-</ul>
-
-
-<p>以下是利用公會頻道送出同步指令的巨集</p>
-
-<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">guildcmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 公會頻道中有cmd字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>使用方法</p>
-
-<p>e.g. 自動存倉</p>
-
-<p>openkore: <code>p cmd autostorage</code></p>
-
-<p>xkore: 在公會頻道直接輸入<code>cmd autostorage</code>+<code>enter</code>或在公開頻道輸入<code>cmd autostorage</code>+<code>Ctrl+G</code></p>
-
-<p>支援所有 openkore 的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
-
-<p>好處:</p>
-
-<ul>
-<li>不需要同一隊伍，只需同一公會即可。</li>
-<li>最多支持50人，看公會擴充組合體制等級而定。</li>
-</ul>
-
-
-<p>壞處:</p>
-
-<ul>
-<li>所有公會成員也會看到指令，還可以對你的openkore下達任何指令。</li>
-</ul>
-
-
-<p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最安全做法是自創隊伍跟公會！</strong></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[白色情人節活動 2013]]></title>
-    <link href="http://openkorer.github.com/blog/2013/03/13/q2303/"/>
-    <updated>2013-03-13T16:00:00+08:00</updated>
-    <id>http://openkorer.github.com/blog/2013/03/13/q2303</id>
-    <content type="html"><![CDATA[<p>本巨集分別由<code>gotogeffen</code>,<code>getitem</code>,<code>helpgirl</code>和<code>charselect</code>組成，推薦有6個20級或以上人物使用。</p>
+  <div class="entry-content"><p>本巨集分別由<code>gotogeffen</code>,<code>getitem</code>,<code>helpgirl</code>和<code>charselect</code>組成，推薦有6個20級或以上人物使用。</p>
 
 <p>簡單說明一下運作，利用openkore登入後<code>gotogeffen</code>就會偵測任務限制時間是否到達了，如果現在位置不是在吉芬塔外就會前往。
 然後<code>getitem</code>向賢者華倫泰領取10個愛情魔法棒，
@@ -239,7 +128,7 @@
     storageAuto_password xxx    # 正確倉庫密碼
 </code></pre>
 
-<figure class='code'><figcaption><span> (q2303.txt)</span> <a href='http://openkorer.github.com/downloads/code/q2303.txt'>download</a></figcaption>
+<figure class='code'><figcaption><span> (q2303.txt)</span> <a href='/downloads/code/q2303.txt'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -372,7 +261,114 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
+</div>
   
-</feed>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p>A little something about me.</p>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/charselect/'>charselect (1)</a></li>
+<li class='category'><a href='/blog/categories/guild/'>guild (1)</a></li>
+<li class='category'><a href='/blog/categories/party/'>party (1)</a></li>
+<li class='category'><a href='/blog/categories/questlist/'>questList (1)</a></li>
+<li class='category'><a href='/blog/categories/sync/'>sync (1)</a></li>
+<li class='category'><a href='/blog/categories/技能/'>技能 (1)</a></li>
+<li class='category'><a href='/blog/categories/活動/'>活動 (1)</a></li>
+<li class='category'><a href='/blog/categories/皇家/'>皇家 (1)</a></li>
+
+  </ul>
+</section>
+<section>
+<h1>分類</h1>
+<span class='categories_tag'> <a href='/blog/categories/charselect' style='font-size: 160.0%'>Charselect(1)</a>  <a href='/blog/categories/guild' style='font-size: 160.0%'>Guild(1)</a>  <a href='/blog/categories/party' style='font-size: 160.0%'>Party(1)</a>  <a href='/blog/categories/questlist' style='font-size: 160.0%'>Questlist(1)</a>  <a href='/blog/categories/sync' style='font-size: 160.0%'>Sync(1)</a>  <a href='/blog/categories/技能' style='font-size: 160.0%'>技能(1)</a>  <a href='/blog/categories/活動' style='font-size: 160.0%'>活動(1)</a>  <a href='/blog/categories/皇家' style='font-size: 160.0%'>皇家(1)</a> </span>
+</section>
+
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/26/shieldspell/">皇家盾咒ATK上升</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/25/sync/">一次控制多個openkore</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/13/q2303/">白色情人節活動 2013</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - openkorer -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'openkorer';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
