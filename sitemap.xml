@@ -2,7 +2,11 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://openkorer.github.com/blog/2013/03/25/ddadas/</loc>
-        <lastmod>2013-03-25T08:45:14+08:00</lastmod>
+        <lastmod>2013-03-25T09:08:11+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://openkorer.github.com/blog/2013/03/25/love2013/</loc>
+        <lastmod>2013-03-25T09:08:25+08:00</lastmod>
     </url>
     <url>
         <loc>http://openkorer.github.com/blog/2013/03/25/11222/</loc>
@@ -14,11 +18,11 @@
     </url>
     <url>
         <loc>http://openkorer.github.com/blog/archives/</loc>
-        <lastmod>2013-03-25T08:55:05+08:00</lastmod>
+        <lastmod>2013-03-25T09:08:25+08:00</lastmod>
     </url>
     <url>
         <loc>http://openkorer.github.com/</loc>
-        <lastmod>2013-03-25T08:55:05+08:00</lastmod>
+        <lastmod>2013-03-25T09:08:25+08:00</lastmod>
     </url>
     <url>
         <loc>http://openkorer.github.com/robots.txt</loc>
