@@ -4,7 +4,7 @@
   <title><![CDATA[Category: party | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/party/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T21:45:20+08:00</updated>
+  <updated>2013-03-25T21:48:17+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -108,7 +108,7 @@ do $cmd                     # 執行指令串
 </ul>
 
 
-<p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。</strong></p>
+<p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最好自創隊伍跟公會</strong></p>
 ]]></content>
   </entry>
   
