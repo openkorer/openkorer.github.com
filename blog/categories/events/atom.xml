@@ -4,7 +4,7 @@
   <title><![CDATA[Category: events | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/events/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T08:34:47+08:00</updated>
+  <updated>2013-03-25T08:36:40+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,7 +18,7 @@
     <link href="http://openkorer.github.com/blog/2013/03/25/ddadas/"/>
     <updated>2013-03-25T06:06:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/25/ddadas</id>
-    <content type="html"><![CDATA[<p>File C:/Users/Jack/octopress/source/downloads/code/love2013.txt could not be found</p>
+    <content type="html"><![CDATA[<p>{% include_code love2013.txt lang:perl love2013.txt %}</p>
 ]]></content>
   </entry>
   
