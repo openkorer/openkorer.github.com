@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 同步 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/同步/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T20:26:08+08:00</updated>
+  <updated>2013-03-25T20:30:48+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -20,10 +20,10 @@
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
     <content type="html"><![CDATA[<p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
-<p>``` perl guildcmd
-automacro guildcmd {</p>
+<p>``` perl partycmd
+automacro partycmd {</p>
 
-<pre><code>guild /cmd (.*)/
+<pre><code>party /cmd (.*)/
 exclusive 1
 call {
 $cmd = $.lastMatch1
@@ -34,7 +34,8 @@ do $cmd
 <p>}
 <code>``
 使用方法:
-openkore中輸入</code>g cmd move prontera`下達收到指令我外掛移動到中央</p>
+openkore:輸入</code>g cmd move prontera<code>下達收到指令我外掛移動到中央
+xkore:輸入</code>cmd move prontera<code>+</code>Ctrl+P`下達收到指令我外掛移動到中央</p>
 
 <p>好處:</p>
 
@@ -53,10 +54,10 @@ openkore中輸入</code>g cmd move prontera`下達收到指令我外掛移動到
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
-<p>``` perl partycmd
-automacro partycmd {</p>
+<p>``` perl guildcmd
+automacro guildcmd {</p>
 
-<pre><code>party /cmd (.*)/
+<pre><code>guild /cmd (.*)/
 exclusive 1
 call {
 $cmd = $.lastMatch1

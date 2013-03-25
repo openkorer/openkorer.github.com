@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T20:26:08+08:00</updated>
+  <updated>2013-03-25T20:30:48+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -20,7 +20,7 @@
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
     <content type="html"><![CDATA[<p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
-<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -28,8 +28,8 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">guildcmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
@@ -40,7 +40,8 @@
 
 
 <p>使用方法:
-openkore中輸入<code>g cmd move prontera</code>下達收到指令我外掛移動到中央</p>
+openkore:輸入<code>g cmd move prontera</code>下達收到指令我外掛移動到中央
+xkore:輸入<code>cmd move prontera</code>+<code>Ctrl+P</code>下達收到指令我外掛移動到中央</p>
 
 <p>好處:</p>
 
@@ -59,7 +60,7 @@ openkore中輸入<code>g cmd move prontera</code>下達收到指令我外掛移�
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
-<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -67,8 +68,8 @@ openkore中輸入<code>g cmd move prontera</code>下達收到指令我外掛移�
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">guildcmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
