@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 同步 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/同步/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T20:02:37+08:00</updated>
+  <updated>2013-03-25T20:12:45+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,7 +18,9 @@
     <link href="http://openkorer.github.com/blog/2013/03/25/sync/"/>
     <updated>2013-03-25T07:06:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
-    <content type="html"><![CDATA[<h1>以下是利用隊伍頻道送出同步指令的巨集</h1>
+    <content type="html"><![CDATA[<p>本巨集主要是利用隊伍和公會頻道對多個外掛下達指令。使用時建議隊伍和公會只有自己的外掛。</p>
+
+<p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
 <h3>好處:</h3>
 
@@ -35,21 +37,21 @@
 </ul>
 
 
-<p>``` perl sync
+<p>``` perl guildcmd
 automacro guildcmd {</p>
 
 <pre><code>guild /cmd (.*)/
 exclusive 1
 call {
 $do = $.lastMatch1
-do $do
+do $cmd
 }
 </code></pre>
 
 <p>}
 ```</p>
 
-<blockquote><h2>以下是利用公會頻道送出同步指令的巨集</h2>
+<p>以下是利用公會頻道送出同步指令的巨集</p>
 
 <h3>好處:</h3>
 
@@ -57,7 +59,7 @@ do $do
 <li>不需要同一隊伍，只需同一公會即可。</li>
 <li>最多支持50人，看擴充組合體制等級而定。</li>
 </ul>
-</blockquote>
+
 
 <h3>壞處:</h3>
 
@@ -66,41 +68,19 @@ do $do
 </ul>
 
 
-<p>``` perl sync
+<p>``` perl partycmd
 automacro partycmd {</p>
 
 <pre><code>party /cmd (.*)/
 exclusive 1
 call {
-$do = $.lastMatch1
-do $do
+$cmd= $.lastMatch1
+do $cmd
 }
 </code></pre>
 
 <p>}
 ```</p>
-
-<blockquote><h2>This is a header.</h2>
-
-<ul>
-<li>This is the first list item.</li>
-<li>This is the second list item.</li>
-</ul>
-
-
-<p>Here's some example code:</p>
-
-<pre><code>return shell_exec("echo $input | $markdown_script");
-</code></pre></blockquote>
-
-<pre><code>    do move prontera
-do move prontera
-</code></pre>
-
-<p>I strongly recommend against using any <code>&lt;blink&gt;</code> tags.</p>
-
-<p>I wish SmartyPants used named entities like <code>&amp;mdash;</code>
-instead of decimal-encoded entites like <code>&amp;#8212;</code>.</p>
 ]]></content>
   </entry>
   
