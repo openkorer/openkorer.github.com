@@ -4,7 +4,7 @@
   <title><![CDATA[Category: events | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/events/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T08:20:33+08:00</updated>
+  <updated>2013-03-25T08:21:33+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -20,15 +20,21 @@
     <id>http://openkorer.github.com/blog/2013/03/25/ddadas</id>
     <content type="html"><![CDATA[<p><a href="google.com">eeqe</a></p>
 
-<p>``` ruby Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
-class Fixnum
-  def prime?</p>
+<p>``` perl Discover if a number is prime http://www.noulakaz.net/weblog/2007/03/18/a-regular-expression-to-check-for-prime-numbers/ Source Article
+automacro questcheck {</p>
 
-<pre><code>('1' * self) !~ /^1?$|^(11+?)\1+$/
+<pre><code>console /questcheck (\d+)/
+call {
+#$qt = questcheck($.lastMatch1)
+$qt = questtime($.lastMatch1)
+$ct = ctime($.time)
+if ($qt &lt; $ct) stop
+log $qt &lt; $ct
+stop
+}
 </code></pre>
 
-<p>  end
-end
+<p>}
 ```</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

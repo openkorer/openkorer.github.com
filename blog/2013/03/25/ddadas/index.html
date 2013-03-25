@@ -14,9 +14,13 @@
 3
 4
 5
-class Fixnum def prime? (&#39;1&#39; * self) !~ /^1?$|^(11+?)\1+$/ end
-end 1
-[rectangle &hellip;">
+6
+7
+8
+9
+10
+11
+automacro questcheck { console /questcheck (\d+)/ call { #$qt = questcheck($. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -105,11 +109,23 @@ end 1
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Fixnum</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">prime?</span>
-</span><span class='line'>    <span class="p">(</span><span class="s1">&#39;1&#39;</span> <span class="o">*</span> <span class="nb">self</span><span class="p">)</span> <span class="o">!~</span> <span class="sr">/^1?$|^(11+?)\1+$/</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">questcheck</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/questcheck (\d+)/</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">#$qt = questcheck($.lastMatch1)</span>
+</span><span class='line'>  <span class="nv">$qt</span> <span class="o">=</span> <span class="n">questtime</span><span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$ct</span> <span class="o">=</span> <span class="n">ctime</span><span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">time</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$qt</span> <span class="o">&lt;</span> <span class="nv">$ct</span><span class="p">)</span> <span class="n">stop</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="nv">$qt</span> <span class="o">&lt;</span> <span class="nv">$ct</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
