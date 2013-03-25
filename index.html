@@ -9,7 +9,7 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="(love2013.txt) download 1
+  <meta name="description" content="1
 2
 3
 4
@@ -26,33 +26,8 @@
 15
 16
 17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44 &hellip;">
+automacro guilddo { guild /do (.*)/ exclusive 1 call { $do = $.lastMatch1 do $do }
+} automacro partydo { &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,6 +82,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/25/sync/">指令同步</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-25T07:06:00+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>automacro guilddo {
+</span><span class='line'>  guild /do (.*)/
+</span><span class='line'>  exclusive 1
+</span><span class='line'>  call {
+</span><span class='line'>  $do = $.lastMatch1
+</span><span class='line'>  do $do
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>automacro partydo {
+</span><span class='line'>  party /do (.*)/
+</span><span class='line'>  exclusive 1
+</span><span class='line'>  call {
+</span><span class='line'>  $do = $.lastMatch1
+</span><span class='line'>  do $do
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -294,19 +339,26 @@
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/charselect/'>charselect (1)</a></li>
+<li class='category'><a href='/blog/categories/guild/'>guild (1)</a></li>
+<li class='category'><a href='/blog/categories/party/'>party (1)</a></li>
 <li class='category'><a href='/blog/categories/questlist/'>questList (1)</a></li>
+<li class='category'><a href='/blog/categories/同步/'>同步 (1)</a></li>
 <li class='category'><a href='/blog/categories/活動/'>活動 (1)</a></li>
 
   </ul>
 </section>
 <section>
 <h1>分類</h1>
-<span class='categories_tag'> <a href='/blog/categories/charselect' style='font-size: 160.0%'>Charselect(1)</a>  <a href='/blog/categories/questlist' style='font-size: 160.0%'>Questlist(1)</a>  <a href='/blog/categories/活動' style='font-size: 160.0%'>活動(1)</a> </span>
+<span class='categories_tag'> <a href='/blog/categories/charselect' style='font-size: 160.0%'>Charselect(1)</a>  <a href='/blog/categories/guild' style='font-size: 160.0%'>Guild(1)</a>  <a href='/blog/categories/party' style='font-size: 160.0%'>Party(1)</a>  <a href='/blog/categories/questlist' style='font-size: 160.0%'>Questlist(1)</a>  <a href='/blog/categories/同步' style='font-size: 160.0%'>同步(1)</a>  <a href='/blog/categories/活動' style='font-size: 160.0%'>活動(1)</a> </span>
 </section>
 
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/03/25/sync/">指令同步</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/03/25/love2013/">情人節2013</a>

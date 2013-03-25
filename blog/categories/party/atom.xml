@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: party | 唔好巨集]]></title>
+  <link href="http://openkorer.github.com/blog/categories/party/atom.xml" rel="self"/>
+  <link href="http://openkorer.github.com/"/>
+  <updated>2013-03-25T18:38:23+08:00</updated>
+  <id>http://openkorer.github.com/</id>
+  <author>
+    <name><![CDATA[openkorer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[指令同步]]></title>
+    <link href="http://openkorer.github.com/blog/2013/03/25/sync/"/>
+    <updated>2013-03-25T07:06:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
+    <content type="html"><![CDATA[<p>```
+automacro guilddo {</p>
+
+<pre><code>guild /do (.*)/
+exclusive 1
+call {
+$do = $.lastMatch1
+do $do
+}
+</code></pre>
+
+<p>}</p>
+
+<p>automacro partydo {</p>
+
+<pre><code>party /do (.*)/
+exclusive 1
+call {
+$do = $.lastMatch1
+do $do
+}
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
