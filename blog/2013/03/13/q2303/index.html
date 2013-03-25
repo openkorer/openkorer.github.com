@@ -9,7 +9,7 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="本巨集分別由gotogeffen,getitem,talktogirl和charselect組成，推薦有6個20級或以上人物使用。 簡單說明一下運作，利用openkore登入後gotogeffen就會偵測任務限制時間是否到達了，如果現在位置不是在吉分塔外就會前往。 &hellip;">
+  <meta name="description" content="本巨集分別由gotogeffen,getitem,helpgirl和charselect組成，推薦有6個20級或以上人物使用。 簡單說明一下運作，利用openkore登入後gotogeffen就會偵測任務限制時間是否到達了，如果現在位置不是在吉分塔外就會前往。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,7 +90,7 @@
   </header>
 
 
-<div class="entry-content"><p>本巨集分別由<code>gotogeffen</code>,<code>getitem</code>,<code>talktogirl</code>和<code>charselect</code>組成，推薦有6個20級或以上人物使用。</p>
+<div class="entry-content"><p>本巨集分別由<code>gotogeffen</code>,<code>getitem</code>,<code>helpgirl</code>和<code>charselect</code>組成，推薦有6個20級或以上人物使用。</p>
 
 <p>簡單說明一下運作，利用openkore登入後<code>gotogeffen</code>就會偵測任務限制時間是否到達了，如果現在位置不是在吉分塔外就會前往。
 然後<code>getitem</code>向賢者華倫泰領取10個愛情魔法棒，
@@ -105,7 +105,8 @@
 <li>身上有足夠金錢及正確路線前往吉分</li>
 <li>最少解過一次這活動</li>
 <li>留意身上負重及倉儲空間</li>
-<li>盡量使用乾淨的config.txt，因為6人會共用同一config.txt。不要用打怪的config.txt!</li>
+<li>盡量使用乾淨的<code>config.txt</code>，因為6人會共用同一<code>config.txt</code>。不要用打怪的<code>config.txt</code>!</li>
+<li>如果吉芬塔外兩位少女在取得愛情魔法棒前已經是女獸人形態就用手動跟兩位分別對話一次，請用<code>talk 2</code>跟<code>talk 8</code>。</li>
 </ul>
 
 
@@ -208,7 +209,7 @@
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">automacro</span> <span class="n">talktogirl</span> <span class="p">{</span>
+</span><span class='line'><span class="n">automacro</span> <span class="n">helpgirl</span> <span class="p">{</span>
 </span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&gt;</span> <span class="nb">time</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">location</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
 </span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;愛情魔法棒&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>

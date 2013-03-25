@@ -18,7 +18,7 @@ automacro getitem {
 	}
 }
 
-automacro talktogirl {
+automacro helpgirl {
 	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} > time)
 	location geffen 120 110
 	inventory "愛情魔法棒" >= 1
