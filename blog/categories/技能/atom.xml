@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 技能 | 唔好巨集]]></title>
+  <link href="http://openkorer.github.com/blog/categories/技能/atom.xml" rel="self"/>
+  <link href="http://openkorer.github.com/"/>
+  <updated>2013-03-26T00:21:26+08:00</updated>
+  <id>http://openkorer.github.com/</id>
+  <author>
+    <name><![CDATA[openkorer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[皇家]]></title>
+    <link href="http://openkorer.github.com/blog/2013/03/26/shieldspell/"/>
+    <updated>2013-03-26T00:20:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/03/26/shieldspell</id>
+    <content type="html"><![CDATA[<p>本巨集分別由<code>gotogeffen</code>,<code>getitem</code>,<code>helpgirl</code>和<code>charselect</code>組成，推薦有6個20級或以上人物使用。</p>
+
+<p>簡單說明一下運作，利用openkore登入後<code>gotogeffen</code>就會偵測任務限制時間是否到達了，如果現在位置不是在吉分塔外就會前往。
+然後<code>getitem</code>向賢者華倫泰領取10個愛情魔法棒，
+<code>talktogirl</code>再對失戀的少女使用愛情魔法棒將可以破除獸人女戰士的詛咒，
+當身上的愛情魔法棒換完後<code>charselect</code>就會自動把身上巧克力存倉，完成存倉後轉換上一個人物繼續，直至到第一人物也完成後自動關閉openkore。
+<a href="http://ro.gameflier.com/news/news_in.asp?Count=done&amp;BID=7551">活動詳情請點我</a></p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<p>``` perl      <br/>
+automacro shieldspell {</p>
+
+<pre><code>hp &gt; 1
+sp &gt; 50
+status not 卸除盾牌狀態
+status not 盾咒技能延遲
+status not 動作延遲
+eval $::char-&gt;{'attack_bonus'} &lt; 180
+class Royal Guard
+location nameless_n,bif_fild01,abbey01,abbey02,abbey03,lhz_dun01,lhz_dun02,lhz_dun03,lhz_dun04,xmas_fild01
+inventory "薔薇鋼盾 [1]" &gt; 0
+aggressives &lt; 1
+call {
+do eq @inventory(薔薇鋼盾 [1])
+do ss 2315 1
+pause 3
+do eq @inventory(白金鋼盾)
+do eq @inventory(巴基力亞鋼盾 [突變蛙卡片] [1])
+}
+timeout 3
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
