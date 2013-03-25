@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T23:58:14+08:00</updated>
+  <updated>2013-03-26T00:00:19+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[利用隊伍和公會頻道控制多個openkore]]></title>
+    <title type="html"><![CDATA[一次控制多個openkore]]></title>
     <link href="http://openkorer.github.com/blog/2013/03/25/sync/"/>
     <updated>2013-03-25T07:06:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
