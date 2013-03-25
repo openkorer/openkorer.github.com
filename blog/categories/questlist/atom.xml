@@ -4,7 +4,7 @@
   <title><![CDATA[Category: questList | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/questlist/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T23:43:57+08:00</updated>
+  <updated>2013-03-25T23:46:52+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -40,12 +40,12 @@
 
 <p>以下是<code>config.txt</code>中要修改的地方</p>
 
-<pre><code>    char 5                      # 由第六(5)個人物到到第一(0)人物，當第一(0)人物完成會變回5。
+<pre><code>    char 5                      # 由第六(5)個人物到第一(0)人物，當第一(0)人物完成後會變回5。
     XKore 0                     # 如果XKore 1會卡住在人物選單
     follow 0                    # 防止跟主人亂走
     itemsGatherAuto 0           # 不撿別人掉地上的物品
     lockMap                     # 不設地圖
-    route_randomWalk_inTown 0   # 不在城中亂走
+    route_randomWalk_inTown 0   # 防止在城中亂走
     statsAddAuto 0              # 防止點其他人物的素質
     skillsAddAuto 0             # 防止點其他人物的技能
     storageAuto_password xxx    # 正確倉庫密碼
