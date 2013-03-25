@@ -9,7 +9,7 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="12人或以下適用 以下是利用公會頻道送出同步指令的巨集 好處: 只要同一隊伍即可。 壞處: 最多支持12人。
+  <meta name="description" content="以下是利用隊伍頻道送出同步指令的巨集 好處: 只要同一隊伍即可。 壞處: 最多支持12人。
 隊伍中的人也會看到指令，還可以對你的外掛下達任何指令。 sync1
 2
 3
@@ -18,7 +18,7 @@
 6
 7
 8
-automacro guildcmd { guild /cmd (.*)/ &hellip;">
+automacro guildcmd { guild /cmd (.*)/ exclusive 1 call &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,18 +99,16 @@ automacro guildcmd { guild /cmd (.*)/ &hellip;">
   </header>
 
 
-<div class="entry-content"><p>12人或以下適用</p>
+<div class="entry-content"><h2>以下是利用隊伍頻道送出同步指令的巨集</h2>
 
-<h1>以下是利用公會頻道送出同步指令的巨集</h1>
-
-<h2>好處:</h2>
+<h3>好處:</h3>
 
 <ul>
 <li>只要同一隊伍即可。</li>
 </ul>
 
 
-<p>壞處:</p>
+<h3>壞處:</h3>
 
 <ul>
 <li>最多支持12人。</li>
@@ -137,9 +135,9 @@ automacro guildcmd { guild /cmd (.*)/ &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>以下是利用公會頻道送出同步指令的巨集</h1>
+<h2>以下是利用公會頻道送出同步指令的巨集</h2>
 
-<h2>好處:</h2>
+<h3>好處:</h3>
 
 <ul>
 <li>不需要同一隊伍，只需同一公會即可。</li>
@@ -147,7 +145,7 @@ automacro guildcmd { guild /cmd (.*)/ &hellip;">
 </ul>
 
 
-<p>壞處:</p>
+<h3>壞處:</h3>
 
 <ul>
 <li>同公會的人也會看到指令，還可以對你的外掛下達任何指令。</li>
