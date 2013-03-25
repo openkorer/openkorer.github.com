@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-26T00:24:37+08:00</updated>
+  <updated>2013-03-26T00:48:26+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,15 +18,20 @@
     <link href="http://openkorer.github.com/blog/2013/03/26/shieldspell/"/>
     <updated>2013-03-26T00:20:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/26/shieldspell</id>
-    <content type="html"><![CDATA[<p>本巨集分別由<code>gotogeffen</code>,<code>getitem</code>,<code>helpgirl</code>和<code>charselect</code>組成，推薦有6個20級或以上人物使用。</p>
+    <content type="html"><![CDATA[<p>本巨集完全由automacro觸發，並無須修改其他檔案。</p>
 
-<p>簡單說明一下運作，利用openkore登入後<code>gotogeffen</code>就會偵測任務限制時間是否到達了，如果現在位置不是在吉分塔外就會前往。
-然後<code>getitem</code>向賢者華倫泰領取10個愛情魔法棒，
-<code>talktogirl</code>再對失戀的少女使用愛情魔法棒將可以破除獸人女戰士的詛咒，
-當身上的愛情魔法棒換完後<code>charselect</code>就會自動把身上巧克力存倉，完成存倉後轉換上一個人物繼續，直至到第一人物也完成後自動關閉openkore。
-<a href="http://ro.gameflier.com/news/news_in.asp?Count=done&amp;BID=7551">活動詳情請點我</a></p>
+<p>簡單說明一下運作，當在指定地圖時沒被怪打，後ATK低過某數值就會觸發。
+假設你用正在用長角槍後ATK是150，裝備薔薇鋼盾(DEF130)咒成功後後ATK會變成150+130=280。
+那觸發數值設280跟150之間就可以。</p>
 
 <p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>最少已學習了<code>盾咒LV1</code></li>
+<li>身上帶有<code>薔薇鋼盾 [1]</code></li>
+<li>身上帶有其他盾(盾咒後換用，看個人需要)</li>
+</ul>
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -47,26 +52,24 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-<span class='line-number'>20</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">shieldspell</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Royal</span> <span class="n">Guard</span>
 </span><span class='line'>  <span class="n">hp</span> <span class="o">&gt;</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">sp</span> <span class="o">&gt;</span> <span class="mi">50</span>
 </span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">卸除盾牌狀態</span>
 </span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">盾咒技能延遲</span>
 </span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">動作延遲</span>
-</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;attack_bonus&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="mi">180</span>
-</span><span class='line'>  <span class="n">class</span> <span class="n">Royal</span> <span class="n">Guard</span>
-</span><span class='line'>  <span class="n">location</span> <span class="n">nameless_n</span><span class="p">,</span><span class="n">bif_fild01</span><span class="p">,</span><span class="n">abbey01</span><span class="p">,</span><span class="n">abbey02</span><span class="p">,</span><span class="n">abbey03</span><span class="p">,</span><span class="n">lhz_dun01</span><span class="p">,</span><span class="n">lhz_dun02</span><span class="p">,</span><span class="n">lhz_dun03</span><span class="p">,</span><span class="n">lhz_dun04</span><span class="p">,</span><span class="n">xmas_fild01</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;attack_bonus&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="mi">180</span>       <span class="c1"># 數值設280跟150之間就可以</span>
+</span><span class='line'>  <span class="n">location</span> <span class="n">man_fild02</span>                           <span class="c1"># 觸發地圖</span>
 </span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;薔薇鋼盾 [1]&quot;</span> <span class="o">&gt;</span> <span class="mi">0</span>
 </span><span class='line'>  <span class="n">aggressives</span> <span class="o">&lt;</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">@inventory</span><span class="p">(</span><span class="err">薔薇鋼盾</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </span><span class='line'>  <span class="k">do</span> <span class="n">ss</span> <span class="mi">2315</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">pause</span> <span class="mi">3</span>
-</span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">@inventory</span><span class="p">(</span><span class="err">白金鋼盾</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">@inventory</span><span class="p">(</span><span class="err">巴基力亞鋼盾</span> <span class="p">[</span><span class="err">突變蛙卡片</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">@inventory</span><span class="p">(</span><span class="err">巴基力亞鋼盾</span> <span class="p">[</span><span class="err">突變蛙卡片</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 如果不需要轉盾可刪除</span>
 </span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="n">timeout</span> <span class="mi">3</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
