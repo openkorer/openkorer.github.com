@@ -4,7 +4,7 @@
   <title><![CDATA[Category: charselect | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/charselect/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T23:28:22+08:00</updated>
+  <updated>2013-03-25T23:29:05+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -34,7 +34,7 @@
 <li>盡量使用新的config.txt，因為6人會共用同一config.txt。不要用打怪的config.txt</li>
 <li><p>身上負重及倉儲空間最少要有5個</p>
 
-<pre><code>  char 5                      # 由第六(5)個人物到到第一(0)人物，當第一(0)人物完成會變回5。
+<p>  char 5                      # 由第六(5)個人物到到第一(0)人物，當第一(0)人物完成會變回5。
   XKore 0                     # 如果XKore 1會卡住在人物選單
   follow 0                    # 防止跟主人亂走
   itemsGatherAuto 0           # 不撿別人掉地上的物品
@@ -42,8 +42,7 @@
   route_randomWalk_inTown 0   # 不在城中亂走
   statsAddAuto 0              # 防止點其他人物的素質
   skillsAddAuto 0             # 防止點其他人物的技能
-  storageAuto_password xxx    # 你自己的倉庫密碼
-</code></pre></li>
+  storageAuto_password xxx    # 你自己的倉庫密碼</p></li>
 </ul>
 
 
