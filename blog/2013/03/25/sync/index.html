@@ -9,7 +9,7 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="sync1
 2
 3
 4
@@ -27,7 +27,7 @@
 16
 17
 automacro guilddo { guild /do (.*)/ exclusive 1 call { $do = $.lastMatch1 do $do }
-} automacro partydo { &hellip;">
+} automacro partydo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,7 +108,7 @@ automacro guilddo { guild /do (.*)/ exclusive 1 call { $do = $.lastMatch1 do $do
   </header>
 
 
-<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><figure class='code'><figcaption><span>sync</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -125,23 +125,24 @@ automacro guilddo { guild /do (.*)/ exclusive 1 call { $do = $.lastMatch1 do $do
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>automacro guilddo {
-</span><span class='line'>  guild /do (.*)/
-</span><span class='line'>  exclusive 1
-</span><span class='line'>  call {
-</span><span class='line'>  $do = $.lastMatch1
-</span><span class='line'>  do $do
-</span><span class='line'>  }
-</span><span class='line'>}
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">guilddo</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guild</span> <span class="sr">/do (.*)/</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$do</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$do</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>automacro partydo {
-</span><span class='line'>  party /do (.*)/
-</span><span class='line'>  exclusive 1
-</span><span class='line'>  call {
-</span><span class='line'>  $do = $.lastMatch1
-</span><span class='line'>  do $do
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">automacro</span> <span class="n">partydo</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">party</span> <span class="sr">/do (.*)/</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$do</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$do</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
