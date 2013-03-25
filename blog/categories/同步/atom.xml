@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 同步 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/同步/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-25T18:51:09+08:00</updated>
+  <updated>2013-03-25T18:52:25+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -36,7 +36,7 @@ do $do
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
-<p>好處:
+<p>好處: \n
 1. 不需要同一隊伍，只需同一公會即可。
 2. 最多支持50人，看擴充組合體制等級而定。</p>
 
