@@ -1,6 +1,26 @@
-automacro love {
+automacro gotogeffen {
+	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} < time)
+	location not geffen 120 110
+	exclusive 1
+	call {
+	do move gef_tower 52 177
+	pause 5
+	do move geffen 120 110
+	}
+}
+
+automacro getitem {
+	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} < time)
+	location geffen 120 110
+	exclusive 1
+	call {
+	do talknpc 120 98 r0
+	}
+}
+
+automacro talktogirl {
 	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} > time)
-	location dgeffen 120 110
+	location geffen 120 110
 	inventory "愛情魔法棒" >= 1
 	exclusive 1
 	console /失戀的女孩\#(.*) \((\d+)\): \*(天哪！|哭泣)\*/
@@ -12,34 +32,11 @@ automacro love {
 	}
 }
 
-automacro gotogeffen {
-	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} < time)
-	#location not geffen 120 110
-	location hgeffen 120 110
-	#inventory "愛情魔法棒" == 0
-	exclusive 1
-	call {
-	do move gef_tower 52 177
-	pause 5
-	do move geffen 120 110
-	}
-}
-
-automacro takelove {
-	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} < time)
-	location dgeffen 120 110
-	#inventory "愛情魔法棒" == 0
-	exclusive 1
-	call {
-	do talknpc 120 98 r0
-	}
-}
-
-automacro questcharselect {
+automacro charselect {
 	inventory "愛情魔法棒" == 0
 	inventory "愛情魔法棒" != -1
 	eval ($::questList->{'2303'}->{'active'} == 1 && $::questList->{'2303'}->{'time'} > time)
-	location dgeffen 120 110
+	location geffen 120 110
 	call {
 	do move geffen @eval(@random("-2","-1","1","2") + 120) @eval(@random("-2","-1","1","2") + 65)
 	do talknpc 120 62 r1 n
