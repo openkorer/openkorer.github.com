@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T00:26:20+08:00</updated>
+  <updated>2013-03-27T00:26:59+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -79,7 +79,7 @@
 
 <p>成功後openkore會顯示如下</p>
 
-<pre><code>    [macro] automacro moon triggered.
+<pre><code>    [macro] automacro zangetsu triggered.
     [macro log] HP:9828 SP:758
     You are casting 扭曲的上弦月 on yourself (Delay: 737ms)
     You use 扭曲的上弦月 (Lv: 5) on yourself (Delay: 520ms)
