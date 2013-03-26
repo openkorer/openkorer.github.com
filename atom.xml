@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-26T22:54:27+08:00</updated>
+  <updated>2013-03-26T23:24:13+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[zangetsu]]></title>
+    <link href="http://openkorer.github.com/blog/2013/03/26/zangetsu/"/>
+    <updated>2013-03-26T23:18:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/03/26/zangetsu</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">zangetsu</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Oboro</span>
+</span><span class='line'>  <span class="n">aggressives</span> <span class="o">&lt;</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">動作延遲</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">變形的上弦月狀態</span>
+</span><span class='line'>  <span class="n">location</span> <span class="ow">not</span> <span class="n">prontera</span>
+</span><span class='line'>  <span class="n">location</span> <span class="ow">not</span> <span class="n">payon</span>
+</span><span class='line'>  <span class="n">location</span> <span class="ow">not</span> <span class="n">payg_cas02</span>
+</span><span class='line'>  <span class="n">location</span> <span class="ow">not</span> <span class="n">geffen</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;hp&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;hp&#39;</span><span class="p">}</span> <span class="sr">/ 2) * 2 &amp;&amp; $::char-&gt;{&#39;sp&#39;} == int($::char-&gt;{&#39;sp&#39;} /</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$csp</span> <span class="o">=</span> <span class="nv">@eval</span><span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="nv">$</span><span class="err">.</span><span class="nv">sp</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="nv">$csp</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="n">HP:</span><span class="nv">$</span><span class="err">.</span><span class="nv">hp</span> <span class="n">SP:</span><span class="nv">$</span><span class="err">.</span><span class="nv">sp</span><span class="p">;</span><span class="k">do</span> <span class="n">ss</span> <span class="mi">3026</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">timeout</span> <span class="mi">30</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[皇家盾咒ATK上升]]></title>
