@@ -1,5 +1,5 @@
 /*
-Syntax error: (#252525 url('/images/logo.png?1333482288') top left) is not a color for `lighten'
+Syntax error: (url('/images/logo.png?1333482288') top left) is not a color for `lighten'
         on line 17 of C:/Users/Jack/octopress/sass/base/_theme.scss
         from line 3 of C:/Users/Jack/octopress/sass/_base.scss
         from line 8 of C:/Users/Jack/octopress/sass/screen.scss
@@ -63,4 +63,4 @@ C:/Ruby193/bin/compass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: (#252525 url('/images/logo.png?1333482288') top left) is not a color for `lighten'\A         on line 17 of C:/Users/Jack/octopress/sass/base/_theme.scss\A         from line 3 of C:/Users/Jack/octopress/sass/_base.scss\A         from line 8 of C:/Users/Jack/octopress/sass/screen.scss"; }
+  content: "Syntax error: (url('/images/logo.png?1333482288') top left) is not a color for `lighten'\A         on line 17 of C:/Users/Jack/octopress/sass/base/_theme.scss\A         from line 3 of C:/Users/Jack/octopress/sass/_base.scss\A         from line 8 of C:/Users/Jack/octopress/sass/screen.scss"; }
