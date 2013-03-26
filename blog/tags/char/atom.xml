@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: char | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/char/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-26T23:33:53+08:00</updated>
+  <updated>2013-03-26T23:42:51+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,7 +18,17 @@
     <link href="http://openkorer.github.com/blog/2013/03/26/zangetsu/"/>
     <updated>2013-03-26T23:18:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/26/zangetsu</id>
-    <content type="html"><![CDATA[<p>``` perl
+    <content type="html"><![CDATA[<p>先看一下說明： <br/>
+持續時間內依指定對象目前剩餘的HP和SP而變化ATK或MATK</p>
+
+<p>剩餘HP偶數時：ATK+(指定對象Base等級/3)+(技能等級x20)  <br/>
+剩餘HP奇數時：ATK-(指定對象Base等級/3)+(技能等級x20)  <br/>
+剩餘SP偶數時：MATK+(指定對象Base等級/3)+(技能等級x20) <br/>
+剩餘SP奇數時：MATK-(指定對象Base等級/3)+(技能等級x20)</p>
+
+<p>所以使用變形的上弦月的時機是十分重要，如果在奇數時使用會有反效果，甚至比沒有使用更差。</p>
+
+<p>``` perl
 automacro zangetsu {</p>
 
 <pre><code>class Oboro
