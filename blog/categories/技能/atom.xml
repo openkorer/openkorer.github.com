@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 技能 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/技能/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T02:16:35+08:00</updated>
+  <updated>2013-03-27T02:19:54+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -81,10 +81,33 @@ timeout 30
     You are now: 動作延遲 (Duration: 1s)
 </code></pre>
 
-<p>a   b   c
-=   =   =
-1   2   3
-4   5   6</p>
+<table>
+<thead>
+<tr>
+<th align="right">No.   </th>
+<th align="left"> Name    </th>
+<th align="center"> Status  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">1     </td>
+<td align="left"> Alaph   </td>
+<td align="center"> done    |</td>
+</tr>
+<tr>
+<td align="right">2     </td>
+<td align="left"> Beta    </td>
+<td align="center"> ongoing |</td>
+</tr>
+<tr>
+<td align="right">10000 </td>
+<td align="left"> Release </td>
+<td align="center"> n/a     | </td>
+</tr>
+</tbody>
+</table>
+
 ]]></content>
   </entry>
   
