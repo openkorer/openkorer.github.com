@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: char | 唔好巨集]]></title>
-  <link href="http://openkorer.github.com/blog/tags/char/atom.xml" rel="self"/>
+  <title><![CDATA[Tag: Oboro | 唔好巨集]]></title>
+  <link href="http://openkorer.github.com/blog/tags/oboro/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
   <updated>2013-03-27T02:53:33+08:00</updated>
   <id>http://openkorer.github.com/</id>
@@ -80,54 +80,6 @@ timeout 30
     You are now: 變形的上弦月技能延遲 (Duration: 30s)
     You are now: 動作延遲 (Duration: 1s)
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[皇家禁衛軍-盾咒ATK]]></title>
-    <link href="http://openkorer.github.com/blog/2013/03/26/shieldspell/"/>
-    <updated>2013-03-26T00:20:00+08:00</updated>
-    <id>http://openkorer.github.com/blog/2013/03/26/shieldspell</id>
-    <content type="html"><![CDATA[<p>本巨集完全由automacro觸發，並無須修改其他檔案。</p>
-
-<p>簡單說明一下運作，當在指定地圖時沒被怪打，<code>後ATK</code>低過某數值就會觸發。
-假設你用正使在用長角槍ATK是150，裝備薔薇鋼盾(DEF130)盾咒成功後<code>後ATK</code>會變成150+130=280。
-那觸發數值設280跟150之間就可以。</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li>最少已學習了<code>盾咒LV1</code></li>
-<li>身上帶有<code>薔薇鋼盾 [1]</code>並在<code>item_control.txt</code>設不存倉</li>
-<li>身上帶有其他盾(盾咒後換用，看個人需要)</li>
-<li>看個人需要修改第<strong>8</strong>,<strong>9</strong>,<strong>17</strong>行</li>
-</ul>
-
-
-<p>``` perl shieldspell
-automacro shieldspell {</p>
-
-<pre><code>class Royal Guard
-hp &gt; 1
-sp &gt; 50
-status not 卸除盾牌狀態
-status not 盾咒技能延遲
-status not 動作延遲
-eval $::char-&gt;{'attack_bonus'} &lt; 180        # 數值設280跟150之間就可以
-location man_fild01,man_fild02              # 觸發地圖
-inventory "薔薇鋼盾 [1]" &gt; 0
-aggressives &lt; 1
-exclusive 1
-call {
-do eq @inventory(薔薇鋼盾 [1])
-do ss 2315 1
-pause 3
-do eq @inventory(巴基力亞鋼盾 [突變蛙卡片] [1])  # 如果不需要轉盾可刪除
-} 
-</code></pre>
-
-<p>}
-```</p>
 ]]></content>
   </entry>
   
