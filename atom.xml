@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T02:30:13+08:00</updated>
+  <updated>2013-03-27T02:31:52+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,40 +18,7 @@
     <link href="http://openkorer.github.com/blog/2013/03/26/zangetsu/"/>
     <updated>2013-03-26T23:18:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/26/zangetsu</id>
-    <content type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th align="left">左对齐表头 </th>
-<th align="center"> 中间对齐表头 </th>
-<th align="right"> 右对齐表头  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">左对齐数据 </td>
-<td align="center">中间对齐数据  </td>
-<td align="right">右对齐数据   </td>
-</tr>
-<tr>
-<td align="left">第二行数据 </td>
-<td align="center">也是第二行    </td>
-<td align="right">还是第二行    </td>
-</tr>
-<tr>
-<td align="left">懒得写了&#8230;</td>
-<td align="center">&#8230;..         </td>
-<td align="right">&#8230;..    </td>
-</tr>
-<tr>
-<td align="left">长数据，以便看出表头的对齐</td>
-<td align="center">长数据，以便看出表头的对齐</td>
-<td align="right">长数据，以便看出表头的对齐 </td>
-</tr>
-</tbody>
-</table>
-
-
-<p><img src="images/zangetsu.jpg" alt="" /></p>
+    <content type="html"><![CDATA[<p><img src="images/zangetsu.jpg" alt="" /></p>
 
 <p>先看一下<a href="http://dsfix.org/%E5%BF%8D%E8%80%85%E7%B3%BB-%E6%9C%88%E5%BD%B1%E5%BF%8D%E8%80%85">DS</a>的技能說明：   <br/>
 持續時間內依指定對象目前剩餘的HP和SP而變化ATK或MATK</p>
