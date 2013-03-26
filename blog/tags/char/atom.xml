@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: char | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/char/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T02:10:47+08:00</updated>
+  <updated>2013-03-27T02:14:56+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -68,6 +68,8 @@ timeout 30
 
 <p>}
 ```</p>
+
+<hr />
 
 <p>成功觸發後openkore會顯示如下</p>
 
