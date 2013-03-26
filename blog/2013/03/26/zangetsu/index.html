@@ -114,6 +114,22 @@
 
 <p>所以使用變形的上弦月的時機是十分重要，如果在奇數時使用會有反效果，甚至比沒有使用更差。</p>
 
+<p>不知道奇數跟偶數是什麼? 很簡單
+奇數=1,3,5,7
+偶數=2,4,6,8</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>只對月影忍者<strong>(女)</strong>有效</li>
+<li>建議<code>變形的上弦月</code>等級3或以上才使用</li>
+<li>建議在第16個夜晚狀態下才使用，因為詠唱比較快，HP,SP變化比較少。成功率就比較高！</li>
+<li>看個人需要修改第<strong>3</strong>,<strong>7</strong>行</li>
+</ul>
+
+
+<p>以下巨集是以剩餘HP，SP同時為偶數作為觸發，如果只要其一請自行修改第<strong>8</strong>行。</p>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -126,9 +142,11 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
+<span class='line-number'>13</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">zangetsu</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">class</span> <span class="n">Oboro</span>
 </span><span class='line'>  <span class="n">aggressives</span> <span class="o">&lt;</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">status</span> <span class="err">第</span><span class="mi">16</span><span class="err">個夜晚狀態</span>
 </span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">動作延遲</span>
 </span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">變形的上弦月狀態</span>
 </span><span class='line'>  <span class="n">location</span> <span class="n">man_fild02</span>
