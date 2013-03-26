@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: char | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/char/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T02:14:56+08:00</updated>
+  <updated>2013-03-27T02:16:35+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -69,8 +69,6 @@ timeout 30
 <p>}
 ```</p>
 
-<hr />
-
 <p>成功觸發後openkore會顯示如下</p>
 
 <pre><code>    [macro] automacro zangetsu triggered.
@@ -82,6 +80,11 @@ timeout 30
     You are now: 變形的上弦月技能延遲 (Duration: 30s)
     You are now: 動作延遲 (Duration: 1s)
 </code></pre>
+
+<p>a   b   c
+=   =   =
+1   2   3
+4   5   6</p>
 ]]></content>
   </entry>
   
