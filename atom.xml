@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T02:22:54+08:00</updated>
+  <updated>2013-03-27T02:23:46+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -97,25 +97,25 @@
 <thead>
 <tr>
 <th>No.   </th>
-<th align="left"> Name    </th>
-<th align="center"> Status  </th>
+<th> Name    </th>
+<th> Status  </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>1     </td>
-<td align="left"> Alaph   </td>
-<td align="center"> done    |</td>
+<td> Alaph   </td>
+<td> done    |</td>
 </tr>
 <tr>
 <td>2     </td>
-<td align="left"> Beta    </td>
-<td align="center"> ongoing |</td>
+<td> Beta    </td>
+<td> ongoing |</td>
 </tr>
 <tr>
 <td>10000 </td>
-<td align="left"> Release </td>
-<td align="center"> n/a     | </td>
+<td> Release </td>
+<td> n/a     | </td>
 </tr>
 </tbody>
 </table>
