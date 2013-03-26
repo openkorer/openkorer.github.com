@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 技能 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/技能/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-26T23:47:37+08:00</updated>
+  <updated>2013-03-26T23:49:38+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -38,8 +38,6 @@ status not 變形的上弦月狀態
 location man_fild02
 eval ($::char-&gt;{'hp'} == int($::char-&gt;{'hp'} / 2) * 2 &amp;&amp; $::char-&gt;{'sp'} == int($::char-&gt;{'sp'} / 2) * 2)
 call {
-$csp = @eval(int(($.sp / 2)) * 2)
-log $csp
 log HP:$.hp SP:$.sp;do ss 3026
 }
 timeout 30
@@ -47,6 +45,8 @@ timeout 30
 
 <p>}
 ```</p>
+
+<p>成功後openkore會顯示如下</p>
 
 <pre><code>    [macro] automacro moon triggered.
     [macro log] HP:9828 SP:758

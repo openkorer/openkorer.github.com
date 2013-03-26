@@ -129,8 +129,6 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">zangetsu</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">class</span> <span class="n">Oboro</span>
 </span><span class='line'>  <span class="n">aggressives</span> <span class="o">&lt;</span> <span class="mi">1</span>
@@ -139,14 +137,14 @@
 </span><span class='line'>  <span class="n">location</span> <span class="n">man_fild02</span>
 </span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;hp&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;hp&#39;</span><span class="p">}</span> <span class="sr">/ 2) * 2 &amp;&amp; $::char-&gt;{&#39;sp&#39;} == int($::char-&gt;{&#39;sp&#39;} /</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$csp</span> <span class="o">=</span> <span class="nv">@eval</span><span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="nv">$</span><span class="err">.</span><span class="nv">sp</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">log</span> <span class="nv">$csp</span>
 </span><span class='line'>  <span class="nb">log</span> <span class="n">HP:</span><span class="nv">$</span><span class="err">.</span><span class="nv">hp</span> <span class="n">SP:</span><span class="nv">$</span><span class="err">.</span><span class="nv">sp</span><span class="p">;</span><span class="k">do</span> <span class="n">ss</span> <span class="mi">3026</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'>  <span class="n">timeout</span> <span class="mi">30</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>成功後openkore會顯示如下</p>
 
 <pre><code>    [macro] automacro moon triggered.
     [macro log] HP:9828 SP:758
