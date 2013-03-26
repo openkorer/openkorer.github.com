@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: char | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/char/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T00:14:31+08:00</updated>
+  <updated>2013-03-27T00:17:36+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -38,7 +38,7 @@
 <li>openkore版本己支援日月影忍者。 就是不會把日月影忍者當成怪物來追殺！</li>
 <li>只對月影忍者<strong>(女)</strong>有效</li>
 <li>建議<code>變形的上弦月</code>等級3或以上才使用</li>
-<li>建議在<code>第16個夜晚</code>狀態下才使用，因為詠唱比較快，HP,SP變化比較少。成功率就比較高！</li>
+<li>建議在<code>第16個夜晚狀態</code>下才使用，因為詠唱比較快，HP,SP回復變化比較少。成功率就比較高！</li>
 <li>如果巨集中的<code>第16個夜晚狀態</code>，<code>變形的上弦月狀態</code>字眼跟你的版本有出入，請自行修改。</li>
 <li>看個人需要修改第<strong>3</strong>,<strong>7</strong>行</li>
 </ul>
@@ -53,6 +53,7 @@ automacro zangetsu {</p>
 aggressives &lt; 1
 status 第16個夜晚狀態
 status not 動作延遲
+status not 明鏡止水狀態
 status not 變形的上弦月狀態
 location man_fild02
 eval ($::char-&gt;{'hp'} == int($::char-&gt;{'hp'} / 2) * 2 &amp;&amp; $::char-&gt;{'sp'} == int($::char-&gt;{'sp'} / 2) * 2)
