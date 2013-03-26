@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 技能 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/技能/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T00:51:53+08:00</updated>
+  <updated>2013-03-27T01:31:32+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[月影忍者-變形的上弦月]]></title>
+    <link href="http://openkorer.github.com/blog/2013/03/26/zangetsu_2/"/>
+    <updated>2013-03-26T23:18:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/03/26/zangetsu_2</id>
+    <content type="html"><![CDATA[<p>先看一下<a href="http://dsfix.org/%E5%BF%8D%E8%80%85%E7%B3%BB-%E6%9C%88%E5%BD%B1%E5%BF%8D%E8%80%85">DS</a>的技能說明：   <br/>
+持續時間內依指定對象目前剩餘的HP和SP而變化ATK或MATK</p>
+
+<p>剩餘HP偶數時：ATK+(指定對象Base等級/3)+(技能等級x20)  <br/>
+剩餘HP奇數時：ATK-(指定對象Base等級/3)+(技能等級x20)  <br/>
+剩餘SP偶數時：MATK+(指定對象Base等級/3)+(技能等級x20) <br/>
+剩餘SP奇數時：MATK-(指定對象Base等級/3)+(技能等級x20)</p>
+
+<p>所以使用<code>變形的上弦月</code>的時機是十分重要，如果在奇數時使用會有反效果，甚至比沒有使用更差。</p>
+
+<p>不知道奇數跟偶數是什麼? 很簡單  <br/>
+奇數為1,3,5,7..<br/>
+偶數為2,4,6,8..</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>openkore版本己支援日月影忍者。 就是不會把日月影忍者當成怪物來追殺！</li>
+<li>只對月影忍者<strong>(女)</strong>有效</li>
+<li>建議<code>變形的上弦月</code>等級3或以上才使用</li>
+<li>建議在<code>第16個夜晚狀態</code>下才使用，因為詠唱比較快，HP,SP回復變化比較少。成功率就比較高！</li>
+<li>如果巨集中的<code>第16個夜晚狀態</code>，<code>變形的上弦月狀態</code>字眼跟你的版本有出入，請自行修改。</li>
+<li>看個人需要修改第<strong>4</strong>,<strong>9</strong>行</li>
+</ul>
+
+
+<p>以下巨集是以剩餘HP，SP同時為偶數作為觸發，如果只要其一請自行修改第<strong>10</strong>行。</p>
+
+<p>``` perl zangetsu
+automacro zangetsu {</p>
+
+<pre><code>class Oboro
+sp &gt; 100
+aggressives &lt; 1
+status 第16個夜晚狀態
+status not 動作延遲
+status not 明鏡止水狀態
+status not 變形的上弦月狀態
+location man_fild02
+eval ($::char-&gt;{'hp'} == int($::char-&gt;{'hp'} / 2) * 2 &amp;&amp; $::char-&gt;{'sp'} == int($::char-&gt;{'sp'} / 2) * 2)
+call {
+log HP:$.hp SP:$.sp;do ss 3026
+}
+timeout 30
+</code></pre>
+
+<p>}
+```</p>
+
+<p>成功觸發後openkore會顯示如下</p>
+
+<pre><code>    [macro] automacro zangetsu triggered.
+    [macro log] HP:9828 SP:758
+    You are casting 變形的上弦月 on yourself (Delay: 737ms)
+    You use 變形的上弦月 (Lv: 5) on yourself (Delay: 520ms)
+    You are now: 變形的上弦月狀態 (Duration: 120s)
+    You use 變形的上弦月 on yourself (Lv: 5)
+    You are now: 變形的上弦月技能延遲 (Duration: 30s)
+    You are now: 動作延遲 (Duration: 1s)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[月影忍者-變形的上弦月]]></title>
