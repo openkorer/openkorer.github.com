@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T23:01:30+08:00</updated>
+  <updated>2013-03-27T23:09:29+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -217,7 +217,7 @@
 <p><a href="http://www.openkore.com">openkore</a>: <code>[p] cmd move prontera</code> <br/>
 <a href="http://www.openkore.com/index.php/XKore">XKore</a>: 在隊伍頻道直接輸入<code>cmd move prontera</code>+<code>enter</code>或在公開頻道輸入<code>cmd move prontera</code>+<code>Ctrl+P</code></p>
 
-<p>支援所有<a href="http://www.openkore.com">openkore</a>的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
+<p>支援所有<a href="http://www.openkore.com">openkore</a>的<a href="http://www.openkore.com/index.php/Category:Console_Command">Console Command</a></p>
 
 <p>好處:   <br/>
 - 只要同一隊伍即可。</p>
