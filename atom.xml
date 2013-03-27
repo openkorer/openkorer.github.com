@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T20:01:40+08:00</updated>
+  <updated>2013-03-27T20:29:47+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -290,11 +290,13 @@
     <link href="http://openkorer.github.com/blog/2013/03/13/q2303/"/>
     <updated>2013-03-13T16:00:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/13/q2303</id>
-    <content type="html"><![CDATA[<p><img src="http://openkorer.github.com/images/q2303.jpg" alt="" /></p>
+    <content type="html"><![CDATA[<p>Included file &#8216;reflink.md&#8217; not found in _includes directory</p>
 
-<p>本巨集分別由<a href="#gotogeffen">gotogeffen</a>,<a href="#getitem">getitem</a>,<a href="#helpgirl">helpgirl</a>和<a href="#charselect">charselect</a>組成，推薦有6個20級或以上人物使用。</p>
+<p><img src="http://openkorer.github.com/images/q2303.jpg" alt="" /></p>
 
-<p>簡單說明一下運作，利用<a href="http://www.openkore.com">openkore</a>登入後<a href="#gotogeffen">gotogeffen</a>就會偵測任務限制時間是否到達了，如果現在位置不是在吉芬塔外就會前往。
+<p>本巨集分別由[gotogeffen],<a href="#getitem">getitem</a>,<a href="#helpgirl">helpgirl</a>和<a href="#charselect">charselect</a>組成，推薦有6個20級或以上人物使用。</p>
+
+<p>簡單說明一下運作，利用<a href="http://www.openkore.com">openkore</a>登入後[gotogeffen]就會偵測任務限制時間是否到達了，如果現在位置不是在吉芬塔外就會前往。
 然後<a href="#getitem">getitem</a>向賢者華倫泰領取10個愛情魔法棒，<a href="#helpgirl">helpgirl</a>再對<a href="http://openkorer.github.com/images/q2303b.jpg" title="失戀的少女">失戀的少女</a>使用愛情魔法棒將可以破除獸人女戰士的詛咒，
 當身上的愛情魔法棒換完後<a href="#charselect">charselect</a>就會自動把身上巧克力存倉，完成存倉後轉換上一個人物繼續，直至到第一人物也完成後自動關閉<a href="http://www.openkore.com">openkore</a>。<a href="http://ro.gameflier.com/news/news_in.asp?Count=done&amp;BID=7551">活動詳情請點我</a></p>
 
@@ -305,7 +307,7 @@
 <li>身上有足夠金錢及正確路線前往吉芬</li>
 <li>最少解過一次這活動</li>
 <li>留意身上負重及倉儲空間</li>
-<li>盡量使用乾淨的<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>，因為6人會共用同一<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>。不要用打怪的<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>!</li>
+<li>盡量使用乾淨的<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>，因為6個人物會共用同一個<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>。建議不要用打怪的<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>!</li>
 <li>如果吉芬塔外兩位少女在取得愛情魔法棒前已經是女獸人形態就用手動跟兩位分別對話一次，請用<code>talk 2</code>跟<code>talk 8</code>。</li>
 </ul>
 
