@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T19:35:42+08:00</updated>
+  <updated>2013-03-27T19:39:37+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -324,6 +324,8 @@
     storageAuto_password xxx    # 正確倉庫密碼
 </code></pre>
 
+<p><a name="gotogeffen"></a></p>
+
 <figure class='code'><figcaption><span>gotogeffen</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -347,7 +349,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p><a name="getitem"></a></p>
 
 <figure class='code'><figcaption><span>getitem</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -368,7 +370,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p><a name="helpgirl"></a></p>
 
 <figure class='code'><figcaption><span>helpgirl</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -399,7 +401,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p><a name="charselect"></a></p>
 
 <figure class='code'><figcaption><span>charselect</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

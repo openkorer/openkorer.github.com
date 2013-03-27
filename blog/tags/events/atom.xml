@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: events | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/events/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T19:35:42+08:00</updated>
+  <updated>2013-03-27T19:39:37+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -52,7 +52,8 @@
     storageAuto_password xxx    # 正確倉庫密碼
 </code></pre>
 
-<p>``` perl gotogeffen
+<p><a name="gotogeffen"></a>
+``` perl gotogeffen
 automacro gotogeffen {</p>
 
 <pre><code>eval ($::questList-&gt;{'2303'}-&gt;{'active'} == 1 &amp;&amp; $::questList-&gt;{'2303'}-&gt;{'time'} &lt; time)
@@ -68,7 +69,8 @@ do move geffen 120 110
 <p>}
 ```</p>
 
-<p>``` perl getitem
+<p><a name="getitem"></a>
+``` perl getitem
 automacro getitem {</p>
 
 <pre><code>eval ($::questList-&gt;{'2303'}-&gt;{'active'} == 1 &amp;&amp; $::questList-&gt;{'2303'}-&gt;{'time'} &lt; time)
@@ -82,7 +84,8 @@ do talknpc 120 98 r0
 <p>}
 ```</p>
 
-<p>``` perl helpgirl
+<p><a name="helpgirl"></a>
+``` perl helpgirl
 automacro helpgirl {</p>
 
 <pre><code>eval ($::questList-&gt;{'2303'}-&gt;{'active'} == 1 &amp;&amp; $::questList-&gt;{'2303'}-&gt;{'time'} &gt; time)
@@ -101,7 +104,8 @@ log 愛情魔法棒: @invamount(愛情魔法棒)
 <p>}
 ```</p>
 
-<p>``` perl charselect
+<p><a name="charselect"></a>
+``` perl charselect
 automacro charselect {</p>
 
 <pre><code>inventory "愛情魔法棒" == 0
