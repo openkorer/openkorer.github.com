@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: party | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/party/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T22:53:03+08:00</updated>
+  <updated>2013-03-27T22:56:25+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -25,7 +25,7 @@
 [items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
 [DS]: http://dsfix.org</p>
 
-<p>本教學可以對多個以上的<a href="`p">openkore</a>同時下達指令，我分別寫了[partycmd]同[guildcmd]兩個[automacro]。其實如果利用<code>console</code>作觸發只需一個[automacro]就可以，寫法如下。</p>
+<p>本教學可以對多個以上的[openkore]同時下達指令，我分別寫了[partycmd]同[guildcmd]兩個[automacro]。其實如果利用<code>console</code>作觸發只需一個[automacro]就可以，寫法如下。</p>
 
 <p>``` perl cmd
 automacro cmd {</p>
@@ -63,14 +63,17 @@ do $cmd                     # 執行指令串
 
 <p>e.g. 移動到中央</p>
 
-<p>支援所有<a href="`p">openkore</a>的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
+<p>[openkore] : <code>p cmd move prontera</code><br/>
+[XKore] : 在隊伍頻道直接輸入<code>cmd move prontera</code>+<code>enter</code>或在公開頻道輸入<code>cmd move prontera</code>+<code>Ctrl+P</code></p>
+
+<p>支援所有[openkore]的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
 
 <p>好處:   <br/>
 - 只要同一隊伍即可。</p>
 
 <p>壞處:   <br/>
 - 最多支持12人。
-- 所有隊伍成員也會看到指令，還可以對你的<a href="`p">openkore</a>下達任何指令。</p>
+- 所有隊伍成員也會看到指令，還可以對你的[openkore]下達任何指令。</p>
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
@@ -92,26 +95,17 @@ do $cmd                     # 執行指令串
 
 <p>e.g. 自動存倉</p>
 
-<p>openkore: <code>p cmd autostorage</code></p>
-
-<p>xkore: 在公會頻道直接輸入<code>cmd autostorage</code>+<code>enter</code>或在公開頻道輸入<code>cmd autostorage</code>+<code>Ctrl+G</code></p>
+<p>[openkore] : <code>p cmd autostorage</code>      <br/>
+[XKore] : 在公會頻道直接輸入<code>cmd autostorage</code>+<code>enter</code>或在公開頻道輸入<code>cmd autostorage</code>+<code>Ctrl+G</code></p>
 
 <p>支援所有 openkore 的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
 
-<p>好處:</p>
+<p>好處:   <br/>
+- 不需要同一隊伍，只需同一公會即可。
+- 最多支持50人，看公會擴充組合體制等級而定。</p>
 
-<ul>
-<li>不需要同一隊伍，只需同一公會即可。</li>
-<li>最多支持50人，看公會擴充組合體制等級而定。</li>
-</ul>
-
-
-<p>壞處:</p>
-
-<ul>
-<li>所有公會成員也會看到指令，還可以對你的<a href="`p">openkore</a>下達任何指令。</li>
-</ul>
-
+<p>壞處:   <br/>
+- 所有公會成員也會看到指令，還可以對你的[openkore]下達任何指令。</p>
 
 <p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最安全做法是自創隊伍跟公會！</strong></p>
 ]]></content>
