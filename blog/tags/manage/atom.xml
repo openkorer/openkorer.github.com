@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: manage | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/manage/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T22:47:48+08:00</updated>
+  <updated>2013-03-27T22:49:03+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -65,10 +65,10 @@ do $cmd                     # 執行指令串
 
 <p>支援所有<a href="`p">openkore</a>的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
 
-<p>好處:
+<p>好處:   <br/>
 - 只要同一隊伍即可。</p>
 
-<p>壞處:
+<p>壞處:   <br/>
 - 最多支持12人。
 - 所有隊伍成員也會看到指令，還可以對你的<a href="`p">openkore</a>下達任何指令。</p>
 
