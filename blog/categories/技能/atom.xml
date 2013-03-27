@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 技能 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/技能/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T21:31:25+08:00</updated>
+  <updated>2013-03-27T21:37:24+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -88,19 +88,24 @@ timeout 30
     <link href="http://openkorer.github.com/blog/2013/03/26/shieldspell/"/>
     <updated>2013-03-26T00:20:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/26/shieldspell</id>
-    <content type="html"><![CDATA[<p><img src="/images/s2315.jpg" alt="" /></p>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt</p>
 
-<p>本巨集完全由automacro觸發，並無須修改其他檔案。</p>
+<p><img src="/images/s2315.jpg" alt="" /></p>
 
-<p>簡單說明一下運作，當在指定地圖時沒被怪打，<code>後ATK</code>低過某數值就會觸發。
-假設你用正使在用長角槍ATK是150，裝備薔薇鋼盾(DEF130)盾咒成功後<code>後ATK</code>會變成150+130=280。
+<p>本巨集完全由[automacro]觸發，並無須修改其他檔案。</p>
+
+<p>簡單說明一下運作，當在指定地圖時沒被怪打，<strong>後ATK</strong>低過某數值就會觸發。
+假設你用正使在用長角槍ATK是150，裝備薔薇鋼盾(DEF130)盾咒成功後<strong>後ATK</strong>會變成150+130=280。
 那觸發數值設280跟150之間就可以。</p>
 
 <p>巨集使用條件及注意事項:</p>
 
 <ul>
 <li>最少已學習了<code>盾咒LV1</code></li>
-<li>身上帶有<code>薔薇鋼盾 [1]</code>並在<code>item_control.txt</code>設不存倉</li>
+<li>身上帶有<code>薔薇鋼盾 [1]</code>並在[items_control.txt]設不存倉</li>
 <li>身上帶有其他盾(盾咒後換用，看個人需要)</li>
 <li>看個人需要修改第<strong>8</strong>,<strong>9</strong>,<strong>17</strong>行</li>
 </ul>
