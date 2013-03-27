@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: party | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/party/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T22:42:58+08:00</updated>
+  <updated>2013-03-27T22:47:48+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -19,12 +19,13 @@
     <updated>2013-03-25T07:06:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
     <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
 [config.txt]: http://www.openkore.com/index.php/Category:Config.txt
 [automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
 [items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
 [DS]: http://dsfix.org</p>
 
-<p>本教學可以對多個以上的[openkore]同時下達指令，我分別寫了[partycmd]同[guildcmd]兩個[automacro]。其實如果利用[console]作觸發只需一個[automacro]就可以，寫法如下。</p>
+<p>本教學可以對多個以上的<a href="`p">openkore</a>同時下達指令，我分別寫了[partycmd]同[guildcmd]兩個[automacro]。其實如果利用<code>console</code>作觸發只需一個[automacro]就可以，寫法如下。</p>
 
 <p>``` perl cmd
 automacro cmd {</p>
@@ -40,7 +41,7 @@ do $cmd
 <p>}
 ```</p>
 
-<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。如果你正在用[console]就要考慮一下要不要繼續用。</p>
+<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。如果你正在用<code>console</code>就要考慮一下要不要繼續用。</p>
 
 <p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
@@ -62,26 +63,14 @@ do $cmd                     # 執行指令串
 
 <p>e.g. 移動到中央</p>
 
-<p>openkore: <code>p cmd move prontera</code></p>
+<p>支援所有<a href="`p">openkore</a>的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
 
-<p>xkore: 在隊伍頻道直接輸入<code>cmd move prontera</code>+<code>enter</code>或在公開頻道輸入<code>cmd move prontera</code>+<code>Ctrl+P</code></p>
+<p>好處:
+- 只要同一隊伍即可。</p>
 
-<p>支援所有[openkore]的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
-
-<p>好處:</p>
-
-<ul>
-<li>只要同一隊伍即可。</li>
-</ul>
-
-
-<p>壞處:</p>
-
-<ul>
-<li>最多支持12人。</li>
-<li>所有隊伍成員也會看到指令，還可以對你的[openkore]下達任何指令。</li>
-</ul>
-
+<p>壞處:
+- 最多支持12人。
+- 所有隊伍成員也會看到指令，還可以對你的<a href="`p">openkore</a>下達任何指令。</p>
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
 
@@ -120,7 +109,7 @@ do $cmd                     # 執行指令串
 <p>壞處:</p>
 
 <ul>
-<li>所有公會成員也會看到指令，還可以對你的[openkore]下達任何指令。</li>
+<li>所有公會成員也會看到指令，還可以對你的<a href="`p">openkore</a>下達任何指令。</li>
 </ul>
 
 
