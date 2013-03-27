@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: skills | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/skills/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T21:37:24+08:00</updated>
+  <updated>2013-03-27T21:44:53+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -104,8 +104,8 @@ timeout 30
 <p>巨集使用條件及注意事項:</p>
 
 <ul>
-<li>最少已學習了<code>盾咒LV1</code></li>
-<li>身上帶有<code>薔薇鋼盾 [1]</code>並在[items_control.txt]設不存倉</li>
+<li>最少已學習了<strong>盾咒LV1</strong></li>
+<li>身上帶有<strong>薔薇鋼盾 [1]</strong>並在[items_control.txt]設不存倉</li>
 <li>身上帶有其他盾(盾咒後換用，看個人需要)</li>
 <li>看個人需要修改第<strong>8</strong>,<strong>9</strong>,<strong>17</strong>行</li>
 </ul>
