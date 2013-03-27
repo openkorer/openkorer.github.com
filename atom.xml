@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T23:29:45+08:00</updated>
+  <updated>2013-03-27T23:30:53+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -221,7 +221,7 @@
 <p>使用方法:                 <br/>
 e.g. <a href="http://www.openkore.com/index.php/Move">move</a> prontera 移動到中央      <br/>
 <a href="http://www.openkore.com">openkore</a>: <code>p cmd move prontera</code>       <br/>
-<a href="http://www.openkore.com/index.php/XKore">XKore</a>: 在隊伍頻道直接輸入<code>cmd move prontera</code>+<strong>Enter</strong>或在公開頻道輸入<code>cmd move prontera</code>+<strong>Ctrl+P</strong></p>
+<a href="http://www.openkore.com/index.php/XKore">XKore</a>: 在隊伍頻道直接輸入<code>cmd move prontera</code> + <strong>Enter</strong>或在公開頻道輸入<code>cmd move prontera</code> + <strong>Ctrl+P</strong></p>
 
 <p><a name="guildcmd"></a></p>
 
