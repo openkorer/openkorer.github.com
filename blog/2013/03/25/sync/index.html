@@ -9,7 +9,7 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="本教學可以對多個以上的openkore同時下達指令，我分別寫了[partycmd]同[guildcmd]兩個automacro。其實如果利用console作觸發只需一個automacro就可以，寫法如下。 cmd1
+  <meta name="description" content="本教學可以對多個以上的openkore同時下達指令，我分別寫了partycmd同guildcmd兩個automacro。其實如果利用console作觸發只需一個automacro就可以，寫法如下。 cmd1
 2
 3
 4
@@ -17,7 +17,7 @@
 6
 7
 8
-automacro cmd { console &hellip;">
+automacro cmd { console /\[(隊伍| &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,7 +112,7 @@ automacro cmd { console &hellip;">
   </header>
 
 
-<div class="entry-content"><p>本教學可以對多個以上的<a href="http://www.openkore.com">openkore</a>同時下達指令，我分別寫了[partycmd]同[guildcmd]兩個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>。其實如果利用<code>console</code>作觸發只需一個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>就可以，寫法如下。</p>
+<div class="entry-content"><p>本教學可以對多個以上的<a href="http://www.openkore.com">openkore</a>同時下達指令，我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>。其實如果利用<code>console</code>作觸發只需一個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>就可以，寫法如下。</p>
 
 <figure class='code'><figcaption><span>cmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -137,6 +137,8 @@ automacro cmd { console &hellip;">
 
 <p>以下是利用隊伍頻道送出同步指令的巨集</p>
 
+<p><a name="partycmd"></a></p>
+
 <figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -158,7 +160,7 @@ automacro cmd { console &hellip;">
 
 <p>使用方法</p>
 
-<p>e.g. 移動到中央</p>
+<p>e.g. move prontera移動到中央</p>
 
 <p><a href="http://www.openkore.com">openkore</a>: <code>[p] cmd move prontera</code> <br/>
 <a href="http://www.openkore.com/index.php/XKore">XKore</a>: 在隊伍頻道直接輸入<code>cmd move prontera</code>+<code>enter</code>或在公開頻道輸入<code>cmd move prontera</code>+<code>Ctrl+P</code></p>
@@ -173,6 +175,8 @@ automacro cmd { console &hellip;">
 - 所有隊伍成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</p>
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
+
+<p><a name="guildcmd"></a></p>
 
 <figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -195,7 +199,7 @@ automacro cmd { console &hellip;">
 
 <p>使用方法</p>
 
-<p>e.g. 自動存倉</p>
+<p>e.g. autostorage自動存倉</p>
 
 <p><a href="http://www.openkore.com">openkore</a>: <code>p cmd autostorage</code>     <br/>
 <a href="http://www.openkore.com/index.php/XKore">XKore</a>: 在公會頻道直接輸入<code>cmd autostorage</code>+<code>enter</code>或在公開頻道輸入<code>cmd autostorage</code>+<code>Ctrl+G</code></p>
