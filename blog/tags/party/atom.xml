@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: party | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/party/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T23:33:50+08:00</updated>
+  <updated>2013-03-27T23:38:14+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -72,7 +72,7 @@ do $cmd                     # 執行指令串
 <p>使用方法:                 <br/>
 e.g. [move] prontera 移動到中央      <br/>
 [openkore][]: <code>p cmd move prontera</code>       <br/>
-[XKore][]: 在<strong>隊伍</strong>頻道直接輸入<code>cmd move prontera</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd move prontera</code> + <strong>Ctrl+P</strong></p>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>cmd move prontera</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd move prontera</code> + <strong>Ctrl+P</strong></p>
 
 <p><a name="guildcmd"></a>
 ``` perl guildcmd
@@ -98,7 +98,7 @@ do $cmd                     # 執行指令串
 <p>使用方法：   <br/>
 e.g. [autostorage] 自動存倉   <br/>
 [openkore][]: <code>g cmd autostorage</code>     <br/>
-[XKore][]: 在公會頻道直接輸入<code>cmd autostorage</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd autostorage</code> + <strong>Ctrl+G</strong></p>
+官方遊戲程式: 在<strong>公會</strong>頻道直接輸入<code>cmd autostorage</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd autostorage</code> + <strong>Ctrl+G</strong></p>
 
 <p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最安全做法是自創隊伍跟公會！</strong></p>
 ]]></content>
