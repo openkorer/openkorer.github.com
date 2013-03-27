@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: questList | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/questlist/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T19:20:57+08:00</updated>
+  <updated>2013-03-27T19:35:42+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -23,7 +23,7 @@
 <p>本巨集分別由<code>gotogeffen</code>,<code>getitem</code>,<code>helpgirl</code>和<code>charselect</code>組成，推薦有6個20級或以上人物使用。</p>
 
 <p>簡單說明一下運作，利用openkore登入後<code>gotogeffen</code>就會偵測任務限制時間是否到達了，如果現在位置不是在吉芬塔外就會前往。
-然後<code>getitem</code>向賢者華倫泰領取10個愛情魔法棒，<code>talktogirl</code>再對失戀的少女<a href="/images/q2303b.jpg">^1</a>使用愛情魔法棒將可以破除獸人女戰士的詛咒，
+然後<code>getitem</code>向賢者華倫泰領取10個愛情魔法棒，<code>talktogirl</code>再對<a href="/images/q2303b.jpg" title="失戀的少女">失戀的少女</a>使用愛情魔法棒將可以破除獸人女戰士的詛咒，
 當身上的愛情魔法棒換完後<code>charselect</code>就會自動把身上巧克力存倉，完成存倉後轉換上一個人物繼續，直至到第一人物也完成後自動關閉openkore。
 <a href="http://ro.gameflier.com/news/news_in.asp?Count=done&amp;BID=7551">活動詳情請點我</a></p>
 
@@ -52,138 +52,91 @@
     storageAuto_password xxx    # 正確倉庫密碼
 </code></pre>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (q2303.txt)</span> <a href='/downloads/code/q2303.txt'>download</a></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">gotogeffen</span> <span class="p">{</span>
-</span><span class='line'>	<span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="nb">time</span><span class="p">)</span>
-</span><span class='line'>	<span class="n">location</span> <span class="ow">not</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
-</span><span class='line'>	<span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>	<span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">move</span> <span class="n">gef_tower</span> <span class="mi">52</span> <span class="mi">177</span>
-</span><span class='line'>	<span class="n">pause</span> <span class="mi">5</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">move</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
-</span><span class='line'>	<span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">automacro</span> <span class="n">getitem</span> <span class="p">{</span>
-</span><span class='line'>	<span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="nb">time</span><span class="p">)</span>
-</span><span class='line'>	<span class="n">location</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
-</span><span class='line'>	<span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>	<span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">talknpc</span> <span class="mi">120</span> <span class="mi">98</span> <span class="n">r0</span>
-</span><span class='line'>	<span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">automacro</span> <span class="n">helpgirl</span> <span class="p">{</span>
-</span><span class='line'>	<span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&gt;</span> <span class="nb">time</span><span class="p">)</span>
-</span><span class='line'>	<span class="n">location</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
-</span><span class='line'>	<span class="n">inventory</span> <span class="s">&quot;愛情魔法棒&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
-</span><span class='line'>	<span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>	<span class="n">console</span> <span class="sr">/失戀的女孩\#(.*) \((\d+)\): \*(天哪！|哭泣)\*/</span>
-</span><span class='line'>	<span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">talk</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch2</span>
-</span><span class='line'>	<span class="n">pause</span> <span class="mi">5</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">talk</span> <span class="n">resp</span> <span class="mi">0</span>
-</span><span class='line'>	<span class="nb">log</span> <span class="err">愛情魔法棒</span><span class="p">:</span> <span class="nv">@invamount</span><span class="p">(</span><span class="err">愛情魔法棒</span><span class="p">)</span>
-</span><span class='line'>	<span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">automacro</span> <span class="n">charselect</span> <span class="p">{</span>
-</span><span class='line'>	<span class="n">inventory</span> <span class="s">&quot;愛情魔法棒&quot;</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'>	<span class="n">inventory</span> <span class="s">&quot;愛情魔法棒&quot;</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span>
-</span><span class='line'>	<span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&gt;</span> <span class="nb">time</span><span class="p">)</span>
-</span><span class='line'>	<span class="n">location</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
-</span><span class='line'>	<span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">move</span> <span class="n">geffen</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">@random</span><span class="p">(</span><span class="s">&quot;-2&quot;</span><span class="p">,</span><span class="s">&quot;-1&quot;</span><span class="p">,</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;2&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">120</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">@random</span><span class="p">(</span><span class="s">&quot;-2&quot;</span><span class="p">,</span><span class="s">&quot;-1&quot;</span><span class="p">,</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;2&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">65</span><span class="p">)</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">talknpc</span> <span class="mi">120</span> <span class="mi">62</span> <span class="n">r1</span> <span class="n">n</span>
-</span><span class='line'>	<span class="n">pause</span> <span class="mi">3</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">巧克力</span>
-</span><span class='line'>	<span class="n">pause</span> <span class="mi">1</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">白色情人巧克力</span>
-</span><span class='line'>	<span class="n">pause</span> <span class="mi">1</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">手製巧克力</span><span class="p">(</span><span class="err">黑</span><span class="p">)</span>
-</span><span class='line'>	<span class="n">pause</span> <span class="mi">1</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">手製巧克力</span><span class="p">(</span><span class="err">白</span><span class="p">)</span>
-</span><span class='line'>	<span class="n">pause</span> <span class="mi">1</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">巧克力飲料</span>
-</span><span class='line'>	
-</span><span class='line'>	<span class="k">if</span> <span class="p">(</span><span class="nv">@config</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">char5</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">conf</span> <span class="n">char</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">@config</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">charselect</span>
-</span><span class='line'>	<span class="n">stop</span>
-</span><span class='line'>	
-</span><span class='line'>	<span class="p">:</span><span class="n">char5</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">conf</span> <span class="n">char</span> <span class="mi">5</span>
-</span><span class='line'>	<span class="k">do</span> <span class="n">quit</span>
-</span><span class='line'>	<span class="n">stop</span>
-</span><span class='line'>	<span class="p">}</span>
-</span><span class='line'>	<span class="n">timeout</span> <span class="mi">15</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+<p>``` perl gotogeffen
+automacro gotogeffen {</p>
+
+<pre><code>eval ($::questList-&gt;{'2303'}-&gt;{'active'} == 1 &amp;&amp; $::questList-&gt;{'2303'}-&gt;{'time'} &lt; time)
+location not geffen 120 110
+exclusive 1
+call {
+do move gef_tower 52 177
+pause 5
+do move geffen 120 110
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>``` perl getitem
+automacro getitem {</p>
+
+<pre><code>eval ($::questList-&gt;{'2303'}-&gt;{'active'} == 1 &amp;&amp; $::questList-&gt;{'2303'}-&gt;{'time'} &lt; time)
+location geffen 120 110
+exclusive 1
+call {
+do talknpc 120 98 r0
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>``` perl helpgirl
+automacro helpgirl {</p>
+
+<pre><code>eval ($::questList-&gt;{'2303'}-&gt;{'active'} == 1 &amp;&amp; $::questList-&gt;{'2303'}-&gt;{'time'} &gt; time)
+location geffen 120 110
+inventory "愛情魔法棒" &gt;= 1
+exclusive 1
+console /失戀的女孩\#(.*) \((\d+)\): \*(天哪！|哭泣)\*/
+call {
+do talk $.lastMatch2
+pause 5
+do talk resp 0
+log 愛情魔法棒: @invamount(愛情魔法棒)
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>``` perl charselect
+automacro charselect {</p>
+
+<pre><code>inventory "愛情魔法棒" == 0
+inventory "愛情魔法棒" != -1
+eval ($::questList-&gt;{'2303'}-&gt;{'active'} == 1 &amp;&amp; $::questList-&gt;{'2303'}-&gt;{'time'} &gt; time)
+location geffen 120 110
+call {
+do move geffen @eval(@random("-2","-1","1","2") + 120) @eval(@random("-2","-1","1","2") + 65)
+do talknpc 120 62 r1 n
+pause 3
+do storage add 巧克力
+pause 1
+do storage add 白色情人巧克力
+pause 1
+do storage add 手製巧克力(黑)
+pause 1
+do storage add 手製巧克力(白)
+pause 1
+do storage add 巧克力飲料
+
+if (@config(char) == 0) goto char5
+do conf char @eval(@config(char) - 1)
+do charselect
+stop
+
+:char5
+do conf char 5
+do quit
+stop
+}
+timeout 15
+</code></pre>
+
+<p>}
+```</p>
 ]]></content>
   </entry>
   
