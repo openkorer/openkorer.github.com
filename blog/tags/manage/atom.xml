@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: manage | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/manage/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-27T23:12:54+08:00</updated>
+  <updated>2013-03-27T23:14:45+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -66,7 +66,7 @@ do $cmd                     # 執行指令串
 
 <p>使用方法</p>
 
-<p>e.g. move prontera移動到中央</p>
+<p>e.g. [move] prontera移動到中央</p>
 
 <p>[openkore][]: <code>[p] cmd move prontera</code> <br/>
 [XKore][]: 在隊伍頻道直接輸入<code>cmd move prontera</code>+<code>enter</code>或在公開頻道輸入<code>cmd move prontera</code>+<code>Ctrl+P</code></p>
@@ -77,7 +77,7 @@ do $cmd                     # 執行指令串
 - 只要同一隊伍即可。</p>
 
 <p>壞處:   <br/>
-- 最多支持12人。
+- 最多支持12人。    <br/>
 - 所有隊伍成員也會看到指令，還可以對你的[openkore]下達任何指令。</p>
 
 <p>以下是利用公會頻道送出同步指令的巨集</p>
@@ -99,7 +99,7 @@ do $cmd                     # 執行指令串
 
 <p>使用方法</p>
 
-<p>e.g. autostorage自動存倉</p>
+<p>e.g. [autostorage]自動存倉</p>
 
 <p>[openkore][]: <code>p cmd autostorage</code>     <br/>
 [XKore][]: 在公會頻道直接輸入<code>cmd autostorage</code>+<code>enter</code>或在公開頻道輸入<code>cmd autostorage</code>+<code>Ctrl+G</code></p>
@@ -107,7 +107,7 @@ do $cmd                     # 執行指令串
 <p>支援所有 openkore 的 <a href="http://www.openkore.com/index.php/Category:Console_Command">console command</a></p>
 
 <p>好處:   <br/>
-- 不需要同一隊伍，只需同一公會即可。
+- 不需要同一隊伍，只需同一公會即可。     <br/>
 - 最多支持50人，看公會擴充組合體制等級而定。</p>
 
 <p>壞處:   <br/>
