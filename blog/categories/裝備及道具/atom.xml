@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 裝備及道具 | 唔好巨集]]></title>
+  <link href="http://openkorer.github.com/blog/categories/裝備及道具/atom.xml" rel="self"/>
+  <link href="http://openkorer.github.com/"/>
+  <updated>2013-03-30T01:01:26+08:00</updated>
+  <id>http://openkorer.github.com/</id>
+  <author>
+    <name><![CDATA[openkorer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[精煉大量防具]]></title>
+    <link href="http://openkorer.github.com/blog/2013/03/30/refine/"/>
+    <updated>2013-03-30T01:01:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/03/30/refine</id>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore</p>
+
+<p>這是一個半自動的防具精煉巨集，適用於所有防具。武器建議用鐵匠系自己精煉比較好。
+先看一下運作，假如你有很多<strong>鈽鐳金盾 [1]</strong>又想把它精煉到+7，只要利用隊伍頻道輸入7次指就可以完成。當然機率還是看你自己人品跟NPC心情！</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>[config.txt]中[XKore]必須為1</li>
+<li>[config.txt]中[itemsMaxWeight]，[itemsMaxWeight_sellOrStore]，[itemsMaxNum_sellOrStore]設為99，這樣可防止負重而自動存倉。</li>
+<li>必須組隊，自己一人也可以。</li>
+<li>精煉地點為斐揚，必須看到NPC安東尼奧(payon 144 173)，如想找其他NPC請自行修改第<strong>4</strong>,<strong>13</strong>行。</li>
+<li>精煉前建議先把身上其他防具除下</li>
+<li>帶上足夠的<strong>鋁</strong>及<strong>金錢</strong></li>
+<li>負重90%以下</li>
+<li>精煉物品必須為<strong>已鑒定</strong></li>
+<li>可先在斐揚找卡普拉開倉，用開著倉的狀態走到安東尼奧附近，這樣就不用來回存取物品多次。</li>
+</ul>
+
+
+<p>使用方法:     <br/>
+請先細閱<strong>巨集使用條件及注意事項</strong></p>
+
+<p>e.g. 官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>refine 鈽鐳金盾 [1] resp 2</code>或<strong>公開</strong>頻道直接輸入<code>refine 鈽鐳金盾 [1] resp 2</code>+<strong>Ctrl+P</strong></p>
+
+<p><strong>resp後的數字代表各防具位置。請參照以下數值。</strong></p>
+
+<ul>
+<li>0 頭</li>
+<li>1 衣服</li>
+<li>2 左手</li>
+<li>3 右手</li>
+<li>4 披肩</li>
+<li>5 鞋</li>
+</ul>
+
+
+<p><code>refine 鈽鐳金盾 [1] resp 2</code>指令是把身上所有未經精煉的<strong>鈽鐳金盾 [1]</strong>精煉上+1，完成後可輸入<code>refine +1 鈽鐳金盾 [1] resp 2</code>把身上的<strong>+1 鈽鐳金盾 [1]</strong>精煉上+2，如此類推，所以才叫半自動巨集。</p>
+
+<p>其他例子：</p>
+
+<ul>
+<li><code>refine +5 防水長靴 [1] resp 5</code>把身上所有<strong>+5 防水長靴 [1]</strong>精煉上+6</li>
+<li><code>refine +6 羊毛領巾 [1] resp 4</code>把身上所有<strong>+6 羊毛領巾 [1]</strong>精煉上+7</li>
+</ul>
+
+
+<p>``` perl refine
+automacro refine {</p>
+
+<pre><code>party /refine (.*) resp (\d+)/   
+#resp no. head 0,body 1,lefthand 2,righthand 3,robe 4,shoes 5
+location payon
+zeny &gt;= 2000
+inventory "鋁" &gt; 0
+call {
+$eq = $.lastMatch1
+$resp = $.lastMatch2
+while (@invamount($eq) &gt;= 1 ) as loop
+if (@inventory(鋁) &lt; 1 &amp;&amp; $.zeny &lt; 2000) goto notenough
+do eq $eq
+do talknpc 144 173 c r$resp c r0 c c r0 c n
+log $eq: @invamount($eq) 
+end loop
+do eval Utils::Win32::playSound('wav\2008cat.wav');
+release all
+stop
+
+:notenough
+log "鋁" 或者 "金錢"不足
+release all
+stop
+}
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

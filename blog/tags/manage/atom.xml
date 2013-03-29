@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: manage | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/manage/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-29T23:18:25+08:00</updated>
+  <updated>2013-03-30T01:01:26+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -28,7 +28,10 @@
 [Console Command]: http://www.openkore.com/index.php/Category:Console_Command
 [autostorage]: http://www.openkore.com/index.php/Autostorage
 [move]: http://www.openkore.com/index.php/Move
-[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc</p>
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore</p>
 
 <p>有沒有試過每次轉換練功地點都要重新<strong>儲存位置</strong>跟修改[storageAuto_npc]都覺得麻煩? 這巨集可以簡易利用一句指令就可以完成多個[openkore]的設定！</p>
 
@@ -44,7 +47,7 @@
 <p>使用方法:                 <br/>
 e.g. save prontera    <br/>
 [openkore][]: 隊伍用<code>p save prontera</code> 公會用<code>g save prontera</code>       <br/>
-官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>save prontera</code> + <strong>Ctrl+P</strong>或在<strong>公會</strong>頻道輸入<code>save prontera</code> + <strong>Ctrl+G</strong></p>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>save prontera</code>或在<strong>公會</strong>頻道輸入<code>save prontera</code></p>
 
 <p>``` perl save
 automacro save {</p>
@@ -214,7 +217,10 @@ stop
 [Console Command]: http://www.openkore.com/index.php/Category:Console_Command
 [autostorage]: http://www.openkore.com/index.php/Autostorage
 [move]: http://www.openkore.com/index.php/Move
-[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc</p>
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore</p>
 
 <p>本教學可以對多個以上的[openkore]同時下達指令，並且支援所有[openkore]的[Console Command]。
 我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個[automacro]。其實如果利用<code>console</code>作觸發只需一個[automacro]就可以，寫法如下。</p>

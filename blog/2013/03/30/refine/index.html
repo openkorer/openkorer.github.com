@@ -5,19 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>一次控制多個openkore - 唔好巨集</title>
+  <title>精煉大量防具 - 唔好巨集</title>
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="本教學可以對多個以上的openkore同時下達指令，並且支援所有openkore的Console Command。
-我分別寫了partycmd同guildcmd兩個automacro。其實如果利用console作觸發只需一個automacro就可以，寫法如下。 cmd1
-2
-3
-4
-5
-6
-7
-8 &hellip;">
+  <meta name="description" content="這是一個半自動的防具精煉巨集，適用於所有防具。武器建議用鐵匠系自己精煉比較好。
+先看一下運作，假如你有很多鈽鐳金盾 [1]又想把它精煉到+7，只要利用隊伍頻道輸入7次指就可以完成。當然機率還是看你自己人品跟NPC心情！ 巨集使用條件及注意事項: config.txt中XKore必須為1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://openkorer.github.com/blog/2013/03/25/sync">
+  <link rel="canonical" href="http://openkorer.github.com/blog/2013/03/30/refine">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/openkorer" rel="alternate" title="唔好巨集" type="application/atom+xml">
@@ -87,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">一次控制多個openkore</h1>
+      <h1 class="entry-title">精煉大量防具</h1>
     
     
       <p class="meta">
@@ -103,7 +96,7 @@
   
 
 
-<time datetime="2013-03-25T07:06:00+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+<time datetime="2013-03-30T01:01:00+08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -112,70 +105,52 @@
   </header>
 
 
-<div class="entry-content"><p>本教學可以對多個以上的<a href="http://www.openkore.com">openkore</a>同時下達指令，並且支援所有<a href="http://www.openkore.com">openkore</a>的<a href="http://www.openkore.com/index.php/Category:Console_Command">Console Command</a>。
-我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>。其實如果利用<code>console</code>作觸發只需一個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>就可以，寫法如下。</p>
-
-<figure class='code'><figcaption><span>cmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">cmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: cmd (.*)/</span>   <span class="c1"># 任何人在隊伍或公會頻道中以cmd開始的字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。如果你正在用<code>console</code>就要考慮一下要不要繼續用。</p>
-
-<p><a name="partycmd"></a></p>
-
-<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 隊伍頻道中有cmd字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以上是利用隊伍頻道送出同步指令的巨集</p>
+<div class="entry-content"><p>這是一個半自動的防具精煉巨集，適用於所有防具。武器建議用鐵匠系自己精煉比較好。
+先看一下運作，假如你有很多<strong>鈽鐳金盾 [1]</strong>又想把它精煉到+7，只要利用隊伍頻道輸入7次指就可以完成。當然機率還是看你自己人品跟NPC心情！</p>
 
 <p>巨集使用條件及注意事項:</p>
 
 <ul>
-<li>只要同一隊伍即可。</li>
-<li>最多支持12人。</li>
-<li>所有隊伍成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</li>
+<li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/XKore">XKore</a>必須為1</li>
+<li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/ItemsMaxWeight">itemsMaxWeight</a>，<a href="http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore">itemsMaxWeight_sellOrStore</a>，<a href="http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore">itemsMaxNum_sellOrStore</a>設為99，這樣可防止負重而自動存倉。</li>
+<li>必須組隊，自己一人也可以。</li>
+<li>精煉地點為斐揚，必須看到NPC安東尼奧(payon 144 173)，如想找其他NPC請自行修改第<strong>4</strong>,<strong>13</strong>行。</li>
+<li>精煉前建議先把身上其他防具除下</li>
+<li>帶上足夠的<strong>鋁</strong>及<strong>金錢</strong></li>
+<li>負重90%以下</li>
+<li>精煉物品必須為<strong>已鑒定</strong></li>
+<li>可先在斐揚找卡普拉開倉，用開著倉的狀態走到安東尼奧附近，這樣就不用來回存取物品多次。</li>
 </ul>
 
 
-<p>使用方法:                 <br/>
-e.g. <a href="http://www.openkore.com/index.php/Move">move</a> prontera 移動到中央      <br/>
-<a href="http://www.openkore.com">openkore</a>: <code>p cmd move prontera</code>       <br/>
-官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>cmd move prontera</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd move prontera</code> + <strong>Ctrl+P</strong></p>
+<p>使用方法:     <br/>
+請先細閱<strong>巨集使用條件及注意事項</strong></p>
 
-<p><a name="guildcmd"></a></p>
+<p>e.g. 官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>refine 鈽鐳金盾 [1] resp 2</code>或<strong>公開</strong>頻道直接輸入<code>refine 鈽鐳金盾 [1] resp 2</code>+<strong>Ctrl+P</strong></p>
 
-<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><strong>resp後的數字代表各防具位置。請參照以下數值。</strong></p>
+
+<ul>
+<li>0 頭</li>
+<li>1 衣服</li>
+<li>2 左手</li>
+<li>3 右手</li>
+<li>4 披肩</li>
+<li>5 鞋</li>
+</ul>
+
+
+<p><code>refine 鈽鐳金盾 [1] resp 2</code>指令是把身上所有未經精煉的<strong>鈽鐳金盾 [1]</strong>精煉上+1，完成後可輸入<code>refine +1 鈽鐳金盾 [1] resp 2</code>把身上的<strong>+1 鈽鐳金盾 [1]</strong>精煉上+2，如此類推，所以才叫半自動巨集。</p>
+
+<p>其他例子：</p>
+
+<ul>
+<li><code>refine +5 防水長靴 [1] resp 5</code>把身上所有<strong>+5 防水長靴 [1]</strong>精煉上+6</li>
+<li><code>refine +6 羊毛領巾 [1] resp 4</code>把身上所有<strong>+6 羊毛領巾 [1]</strong>精煉上+7</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>refine</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -183,34 +158,50 @@ e.g. <a href="http://www.openkore.com/index.php/Move">move</a> prontera 移動�
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">guildcmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 公會頻道中有cmd字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">refine</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">party</span> <span class="sr">/refine (.*) resp (\d+)/</span>
+</span><span class='line'>  <span class="c1">#resp no. head 0,body 1,lefthand 2,righthand 3,robe 4,shoes 5</span>
+</span><span class='line'>  <span class="n">location</span> <span class="n">payon</span>
+</span><span class='line'>    <span class="n">zeny</span> <span class="o">&gt;=</span> <span class="mi">2000</span>
+</span><span class='line'>    <span class="n">inventory</span> <span class="s">&quot;鋁&quot;</span> <span class="o">&gt;</span> <span class="mi">0</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
+</span><span class='line'>  <span class="nv">$eq</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="nv">$resp</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch2</span>
+</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="nv">@invamount</span><span class="p">(</span><span class="nv">$eq</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">)</span> <span class="n">as</span> <span class="n">loop</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">@inventory</span><span class="p">(</span><span class="err">鋁</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">notenough</span>
+</span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">$eq</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">144</span> <span class="mi">173</span> <span class="n">c</span> <span class="n">r</span><span class="nv">$resp</span> <span class="n">c</span> <span class="n">r0</span> <span class="n">c</span> <span class="n">c</span> <span class="n">r0</span> <span class="n">c</span> <span class="n">n</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="nv">$eq:</span> <span class="nv">@invamount</span><span class="p">(</span><span class="nv">$eq</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">end</span> <span class="n">loop</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="nn">Utils::Win32::</span><span class="n">playSound</span><span class="p">(</span><span class="s">&#39;wav\2008cat.wav&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">notenough</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="s">&quot;鋁&quot;</span> <span class="err">或者</span> <span class="s">&quot;金錢&quot;</span><span class="err">不足</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p>以上是利用公會頻道送出同步指令的巨集</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li>不需要同一隊伍，只需同一公會即可。</li>
-<li>最多支持50人，看公會擴充組合體制等級而定。</li>
-<li>所有公會成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</li>
-</ul>
-
-
-<p>使用方法：   <br/>
-e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自動存倉   <br/>
-<a href="http://www.openkore.com">openkore</a>: <code>g cmd autostorage</code>     <br/>
-官方遊戲程式: 在<strong>公會</strong>頻道直接輸入<code>cmd autostorage</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd autostorage</code> + <strong>Ctrl+G</strong></p>
-
-<p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最安全做法是自創隊伍跟公會！</strong></p>
 </div>
 
 
@@ -233,12 +224,12 @@ e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自
   
 
 
-<time datetime="2013-03-25T07:06:00+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+<time datetime="2013-03-30T01:01:00+08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/管理/'>管理</a>
+    <a class='category' href='/blog/categories/裝備及道具/'>裝備及道具</a>
   
 </span>
 
@@ -247,7 +238,7 @@ e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自
 
 <span class="categories">
   
-    <a class='tag' href='/blog/tags/guild/'>guild</a>, <a class='tag' href='/blog/tags/manage/'>manage</a>, <a class='tag' href='/blog/tags/party/'>party</a>
+    <a class='tag' href='/blog/tags/equipment/'>equipment</a>, <a class='tag' href='/blog/tags/refine/'>refine</a>
   
 </span>
 
@@ -255,7 +246,7 @@ e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://openkorer.github.com/blog/2013/03/25/sync/" data-via="" data-counturl="http://openkorer.github.com/blog/2013/03/25/sync/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://openkorer.github.com/blog/2013/03/30/refine/" data-via="" data-counturl="http://openkorer.github.com/blog/2013/03/30/refine/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -268,10 +259,8 @@ e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/03/13/q2303/" title="Previous Post: 白色情人節活動 2013">&laquo; 白色情人節活動 2013</a>
+        <a class="basic-alignment left" href="/blog/2013/03/29/save/" title="Previous Post: 管理儲存及倉庫位置">&laquo; 管理儲存及倉庫位置</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/03/26/shieldspell/" title="Next Post: 皇家禁衛軍-盾咒ATK">皇家禁衛軍-盾咒ATK &raquo;</a>
       
     </p>
   </footer>
@@ -354,8 +343,8 @@ e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://openkorer.github.com/blog/2013/03/25/sync/';
-        var disqus_url = 'http://openkorer.github.com/blog/2013/03/25/sync/';
+        var disqus_identifier = 'http://openkorer.github.com/blog/2013/03/30/refine/';
+        var disqus_url = 'http://openkorer.github.com/blog/2013/03/30/refine/';
         var disqus_script = 'embed.js';
       
     (function () {
