@@ -178,7 +178,6 @@
 <span class='line-number'>22</span>
 <span class='line-number'>23</span>
 <span class='line-number'>24</span>
-<span class='line-number'>25</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">refine</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">party</span> <span class="sr">/refine (.*) resp (\d+)/</span>
 </span><span class='line'>  <span class="c1">#resp no. head 0,body 1,lefthand 2,righthand 3,robe 4,shoes 5</span>
@@ -194,7 +193,6 @@
 </span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">144</span> <span class="mi">173</span> <span class="n">c</span> <span class="n">r</span><span class="nv">$resp</span> <span class="n">c</span> <span class="n">r0</span> <span class="n">c</span> <span class="n">c</span> <span class="n">r0</span> <span class="n">c</span> <span class="n">n</span>
 </span><span class='line'>  <span class="nb">log</span> <span class="nv">$eq:</span> <span class="nv">@invamount</span><span class="p">(</span><span class="nv">$eq</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">end</span> <span class="n">loop</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="nn">Utils::Win32::</span><span class="n">playSound</span><span class="p">(</span><span class="s">&#39;wav\2008cat.wav&#39;</span><span class="p">);</span>
 </span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
 </span><span class='line'>  <span class="n">stop</span>
 </span><span class='line'>  
