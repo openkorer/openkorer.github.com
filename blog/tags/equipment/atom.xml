@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: equipment | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/equipment/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-30T01:10:07+08:00</updated>
+  <updated>2013-03-30T01:21:45+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -39,10 +39,10 @@
 <p>巨集使用條件及注意事項:</p>
 
 <ul>
-<li>[config.txt]中[XKore]必須為1</li>
+<li>[config.txt]中[XKore]必須為1，先開啟[openkore]，再用官方遊戲程式登入。</li>
 <li>[config.txt]中[itemsMaxWeight]，[itemsMaxWeight_sellOrStore]，[itemsMaxNum_sellOrStore]設為99，這樣可防止負重而自動存倉。</li>
 <li>必須組隊，自己一人也可以。</li>
-<li>精煉地點為斐揚，必須看到NPC安東尼奧(payon 144 173)，如想找其他NPC請自行修改第<strong>4</strong>,<strong>13</strong>行。</li>
+<li>精煉地點為<strong>斐揚</strong>，<strong>必須看到NPC安東尼奧</strong>(payon 144 173)，如想找其他NPC請自行修改第<strong>4</strong>,<strong>13</strong>行。</li>
 <li>精煉前建議先把身上其他防具除下</li>
 <li>帶上足夠的<strong>鋁</strong>及<strong>金錢</strong></li>
 <li>負重90%以下</li>
