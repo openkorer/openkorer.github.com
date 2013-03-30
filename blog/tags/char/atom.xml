@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: char | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/char/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-31T01:04:31+08:00</updated>
+  <updated>2013-03-31T01:17:04+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,7 +18,22 @@
     <link href="http://openkorer.github.com/blog/2013/03/26/zangetsu/"/>
     <updated>2013-03-26T23:18:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/26/zangetsu</id>
-    <content type="html"><![CDATA[<p>{% include reflink.md %}</p>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
+[storage]: http://www.openkore.com/index.php/Storage
+[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync</p>
 
 <p><img src="/images/zangetsu.jpg" alt="" /></p>
 
@@ -90,7 +105,22 @@ timeout 30
     <link href="http://openkorer.github.com/blog/2013/03/26/shieldspell/"/>
     <updated>2013-03-26T00:20:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/26/shieldspell</id>
-    <content type="html"><![CDATA[<p>{% include reflink.md %}</p>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
+[storage]: http://www.openkore.com/index.php/Storage
+[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync</p>
 
 <p><img src="/images/s2315.jpg" alt="" /></p>
 

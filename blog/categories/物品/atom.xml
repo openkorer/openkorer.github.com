@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: 裝備及道具 | 唔好巨集]]></title>
-  <link href="http://openkorer.github.com/blog/categories/裝備及道具/atom.xml" rel="self"/>
+  <title><![CDATA[Category: 物品 | 唔好巨集]]></title>
+  <link href="http://openkorer.github.com/blog/categories/物品/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-31T01:04:31+08:00</updated>
+  <updated>2013-03-31T01:17:04+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,7 +18,22 @@
     <link href="http://openkorer.github.com/blog/2013/03/30/itemamount/"/>
     <updated>2013-03-30T23:34:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/30/itemamount</id>
-    <content type="html"><![CDATA[<p>{% include reflink.md %}</p>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
+[storage]: http://www.openkore.com/index.php/Storage
+[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync</p>
 
 <p>在眾多openkore的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
 這巨集是設計給我自己N個商人用的，可利用隊伍及公會頻道同時查詢所有[openkore]指定物品在<strong>身上(包括已裝備的)</strong>，<strong>手推車</strong>及<strong>倉庫</strong>的數量。實用又方便！</p>
@@ -87,7 +102,22 @@ stop
     <link href="http://openkorer.github.com/blog/2013/03/30/refine/"/>
     <updated>2013-03-30T01:01:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/30/refine</id>
-    <content type="html"><![CDATA[<p>{% include reflink.md %}</p>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
+[storage]: http://www.openkore.com/index.php/Storage
+[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync</p>
 
 <p>這是一個半自動的防具精煉巨集，適用於所有防具。武器建議用鐵匠系自己精煉比較好。
 先看一下運作，假如你有很多<strong>鈽鐳金盾 [1]</strong>又想把它精煉到+7，只要利用隊伍頻道輸入7次指就可以完成。當然機率還是看你自己人品跟NPC心情！</p>
