@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 管理 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/管理/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-30T02:57:24+08:00</updated>
+  <updated>2013-03-31T00:57:15+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -14,24 +14,80 @@
 
   
   <entry>
+    <title type="html"><![CDATA[查詢倉庫物品數量及列出報告]]></title>
+    <link href="http://openkorer.github.com/blog/2013/03/30/itemamount/"/>
+    <updated>2013-03-30T23:34:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/03/30/itemamount</id>
+    <content type="html"><![CDATA[<p>{% include reflink.md %}</p>
+
+<p>在眾多openkore的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
+這巨集是設計給我自己N個商人用的，可利用隊伍及公會頻道同時查詢所有[openkore]指定物品在<strong>身上(包括已裝備的)</strong>，<strong>手推車</strong>及<strong>倉庫</strong>的數量。實用又方便！</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>因為要輸入中文的關係，下達指令的人物必須用[XKore]模式或<strong>官方遊戲程式</strong>，推薦用[XKore]模式，其他[openkore]不用。</li>
+<li>如要查詢倉庫的數量<strong>必須在開倉狀態</strong>，集體走到卡普拉附近跟開倉可參考此文章[一次控制多個openkore]。</li>
+<li>必須組隊或加入公會，巨集中已同時支持隊伍及公會頻道。</li>
+<li>倉庫數量為<strong>-1</strong>時代表沒有開倉</li>
+<li>同時可用配合[一次控制多個openkore]跟[storage] get或add達到同時存取物品，例如我要每人從倉庫取500個紅蘿蔔出來的指令是<code>cmd storage get 紅蘿蔔 500</code></li>
+</ul>
+
+
+<p>使用方法:     <br/>
+e.g. 查詢紅蘿蔔      <br/>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>ia 紅蘿蔔</code> + <strong>Enter</strong>或在<strong>公會</strong>頻道輸入<code>ia 紅蘿蔔</code> + <strong>Ctrl+G</strong></p>
+
+<p>其他例子:</p>
+
+<ul>
+<li><code>ia 海神之憤怒</code></li>
+<li><code>ia 鈽鐳金盾 [1]</code></li>
+<li><code>ia +6 鈽鐳金盾 [異型卡片] [1]</code></li>
+<li><code>ia 歐羅萊昂的制服 [VIT+3] [1]</code></li>
+</ul>
+
+
+<p>``` perl itemamount
+automacro itemamount {</p>
+
+<pre><code>console /\[(隊伍|公會)\] (.*) \: ia (.*)/
+run-once 1
+call {
+$m = $.lastMatch3
+$i = @invamount($m)
+$c = @cartamount($m)
+$s = @storamount($m)
+$t = @eval($i+$c+$s)
+do p 物品欄($i)手推車($c)倉庫($s)總共($t) # 如要轉用公會頻出報告請用do g
+release all
+stop
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>以下是[openkore]例出隊伍物品報告的範本</p>
+
+<pre><code>    [隊伍] op01 : ia 紅蘿蔔
+    [隊伍] op01 : 物品欄(100)手推車(0)倉庫(10414)總共(10514)
+    [隊伍] op02 : 物品欄(0)手推車(0)倉庫(20414)總共(20414)
+    .
+    .
+    .
+    [隊伍] op11 : 物品欄(1)手推車(1)倉庫(0)總共(2)
+    [隊伍] op12 : 物品欄(0)手推車(0)倉庫(14)總共(14)
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[精煉大量防具]]></title>
     <link href="http://openkorer.github.com/blog/2013/03/30/refine/"/>
     <updated>2013-03-30T01:01:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/30/refine</id>
-    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
-[XKore]: http://www.openkore.com/index.php/XKore
-[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
-[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
-[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
-[DS]: http://dsfix.org
-[p]: http://www.openkore.com/index.php/P
-[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
-[autostorage]: http://www.openkore.com/index.php/Autostorage
-[move]: http://www.openkore.com/index.php/Move
-[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
-[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
-[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
-[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore</p>
+    <content type="html"><![CDATA[<p>{% include reflink.md %}</p>
 
 <p>這是一個半自動的防具精煉巨集，適用於所有防具。武器建議用鐵匠系自己精煉比較好。
 先看一下運作，假如你有很多<strong>鈽鐳金盾 [1]</strong>又想把它精煉到+7，只要利用隊伍頻道輸入7次指就可以完成。當然機率還是看你自己人品跟NPC心情！</p>
@@ -116,20 +172,7 @@ stop
     <link href="http://openkorer.github.com/blog/2013/03/29/save/"/>
     <updated>2013-03-29T21:35:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/29/save</id>
-    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
-[XKore]: http://www.openkore.com/index.php/XKore
-[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
-[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
-[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
-[DS]: http://dsfix.org
-[p]: http://www.openkore.com/index.php/P
-[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
-[autostorage]: http://www.openkore.com/index.php/Autostorage
-[move]: http://www.openkore.com/index.php/Move
-[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
-[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
-[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
-[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore</p>
+    <content type="html"><![CDATA[<p>{% include reflink.md %}</p>
 
 <p>有沒有試過每次轉換練功地點都要重新<strong>儲存位置</strong>跟修改[storageAuto_npc]都覺得麻煩? 這巨集可以簡易利用一句指令就可以完成多個[openkore]的設定！</p>
 
@@ -305,20 +348,7 @@ stop
     <link href="http://openkorer.github.com/blog/2013/03/25/sync/"/>
     <updated>2013-03-25T07:06:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
-    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
-[XKore]: http://www.openkore.com/index.php/XKore
-[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
-[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
-[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
-[DS]: http://dsfix.org
-[p]: http://www.openkore.com/index.php/P
-[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
-[autostorage]: http://www.openkore.com/index.php/Autostorage
-[move]: http://www.openkore.com/index.php/Move
-[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
-[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
-[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
-[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore</p>
+    <content type="html"><![CDATA[<p>{% include reflink.md %}</p>
 
 <p>本教學可以對多個以上的[openkore]同時下達指令，並且支援所有[openkore]的[Console Command]。
 我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個[automacro]。其實如果利用<code>console</code>作觸發只需一個[automacro]就可以，寫法如下。</p>
