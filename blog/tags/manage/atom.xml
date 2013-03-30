@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: manage | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/manage/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-03-31T01:17:04+08:00</updated>
+  <updated>2013-03-31T01:20:17+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -35,7 +35,7 @@
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync</p>
 
-<p>在眾多openkore的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
+<p>在眾多[openkore]的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
 這巨集是設計給我自己N個商人用的，可利用隊伍及公會頻道同時查詢所有[openkore]指定物品在<strong>身上(包括已裝備的)</strong>，<strong>手推車</strong>及<strong>倉庫</strong>的數量。實用又方便！</p>
 
 <p>巨集使用條件及注意事項:</p>
