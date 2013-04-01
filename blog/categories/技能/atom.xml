@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 技能 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/技能/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T00:48:10+08:00</updated>
+  <updated>2013-04-02T00:49:02+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -34,7 +34,7 @@
 [itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
-[data.grf]: C:\Program Files (x86)\Gravity\RO</p>
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
 
 <p><img src="/images/zangetsu.jpg" alt="" /></p>
 
@@ -122,7 +122,7 @@ timeout 30
 [itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
-[data.grf]: C:\Program Files (x86)\Gravity\RO</p>
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
 
 <p><img src="/images/s2315.jpg" alt="" /></p>
 
