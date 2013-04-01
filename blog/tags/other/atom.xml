@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: other | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/other/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T00:33:54+08:00</updated>
+  <updated>2013-04-02T00:35:23+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -50,7 +50,7 @@
 
 <p>以上共同之處是確保你正打Battlefield3，看電影，玩facebook等等時不會錯任何一個重要時刻。</p>
 
-<p>我簡單用1:1語密做個例子，很簡單，先在config資料夾同中層開一個叫wav的新資料夾，把ting.wav放進去就可以，當然名稱跟什麼音樂檔可以自己更改，只要修改<code>playSound('wav\ting.wav')</code>後的字串就可以。</p>
+<p>我簡單用1:1語密做個例子，很簡單，先在config資料夾同一層開一個叫wav的新資料夾，把ting.wav放進去就可以，當然名稱跟什麼音樂檔可以自己更改，只要修改<code>playSound('wav\ting.wav')</code>後的字串就可以。</p>
 
 <p>``` perl pm
 automacro pm {</p>
