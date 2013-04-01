@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: save - 唔好巨集</title>
+  <title>用巨集播放音效 - 唔好巨集</title>
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="Tag: save">
+  <meta name="description" content="今日教大家用openkore播放音效，什麼意思？就是用openkore時利用巨集觸發來播放音效檔案。有什麼好處？ 看我以下的舉例！ 用openkore開聊天室收物品時有人進來叮一聲！
+用openkore開露天賣出貨物時叮一聲！
+有人在你openkore打怪時1:1密你叮一聲! &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://openkorer.github.comblog/tags/save">
+  <link rel="canonical" href="http://openkorer.github.com/blog/2013/04/01/playsound">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/openkorer" rel="alternate" title="唔好巨集" type="application/atom+xml">
@@ -75,36 +77,193 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: Save</h1>
+    
+      <h1 class="entry-title">用巨集播放音效</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-01T23:41:00+08:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>今日教大家用<a href="http://www.openkore.com">openkore</a>播放音效，什麼意思？就是用<a href="http://www.openkore.com">openkore</a>時利用巨集觸發來播放音效檔案。有什麼好處？ 看我以下的舉例！</p>
 
-  
-  <h2>2013</h2>
-
-<article>
-  
-<h1><a href="/blog/2013/03/29/save/">管理儲存及倉庫位置</a></h1>
-<time datetime="2013-03-29T21:35:00+08:00" pubdate><span class='month'>Mar</span> <span class='day'>29</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/管理/'>管理</a></span>
-</footer>
+<ul>
+<li>用<a href="http://www.openkore.com">openkore</a>開聊天室收物品時有人進來叮一聲！</li>
+<li>用<a href="http://www.openkore.com">openkore</a>開露天賣出貨物時叮一聲！</li>
+<li>有人在你<a href="http://www.openkore.com">openkore</a>打怪時1:1密你叮一聲!</li>
+<li>有人在廣播賣或收你想要的東西時叮一聲！</li>
+<li>還有更多&#8230; 看個人創意！</li>
+<li>建議音效檔是從RO的data.grf用<a href="http://downloads.sourceforge.net/project/openkore/GRF%20Tool/1.2.0/grftool-win32-1.2.0.zip">grftool</a>解出來的，用回RO的音效比較有親切感。</li>
+<li><strong>記得要開喇叭</strong>！</li>
+</ul>
 
 
-</article>
+<p>以上共同之處是確保你正打Battlefield3，看電影，玩facebook等等時不會錯任何一個重要時刻。</p>
 
+<p>我簡單用1:1語密做個例子，很簡單，先在config資料夾同中層開一個叫wav的新資料夾，把ting.wav放進去就可以，當然名稱跟什麼音樂檔可以自己更改，只要修改<code>playSound('wav\ting.wav')</code>後的字串就可以。</p>
+
+<figure class='code'><figcaption><span>pm</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">pm</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">pm</span> <span class="sr">/(.*)/</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="nn">Utils::Win32::</span><span class="n">playSound</span><span class="p">(</span><span class="s">&#39;wav\ting.wav&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>露天賣出東西<strong>喵</strong>叫一聲！</p>
+
+<figure class='code'><figcaption><span>autocloseshop</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">autocloseshop</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">soldout</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">location</span> <span class="n">prontera</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">7</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="nn">Utils::Win32::</span><span class="n">playSound</span><span class="p">(</span><span class="s">&#39;wav\cat.wav&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">closeshop</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">7</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">openshop</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>指定玩家出現在你距離20格就喵一聲在關閉<a href="http://www.openkore.com">openkore</a></p>
+
+<figure class='code'><figcaption><span>playernear</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">playernear</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">player</span> <span class="s">&quot;GM03&quot;</span><span class="p">,</span><span class="mi">20</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="nn">Utils::Win32::</span><span class="n">playSound</span><span class="p">(</span><span class="s">&#39;wav\cat.wav&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">quit</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">timeout</span> <span class="mi">1</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>愚人節快樂！</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">openkorer</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-01T23:41:00+08:00" pubdate data-updated="true">Apr 1<span>st</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/其他/'>其他</a>
+  
+</span>
+
+
+      
+
+<span class="categories">
+  
+    <a class='tag' href='/blog/tags/other/'>other</a>, <a class='tag' href='/blog/tags/playsound/'>playsound</a>
+  
+</span>
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://openkorer.github.com/blog/2013/04/01/playsound/" data-via="" data-counturl="http://openkorer.github.com/blog/2013/04/01/playsound/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/30/itemamount/" title="Previous Post: 查詢物品數量及列出報告">&laquo; 查詢物品數量及列出報告</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -177,7 +336,10 @@
       var disqus_shortname = 'openkorer';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://openkorer.github.com/blog/2013/04/01/playsound/';
+        var disqus_url = 'http://openkorer.github.com/blog/2013/04/01/playsound/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
