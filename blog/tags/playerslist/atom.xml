@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: playersList | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/playerslist/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T23:44:48+08:00</updated>
+  <updated>2013-04-02T23:53:51+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[平均分配金錢]]></title>
+    <title type="html"><![CDATA[查詢及平均分配金錢]]></title>
     <link href="http://openkorer.github.com/blog/2013/04/02/sharezeny/"/>
     <updated>2013-04-02T22:20:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/04/02/sharezeny</id>
@@ -56,7 +56,7 @@
 <ul>
 <li>派錢員必須有足夠金錢</li>
 <li>派錢員密頻要開</li>
-<li>建議利用隊伍公會頻道</li>
+<li>建議利用隊伍或公會頻道</li>
 <li>建議找一個比較少人的地方</li>
 <li>必須修改<strong>派錢員</strong>的名稱，getzeny第<strong>3</strong>,<strong>7</strong>行，名稱包含特別符號可能會出問題！</li>
 <li>[config.txt]中[dealAuto]改<strong>2</strong></li>
@@ -111,6 +111,46 @@ do deal
 
 <p>}
 ```</p>
+
+<p>另外查詢[openkore]們身上的zeny</p>
+
+<p>使用方法:                         <br/>
+[openkore][]: 隊伍用<code>p zeny</code> 公會用<code>g zeny</code>         <br/>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>zeny</code>或在<strong>公會</strong>頻道輸入<code>zeny</code></p>
+
+<p>``` perl zenycheck
+automacro zenycheck {</p>
+
+<pre><code>console /\[(公會|隊伍)\] (.*) \: zeny/
+call {
+if ($.lastMatch1 == "公會") goto g
+if ($.lastMatch1 == "隊伍") goto p
+stop
+
+:g
+do g $.zeny
+stop
+
+:p
+do p $.zeny
+stop
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>以下是[openkore]例出隊伍金錢報告的範本</p>
+
+<pre><code>    [隊伍] op01 : 1400000
+    [隊伍] op01 : 500000
+    [隊伍] op02 : 100410
+    .
+    .
+    .
+    [隊伍] op11 : 241232
+    [隊伍] op12 : 5831323
+</code></pre>
 ]]></content>
   </entry>
   

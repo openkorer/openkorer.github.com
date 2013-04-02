@@ -82,7 +82,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/04/02/sharezeny/">平均分配金錢</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/04/02/sharezeny/">查詢及平均分配金錢</a></h1>
     
     
       <p class="meta">
@@ -125,7 +125,7 @@
 <ul>
 <li>派錢員必須有足夠金錢</li>
 <li>派錢員密頻要開</li>
-<li>建議利用隊伍公會頻道</li>
+<li>建議利用隊伍或公會頻道</li>
 <li>建議找一個比較少人的地方</li>
 <li>必須修改<strong>派錢員</strong>的名稱，getzeny第<strong>3</strong>,<strong>7</strong>行，名稱包含特別符號可能會出問題！</li>
 <li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/DealAuto">dealAuto</a>改<strong>2</strong></li>
@@ -205,7 +205,58 @@ e.g. 要求每人身上都要有10000000zeny (一千萬)      <br/>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>另外查詢<a href="http://www.openkore.com">openkore</a>們身上的zeny</p>
 
+<p>使用方法:                         <br/>
+<a href="http://www.openkore.com">openkore</a>: 隊伍用<code>p zeny</code> 公會用<code>g zeny</code>         <br/>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>zeny</code>或在<strong>公會</strong>頻道輸入<code>zeny</code></p>
+
+<figure class='code'><figcaption><span>zenycheck</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">zenycheck</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(公會|隊伍)\] (.*) \: zeny/</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span> <span class="o">==</span> <span class="s">&quot;公會&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">g</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span> <span class="o">==</span> <span class="s">&quot;隊伍&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">p</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">g</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">g</span> <span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">p</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">p</span> <span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以下是<a href="http://www.openkore.com">openkore</a>例出隊伍金錢報告的範本</p>
+
+<pre><code>    [隊伍] op01 : 1400000
+    [隊伍] op01 : 500000
+    [隊伍] op02 : 100410
+    .
+    .
+    .
+    [隊伍] op11 : 241232
+    [隊伍] op12 : 5831323
+</code></pre>
 </div>
   
   
@@ -1508,7 +1559,7 @@ e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/04/02/sharezeny/">平均分配金錢</a>
+        <a href="/blog/2013/04/02/sharezeny/">查詢及平均分配金錢</a>
       </li>
     
       <li class="post">
