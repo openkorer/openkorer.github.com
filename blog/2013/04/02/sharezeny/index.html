@@ -151,7 +151,6 @@ e.g. 要求每人身上都要有10000000zeny (一千萬)
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-<span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">getzeny</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: z g (\d+)/</span>
 </span><span class='line'>  <span class="n">player</span> <span class="s">&quot;派錢員&quot;</span><span class="p">,</span><span class="mi">3</span>
@@ -160,7 +159,6 @@ e.g. 要求每人身上都要有10000000zeny (一千萬)
 </span><span class='line'>  <span class="nv">$z</span> <span class="o">=</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span> <span class="o">-</span> <span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span><span class="p">)</span>
 </span><span class='line'>  <span class="nv">$n</span> <span class="o">=</span> <span class="err">派錢員</span>
 </span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$_player</span> <span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$::playersList</span><span class="o">-&gt;</span><span class="n">getItems</span><span class="p">()})</span> <span class="p">{</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">;</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">actorType</span><span class="p">}</span> <span class="ow">ne</span> <span class="s">&quot;Player&quot;</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;$n&quot;</span><span class="p">)</span> <span class="p">{</span><span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">name</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">};</span> <span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">id</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;binID&#39;</span><span class="p">};}}</span>
-</span><span class='line'>    <span class="c1">#log name=$name dist=$dist id=$id</span>
 </span><span class='line'>  <span class="k">do</span> <span class="n">pm</span> <span class="nv">$n</span> <span class="n">z</span> <span class="n">a</span> <span class="nv">$z</span>
 </span><span class='line'>  <span class="n">pause</span> <span class="mi">7</span>
 </span><span class='line'>  <span class="n">end</span> <span class="n">loop</span>
@@ -186,19 +184,13 @@ e.g. 要求每人身上都要有10000000zeny (一千萬)
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">addzeny</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">pm</span> <span class="sr">/z a (\d+)/</span>
 </span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c1">#log $.lastMatch1</span>
 </span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span> <span class="o">&lt;</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span><span class="p">)</span> <span class="n">stop</span>
 </span><span class='line'>  <span class="nv">$n</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastpm</span>
-</span><span class='line'>  <span class="c1">#log $n</span>
 </span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$_player</span> <span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$::playersList</span><span class="o">-&gt;</span><span class="n">getItems</span><span class="p">()})</span> <span class="p">{</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">;</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">actorType</span><span class="p">}</span> <span class="ow">ne</span> <span class="s">&quot;Player&quot;</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;$n&quot;</span><span class="p">)</span> <span class="p">{</span><span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">name</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">};</span> <span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">id</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;binID&#39;</span><span class="p">};}}</span>
-</span><span class='line'>    <span class="c1">#log name=$name dist=$dist id=$id</span>
 </span><span class='line'>  <span class="k">do</span> <span class="n">deal</span> <span class="nv">$id</span>
 </span><span class='line'>  <span class="n">pause</span> <span class="mi">3</span>
 </span><span class='line'>  <span class="k">do</span> <span class="n">deal</span> <span class="n">add</span> <span class="n">z</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>

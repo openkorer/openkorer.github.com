@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: zeny | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/zeny/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T23:42:47+08:00</updated>
+  <updated>2013-04-02T23:43:35+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -81,7 +81,6 @@ while ($.zeny &lt; $.lastMatch3) as loop
 $z = @eval($.lastMatch3 - $.zeny)
 $n = 派錢員
 do eval foreach my $_player (@{$::playersList-&gt;getItems()}) { next if $_player-&gt;{'name'} eq ""; next if $_player-&gt;{actorType} ne "Player"; if ($_player-&gt;{'name'} eq "$n") {$::Macro::Data::varStack{name} = $_player-&gt;{'name'}; $::Macro::Data::varStack{id} = $_player-&gt;{'binID'};}}
-#log name=$name dist=$dist id=$id
 do pm $n z a $z
 pause 7
 end loop
@@ -98,12 +97,9 @@ automacro addzeny {</p>
 <pre><code>pm /z a (\d+)/
 exclusive 1
 call {
-#log $.lastMatch1
 if ($.zeny &lt; $.lastMatch1) stop
 $n = $.lastpm
-#log $n
 do eval foreach my $_player (@{$::playersList-&gt;getItems()}) { next if $_player-&gt;{'name'} eq ""; next if $_player-&gt;{actorType} ne "Player"; if ($_player-&gt;{'name'} eq "$n") {$::Macro::Data::varStack{name} = $_player-&gt;{'name'}; $::Macro::Data::varStack{id} = $_player-&gt;{'binID'};}}
-#log name=$name dist=$dist id=$id
 do deal $id
 pause 3
 do deal add z $.lastMatch1
