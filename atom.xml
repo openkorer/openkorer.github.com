@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T23:23:59+08:00</updated>
+  <updated>2013-04-02T23:29:11+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -29,7 +29,7 @@
 
 
 <p>了解後我們來看一看整個交易流程，先準備一個人物作<strong>派錢員</strong>跟數個收錢的人物，把他們移動到同一格，這是為了確保不超過交易距離。很簡單，一同轉換地圖時就會重疊在一起。集體移動可參考這文章<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>。
-然後利用隊頻或公會頻說出今次想要的金額，每個人就會開始計算減去身上的差額，如果身上的金錢比想要的多就沒有動作，相反就會利用密頻通知<strong>派錢員</strong>派發多少錢，然後<strong>派錢員</strong>就會點缺錢的人物作交易並把差額加上。</p>
+然後利用隊頻或公會頻說出今次想要的金額，<a href="#getzeny">getzeny</a>就會開始計算減去身上的差額，如果身上的金錢比想要的多就沒有動作，相反就會利用密頻通知<strong>派錢員</strong>派發多少錢，然後<strong>派錢員</strong><a href="#addzeny">addzeny</a>就會點缺錢的人物作交易並把差額加上。</p>
 
 <p>巨集使用條件及注意事項:</p>
 
@@ -43,6 +43,8 @@
 <li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/DealAuto_names">dealAuto_names</a>加上<strong>派錢員</strong>的名字，<strong>如果本身是空的就不用加</strong>！</li>
 </ul>
 
+
+<p><a name="getzeny"></a></p>
 
 <figure class='code'><figcaption><span>getzeny</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -75,7 +77,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p><a name="addzeny"></a></p>
 
 <figure class='code'><figcaption><span>addzeny</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -114,6 +116,8 @@
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>
