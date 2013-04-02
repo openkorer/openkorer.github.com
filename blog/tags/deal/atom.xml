@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: deal | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/deal/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T22:25:45+08:00</updated>
+  <updated>2013-04-02T22:31:17+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -35,6 +35,8 @@
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
+
+<p>有些活動好像<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a></p>
 
 <p>``` perl getzeny
 automacro getzeny {</p>

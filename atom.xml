@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T22:25:45+08:00</updated>
+  <updated>2013-04-02T22:31:17+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -18,7 +18,9 @@
     <link href="http://openkorer.github.com/blog/2013/04/02/sharezeny/"/>
     <updated>2013-04-02T22:20:00+08:00</updated>
     <id>http://openkorer.github.com/blog/2013/04/02/sharezeny</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span>getzeny</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <content type="html"><![CDATA[<p>有些活動好像<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a></p>
+
+<figure class='code'><figcaption><span>getzeny</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
