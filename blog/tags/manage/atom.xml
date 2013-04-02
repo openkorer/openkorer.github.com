@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: manage | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/manage/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T22:31:17+08:00</updated>
+  <updated>2013-04-02T22:47:20+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -36,7 +36,17 @@
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
 
-<p>有些活動好像<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a></p>
+<p>有些活動好像<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a>每次都要轉錢是不是很煩？假如你人物多花的時間相對多，而且容易出錯。
+針對這問題寫了一個金錢交易巨集。快！恨！準！</p>
+
+<p>往往大量金錢都集中在一個人物身上，宜其他人物都只有少量。一旦到了需要金錢的活動或任務就變得麻煩。針對這問題寫了一個金錢交易巨集。先看看什麼情況下適用。</p>
+
+<ul>
+<li>大量人物需要轉生，要指定為1285000zeny不多不少。</li>
+<li>解活動，如<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a></li>
+<li>購買物品前為每人準備相等的金錢</li>
+</ul>
+
 
 <p>``` perl getzeny
 automacro getzeny {</p>
