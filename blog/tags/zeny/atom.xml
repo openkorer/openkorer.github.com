@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: zeny | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/zeny/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T23:43:35+08:00</updated>
+  <updated>2013-04-02T23:44:48+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -66,7 +66,7 @@
 
 
 <p>使用方法:                 <br/>
-e.g. 要求每人身上都要有10000000zeny (一千萬)
+e.g. 要求每人身上都要有10000000zeny (一千萬)      <br/>
 [openkore][]: 隊伍用<code>p z g 10000000</code> 公會用<code>g z g 10000000</code>         <br/>
 官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>z g 10000000</code>或在<strong>公會</strong>頻道輸入<code>z g 10000000</code></p>
 
