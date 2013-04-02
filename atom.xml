@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-03T00:07:12+08:00</updated>
+  <updated>2013-04-03T00:10:10+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -24,11 +24,11 @@
 <ul>
 <li>如大量人物需要轉生，要指定為1285000zeny不多不少。</li>
 <li>解活動，如<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a></li>
-<li>購買物品前為每人準備相等的金錢</li>
+<li>購買物品前為每人準備相等的金額</li>
 </ul>
 
 
-<p>了解後我們來看一看整個交易流程，先準備一個人物作<strong>派錢員</strong>跟數個收錢的人物，把他們移動到同一格，這是為了確保不超過交易距離。很簡單，一同轉換地圖時就會重疊在一起。集體移動可參考這文章<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>。
+<p>了解後我們來看一看整個交易流程，先準備一個人物作<strong>派錢員</strong>跟數個收錢的人物，把他們移動到同一格，這是為了確保不超過交易距離。很簡單，一同轉換地圖時就會重疊在一起。集體移動可參考這篇文章<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>。
 然後利用隊頻或公會頻說出今次想要的金額，<a href="#getzeny">getzeny</a>就會開始計算減去身上的差額，如果身上的金錢比想要的多就沒有動作，相反就會利用密頻通知<strong>派錢員</strong>派發多少錢，然後<strong>派錢員</strong><a href="#addzeny">addzeny</a>就會點缺錢的人物作交易並把差額加上。</p>
 
 <p>巨集使用條件及注意事項:</p>
@@ -37,6 +37,7 @@
 <li><strong>派錢員</strong>必須有足夠金錢</li>
 <li><strong>派錢員</strong>密頻要開</li>
 <li>建議利用<strong>隊伍</strong>或<strong>公會</strong>頻道</li>
+<li>跟<strong>派錢員</strong>距離不超過**2((格</li>
 <li>建議找一個比較少人的地方</li>
 <li>必須修改<strong>派錢員</strong>的名稱，getzeny第<strong>3</strong>,<strong>7</strong>行，名稱包含<strong>特別符號</strong>可能會出問題！</li>
 <li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/DealAuto">dealAuto</a>改<strong>2</strong></li>
