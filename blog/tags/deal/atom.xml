@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: deal | 唔好巨集]]></title>
+  <link href="http://openkorer.github.com/blog/tags/deal/atom.xml" rel="self"/>
+  <link href="http://openkorer.github.com/"/>
+  <updated>2013-04-02T22:23:35+08:00</updated>
+  <id>http://openkorer.github.com/</id>
+  <author>
+    <name><![CDATA[openkorer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[平均分配金錢]]></title>
+    <link href="http://openkorer.github.com/blog/2013/04/02/sharezeny/"/>
+    <updated>2013-04-02T22:20:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/04/02/sharezeny</id>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
+[storage]: http://www.openkore.com/index.php/Storage
+[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
+
+<p>``` perl getzeny
+automacro getzeny {</p>
+
+<pre><code>console /\[(隊伍|公會)\] (.*) \: z g (\d+)/
+player "唔好尖叫07",3
+call {
+while ($.zeny &lt; $.lastMatch3) as loop
+$z = @eval($.lastMatch3 - $.zeny)
+$n = 唔好尖叫07
+do eval foreach my $_player (@{$::playersList-&gt;getItems()}) { next if $_player-&gt;{'name'} eq ""; next if $_player-&gt;{actorType} ne "Player"; if ($_player-&gt;{'name'} eq "$n") {$::Macro::Data::varStack{name} = $_player-&gt;{'name'}; $::Macro::Data::varStack{id} = $_player-&gt;{'binID'};}}
+#log name=$name dist=$dist id=$id
+do pm $n z a $z
+pause 7
+end loop
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>``` perl addzeny
+automacro addzeny {</p>
+
+<pre><code>pm /z a (\d+)/
+exclusive 1
+call {
+#log $.lastMatch1
+if ($.zeny &lt; $.lastMatch1) stop
+$n = $.lastpm
+#log $n
+do eval foreach my $_player (@{$::playersList-&gt;getItems()}) { next if $_player-&gt;{'name'} eq ""; next if $_player-&gt;{actorType} ne "Player"; if ($_player-&gt;{'name'} eq "$n") {$::Macro::Data::varStack{name} = $_player-&gt;{'name'}; $::Macro::Data::varStack{id} = $_player-&gt;{'binID'};}}
+#log name=$name dist=$dist id=$id
+do deal $id
+pause 3
+do deal add z $.lastMatch1
+do deal
+pause 3
+do deal
+}
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
