@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 管理 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/管理/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T22:23:35+08:00</updated>
+  <updated>2013-04-02T22:25:45+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -40,11 +40,11 @@
 automacro getzeny {</p>
 
 <pre><code>console /\[(隊伍|公會)\] (.*) \: z g (\d+)/
-player "唔好尖叫07",3
+player "銀行家",3
 call {
 while ($.zeny &lt; $.lastMatch3) as loop
 $z = @eval($.lastMatch3 - $.zeny)
-$n = 唔好尖叫07
+$n = 銀行家
 do eval foreach my $_player (@{$::playersList-&gt;getItems()}) { next if $_player-&gt;{'name'} eq ""; next if $_player-&gt;{actorType} ne "Player"; if ($_player-&gt;{'name'} eq "$n") {$::Macro::Data::varStack{name} = $_player-&gt;{'name'}; $::Macro::Data::varStack{id} = $_player-&gt;{'binID'};}}
 #log name=$name dist=$dist id=$id
 do pm $n z a $z
