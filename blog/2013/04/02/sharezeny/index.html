@@ -114,6 +114,9 @@
 </ul>
 
 
+<p>了解後我們來看一看整個交易流程，先準備一個人物作<strong>派錢員</strong>跟數個收錢的人物，把他們移動到同一格，這是為了確保不超過交易距離。很簡單，一同轉換地圖時就會重疊在一起。集體移動可參考這文章<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>。
+然後利用隊頻或公會頻說出今次想要的金額，每個人就會開始計算減去身上的差額，如果身上的金錢比想要的多就沒有動作，相反就會利用密頻通知<strong>派錢員</strong>通知自己差多少錢，<strong>派錢員</strong>就會點缺錢的人物把差額交易。</p>
+
 <figure class='code'><figcaption><span>getzeny</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -130,11 +133,11 @@
 <span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">getzeny</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: z g (\d+)/</span>
-</span><span class='line'>  <span class="n">player</span> <span class="s">&quot;銀行家&quot;</span><span class="p">,</span><span class="mi">3</span>
+</span><span class='line'>  <span class="n">player</span> <span class="s">&quot;派錢員&quot;</span><span class="p">,</span><span class="mi">3</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
 </span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span> <span class="o">&lt;</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span><span class="p">)</span> <span class="n">as</span> <span class="n">loop</span>
 </span><span class='line'>  <span class="nv">$z</span> <span class="o">=</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span> <span class="o">-</span> <span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span><span class="p">)</span>
-</span><span class='line'>  <span class="nv">$n</span> <span class="o">=</span> <span class="err">銀行家</span>
+</span><span class='line'>  <span class="nv">$n</span> <span class="o">=</span> <span class="err">派錢員</span>
 </span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$_player</span> <span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$::playersList</span><span class="o">-&gt;</span><span class="n">getItems</span><span class="p">()})</span> <span class="p">{</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">;</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">actorType</span><span class="p">}</span> <span class="ow">ne</span> <span class="s">&quot;Player&quot;</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;$n&quot;</span><span class="p">)</span> <span class="p">{</span><span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">name</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">};</span> <span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">id</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;binID&#39;</span><span class="p">};}}</span>
 </span><span class='line'>    <span class="c1">#log name=$name dist=$dist id=$id</span>
 </span><span class='line'>  <span class="k">do</span> <span class="n">pm</span> <span class="nv">$n</span> <span class="n">z</span> <span class="n">a</span> <span class="nv">$z</span>
