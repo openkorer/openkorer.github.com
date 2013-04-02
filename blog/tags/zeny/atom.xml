@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: zeny | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/zeny/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-03T00:10:10+08:00</updated>
+  <updated>2013-04-03T00:20:25+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -78,12 +78,12 @@ automacro getzeny {</p>
 <pre><code>console /\[(隊伍|公會)\] (.*) \: z g (\d+)/
 player "派錢員",3
 call {
-while ($.zeny &lt; $.lastMatch3) as loop
-$z = @eval($.lastMatch3 - $.zeny)
+while ($.zeny &lt; $.lastMatch3) as loop       # 比較身上的金錢
+$z = @eval($.lastMatch3 - $.zeny)           # 計算差額
 $n = 派錢員
 do eval foreach my $_player (@{$::playersList-&gt;getItems()}) { next if $_player-&gt;{'name'} eq ""; next if $_player-&gt;{actorType} ne "Player"; if ($_player-&gt;{'name'} eq "$n") {$::Macro::Data::varStack{name} = $_player-&gt;{'name'}; $::Macro::Data::varStack{id} = $_player-&gt;{'binID'};}}
-do pm $n z a $z
-pause 7
+do pm $n z a $z         # 通知派錢員派錢
+pause 7                 # 密一次派錢員的相隔秒數
 end loop
 }
 </code></pre>
@@ -98,12 +98,12 @@ automacro addzeny {</p>
 <pre><code>pm /z a (\d+)/
 exclusive 1
 call {
-if ($.zeny &lt; $.lastMatch1) stop
-$n = $.lastpm
+if ($.zeny &lt; $.lastMatch1) stop         # 比較身上跟要派的金額
+$n = $.lastpm                           # 最後密我的人的名字
 do eval foreach my $_player (@{$::playersList-&gt;getItems()}) { next if $_player-&gt;{'name'} eq ""; next if $_player-&gt;{actorType} ne "Player"; if ($_player-&gt;{'name'} eq "$n") {$::Macro::Data::varStack{name} = $_player-&gt;{'name'}; $::Macro::Data::varStack{id} = $_player-&gt;{'binID'};}}
-do deal $id
+do deal $id                             # 交易最後密我的人
 pause 3
-do deal add z $.lastMatch1
+do deal add z $.lastMatch1              # 放上金額
 do deal
 pause 3
 do deal
