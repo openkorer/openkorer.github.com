@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 管理 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/管理/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T23:11:22+08:00</updated>
+  <updated>2013-04-02T23:23:59+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -34,7 +34,9 @@
 [itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
-[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
+[dealAuto]: http://www.openkore.com/index.php/DealAuto
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
 
 <p>有些活動好像<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a>每次都要轉錢是不是很煩？假如你人物多花的時間相對多，而且容易出錯。   <br/>
 往往大量金錢都集中在一個人物身上，而其他人物都只有少量。一旦到了需要金錢的活動或任務就變得麻煩。針對這問題寫了一個金錢交易巨集。先看看什麼情況下適用。</p>
@@ -47,7 +49,20 @@
 
 
 <p>了解後我們來看一看整個交易流程，先準備一個人物作<strong>派錢員</strong>跟數個收錢的人物，把他們移動到同一格，這是為了確保不超過交易距離。很簡單，一同轉換地圖時就會重疊在一起。集體移動可參考這文章[一次控制多個openkore]。
-然後利用隊頻或公會頻說出今次想要的金額，每個人就會開始計算減去身上的差額，如果身上的金錢比想要的多就沒有動作，相反就會利用密頻通知<strong>派錢員</strong>通知自己差多少錢，<strong>派錢員</strong>就會點缺錢的人物把差額交易。</p>
+然後利用隊頻或公會頻說出今次想要的金額，每個人就會開始計算減去身上的差額，如果身上的金錢比想要的多就沒有動作，相反就會利用密頻通知<strong>派錢員</strong>派發多少錢，然後<strong>派錢員</strong>就會點缺錢的人物作交易並把差額加上。</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>派錢員必須有足夠金錢</li>
+<li>派錢員密頻要開</li>
+<li>建議利用隊伍公會頻道</li>
+<li>建議找一個比較少人的地方</li>
+<li>修改<strong>派錢員</strong>的名稱，第<strong>3</strong>,<strong>7</strong>行</li>
+<li>[config.txt]中[dealAuto]改<strong>2</strong></li>
+<li>[config.txt]中[dealAuto_names]加上<strong>派錢員</strong>的名字，<strong>如果本身是空的就不用加</strong>！</li>
+</ul>
+
 
 <p>``` perl getzeny
 automacro getzeny {</p>
@@ -116,7 +131,9 @@ do deal
 [itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
-[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
+[dealAuto]: http://www.openkore.com/index.php/DealAuto
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
 
 <p>在眾多[openkore]的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
 這巨集是設計給我自己N個商人用的，可利用隊伍及公會頻道同時查詢所有[openkore]指定物品在<strong>身上(包括已裝備的)</strong>，<strong>手推車</strong>及<strong>倉庫</strong>的數量。實用又方便！</p>
@@ -201,7 +218,9 @@ stop
 [itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
-[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
+[dealAuto]: http://www.openkore.com/index.php/DealAuto
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
 
 <p>這是一個半自動的防具精煉巨集，適用於所有防具。武器建議用鐵匠系自己精煉比較好。
 先看一下運作，假如你有很多<strong>鈽鐳金盾 [1]</strong>又想把它精煉到+7，只要利用隊伍頻道輸入7次指就可以完成。當然機率還是看你自己人品跟NPC心情！</p>
@@ -302,7 +321,9 @@ stop
 [itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
-[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
+[dealAuto]: http://www.openkore.com/index.php/DealAuto
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
 
 <p>有沒有試過每次轉換練功地點都要重新<strong>儲存位置</strong>跟修改[storageAuto_npc]都覺得麻煩? 這巨集可以簡易利用一句指令就可以完成多個[openkore]的設定！</p>
 
@@ -494,7 +515,9 @@ stop
 [itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
 [storage]: http://www.openkore.com/index.php/Storage
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
-[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/</p>
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
+[dealAuto]: http://www.openkore.com/index.php/DealAuto
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
 
 <p>本教學可以對多個以上的[openkore]同時下達指令，並且支援所有[openkore]的[Console Command]。
 我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個[automacro]。其實如果利用<code>console</code>作觸發只需一個[automacro]就可以，寫法如下。</p>
