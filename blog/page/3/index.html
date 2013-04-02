@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>唔好巨集</title>
+  <meta name="author" content="openkorer">
+
+  
+  <meta name="description" content="本巨集完全由automacro觸發，並無須修改其他檔案。 簡單說明一下運作，當在指定地圖時沒被怪打，後ATK低過某數值就會觸發。
+假設你用正使在用長角槍ATK是150，裝備薔薇鋼盾(DEF130)盾咒成功後後ATK會變成150+130=280。
+那觸發數值設280跟150之間就可以。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://openkorer.github.com/blog/page/3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/openkorer" rel="alternate" title="唔好巨集" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39608320-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">唔好巨集</a></h1>
+  
+    <h2>從零學習巨集，創造無人仙境。</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/openkorer" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:openkorer.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">主頁</a></li>
+  <li><a href="/blog/archives">文章</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/26/shieldspell/">皇家禁衛軍-盾咒ATK</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-26T00:20:00+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/26/shieldspell/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/s2315.jpg" alt="" /></p>
+
+<p>本巨集完全由<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>觸發，並無須修改其他檔案。</p>
+
+<p>簡單說明一下運作，當在指定地圖時沒被怪打，<strong>後ATK</strong>低過某數值就會觸發。
+假設你用正使在用長角槍ATK是150，裝備薔薇鋼盾(DEF130)盾咒成功後<strong>後ATK</strong>會變成150+130=280。
+那觸發數值設280跟150之間就可以。</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>最少已學習了<strong>盾咒LV1</strong></li>
+<li>身上帶有<strong>薔薇鋼盾 [1]</strong>並在<a href="http://www.openkore.com/index.php/Items_control.txt">items_control.txt</a>設不存倉</li>
+<li>身上帶有其他盾(盾咒後換用，看個人需要)</li>
+<li>看個人需要修改第<strong>8</strong>,<strong>9</strong>,<strong>17</strong>行</li>
+</ul>
+
+
+<figure class='code'><figcaption><span>shieldspell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">shieldspell</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Royal</span> <span class="n">Guard</span>
+</span><span class='line'>  <span class="n">hp</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">sp</span> <span class="o">&gt;</span> <span class="mi">50</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">卸除盾牌狀態</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">盾咒技能延遲</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">動作延遲</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;attack_bonus&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="mi">180</span>       <span class="c1"># 數值設280跟150之間就可以</span>
+</span><span class='line'>  <span class="n">location</span> <span class="n">man_fild01</span><span class="p">,</span><span class="n">man_fild02</span>              <span class="c1"># 觸發地圖</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;薔薇鋼盾 [1]&quot;</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">aggressives</span> <span class="o">&lt;</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">@inventory</span><span class="p">(</span><span class="err">薔薇鋼盾</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">ss</span> <span class="mi">2315</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">do</span> <span class="ow">eq</span> <span class="nv">@inventory</span><span class="p">(</span><span class="err">巴基力亞鋼盾</span> <span class="p">[</span><span class="err">突變蛙卡片</span><span class="p">]</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 如果不需要轉盾可刪除</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/25/sync/">一次控制多個openkore</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-25T07:06:00+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/25/sync/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本教學可以對多個以上的<a href="http://www.openkore.com">openkore</a>同時下達指令，並且支援所有<a href="http://www.openkore.com">openkore</a>的<a href="http://www.openkore.com/index.php/Category:Console_Command">Console Command</a>。
+我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>。其實如果利用<code>console</code>作觸發只需一個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>就可以，寫法如下。</p>
+
+<figure class='code'><figcaption><span>cmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">cmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: cmd (.*)/</span>   <span class="c1"># 任何人在隊伍或公會頻道中以cmd開始的字串時觸發巨集</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。如果你正在用<code>console</code>就要考慮一下要不要繼續用。</p>
+
+<p><a name="partycmd"></a></p>
+
+<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 隊伍頻道中有cmd字串時觸發巨集</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上是利用隊伍頻道送出同步指令的巨集</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>只要同一隊伍即可。</li>
+<li>最多支持12人。</li>
+<li>所有隊伍成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</li>
+</ul>
+
+
+<p>使用方法:                 <br/>
+e.g. <a href="http://www.openkore.com/index.php/Move">move</a> prontera 移動到中央      <br/>
+<a href="http://www.openkore.com">openkore</a>: <code>p cmd move prontera</code>       <br/>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>cmd move prontera</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd move prontera</code> + <strong>Ctrl+P</strong></p>
+
+<p><a name="guildcmd"></a></p>
+
+<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">guildcmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 公會頻道中有cmd字串時觸發巨集</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上是利用公會頻道送出同步指令的巨集</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>不需要同一隊伍，只需同一公會即可。</li>
+<li>最多支持50人，看公會擴充組合體制等級而定。</li>
+<li>所有公會成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</li>
+</ul>
+
+
+<p>使用方法：   <br/>
+e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自動存倉   <br/>
+<a href="http://www.openkore.com">openkore</a>: <code>g cmd autostorage</code>     <br/>
+官方遊戲程式: 在<strong>公會</strong>頻道直接輸入<code>cmd autostorage</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd autostorage</code> + <strong>Ctrl+G</strong></p>
+
+<p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最安全做法是自創隊伍跟公會！</strong></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/13/q2303/">白色情人節活動 2013</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-13T16:00:00+08:00" pubdate data-updated="true">Mar 13<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/13/q2303/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/q2303.jpg" alt="" /></p>
+
+<p>本巨集分別由<a href="#gotogeffen">gotogeffen</a>,<a href="#getitem">getitem</a>,<a href="#helpgirl">helpgirl</a>和<a href="#nextchar">nextchar</a>組成，推薦有6個20級或以上人物使用。</p>
+
+<p>簡單說明一下運作，利用<a href="http://www.openkore.com">openkore</a>登入後<a href="#gotogeffen">gotogeffen</a>就會偵測任務限制時間是否到達了，如果現在位置不是在吉芬塔外就會前往。
+然後<a href="#getitem">getitem</a>向賢者華倫泰領取10個愛情魔法棒，<a href="#helpgirl">helpgirl</a>再對<a href="/images/q2303b.jpg" title="失戀的少女">失戀的少女</a>使用愛情魔法棒將可以破除獸人女戰士的詛咒，
+當身上的愛情魔法棒換完後<a href="#nextchar">nextchar</a>就會自動把身上巧克力存倉，完成存倉後轉換上一個人物繼續，直至到第一人物也完成後自動關閉<a href="http://www.openkore.com">openkore</a>。<a href="http://ro.gameflier.com/news/news_in.asp?Count=done&amp;BID=7551">活動詳情請點我</a></p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>必須滿6個人物及20級以上</li>
+<li>身上有足夠金錢及正確路線前往吉芬</li>
+<li>最少解過一次這活動</li>
+<li>留意身上負重及倉儲空間</li>
+<li>盡量使用乾淨的<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>，因為6個人物會共用同一個<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>。建議不要用打怪的<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>!</li>
+<li>如果吉芬塔外兩位少女在取得愛情魔法棒前已經是女獸人形態就用手動跟兩位分別對話一次。</li>
+</ul>
+
+
+<p>以下是<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中要修改的地方</p>
+
+<pre><code>    char 5                      # 由第六(5)個人物到第一(0)人物，當第一(0)人物完成後會變回5。
+    XKore 0                     # 如果XKore 1會卡住在人物選單
+    follow 0                    # 防止跟主人亂走
+    itemsGatherAuto 0           # 不撿別人掉地上的物品
+    lockMap                     # 不設地圖
+    route_randomWalk_inTown 0   # 防止在城中亂走
+    statsAddAuto 0              # 防止點其他人物的素質
+    skillsAddAuto 0             # 防止點其他人物的技能
+    storageAuto_password xxx    # 正確倉庫密碼
+</code></pre>
+
+<p><a name="gotogeffen"></a></p>
+
+<figure class='code'><figcaption><span>gotogeffen</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">gotogeffen</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="nb">time</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">location</span> <span class="ow">not</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="n">gef_tower</span> <span class="mi">52</span> <span class="mi">177</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">5</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a name="getitem"></a></p>
+
+<figure class='code'><figcaption><span>getitem</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">getitem</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&lt;</span> <span class="nb">time</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">location</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">120</span> <span class="mi">98</span> <span class="n">r0</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a name="helpgirl"></a></p>
+
+<figure class='code'><figcaption><span>helpgirl</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">helpgirl</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&gt;</span> <span class="nb">time</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">location</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;愛情魔法棒&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/失戀的女孩\#(.*) \((\d+)\): \*(天哪！|哭泣)\*/</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talk</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch2</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">5</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talk</span> <span class="n">resp</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">愛情魔法棒</span><span class="p">:</span> <span class="nv">@invamount</span><span class="p">(</span><span class="err">愛情魔法棒</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a name="nextchar"></a></p>
+
+<figure class='code'><figcaption><span>nextchar</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">nextchar</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;愛情魔法棒&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;愛情魔法棒&quot;</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;active&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$::questList</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;2303&#39;</span><span class="p">}</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;time&#39;</span><span class="p">}</span> <span class="o">&gt;</span> <span class="nb">time</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">location</span> <span class="n">geffen</span> <span class="mi">120</span> <span class="mi">110</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="n">geffen</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">@random</span><span class="p">(</span><span class="s">&quot;-2&quot;</span><span class="p">,</span><span class="s">&quot;-1&quot;</span><span class="p">,</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;2&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">120</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">@random</span><span class="p">(</span><span class="s">&quot;-2&quot;</span><span class="p">,</span><span class="s">&quot;-1&quot;</span><span class="p">,</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;2&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">65</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">120</span> <span class="mi">62</span> <span class="n">r1</span> <span class="n">n</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">3</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">巧克力</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">白色情人巧克力</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">手製巧克力</span><span class="p">(</span><span class="err">黑</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">手製巧克力</span><span class="p">(</span><span class="err">白</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">巧克力飲料</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">@config</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">char5</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">char</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">@config</span><span class="p">(</span><span class="n">char</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">charselect</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">char5</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">char</span> <span class="mi">5</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">quit</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">timeout</span> <span class="mi">15</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>分類</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/其他/'>其他 (1)</a></li>
+<li class='category'><a href='/blog/categories/技能/'>技能 (2)</a></li>
+<li class='category'><a href='/blog/categories/活動/'>活動 (1)</a></li>
+<li class='category'><a href='/blog/categories/物品/'>物品 (2)</a></li>
+<li class='category'><a href='/blog/categories/管理/'>管理 (5)</a></li>
+
+  </ul>
+</section><section>
+  <h1>巨集雲</h1>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+26.0%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+18.0%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+18.0%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+18.0%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+18.0%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+18.0%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+18.0%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+26.0%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+18.0%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+18.0%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+18.0%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+18.0%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+18.0%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+18.0%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+18.0%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+18.0%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+18.0%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+18.0%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+26.0%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+18.0%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+18.0%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+</section><section>
+  <h1>最新文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/02/sharezeny/">查詢及平均分配金錢</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/01/playsound/">用巨集播放音效</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/30/itemamount/">查詢物品數量及列出報告</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/30/refine/">精煉大量防具</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/29/save/">管理儲存及倉庫位置</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+  <p>
+  <div class="fb-like-box" data-href="http://www.facebook.com/openkorer" data-width="260" data-height="200" data-show-faces="true" data-stream="false" data-header="false"></div>
+  </p>
+  <p>
+  <a href="http://feeds.feedburner.com/openkorer"><img src="http://feeds.feedburner.com/~fc/openkorer?bg=000000&amp;fg=FFFFFF&amp;anim=1" height="26" width="88" style="border:0" alt="" /></a>
+  </p>
+</section>
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - openkorer - 擁有著作權 - 
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'openkorer';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
