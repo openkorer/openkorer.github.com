@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-02T23:29:11+08:00</updated>
+  <updated>2013-04-02T23:39:48+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -38,11 +38,17 @@
 <li>派錢員密頻要開</li>
 <li>建議利用隊伍公會頻道</li>
 <li>建議找一個比較少人的地方</li>
-<li>修改<strong>派錢員</strong>的名稱，第<strong>3</strong>,<strong>7</strong>行</li>
+<li>必須修改<strong>派錢員</strong>的名稱，getzeny第<strong>3</strong>,<strong>7</strong>行，名稱包含特別符號可能會出問題！</li>
 <li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/DealAuto">dealAuto</a>改<strong>2</strong></li>
 <li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/DealAuto_names">dealAuto_names</a>加上<strong>派錢員</strong>的名字，<strong>如果本身是空的就不用加</strong>！</li>
+<li>每7秒密一次<strong>派錢員</strong>直到指定金錢才會停，秒數改getzeny的第<strong>11</strong>行。</li>
 </ul>
 
+
+<p>使用方法:                 <br/>
+e.g. 要求每人身上都要有10000000zeny (一千萬)
+<a href="http://www.openkore.com">openkore</a>: 隊伍用<code>p z g 10000000</code> 公會用<code>g z g 10000000</code>         <br/>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>z g 10000000</code>或在<strong>公會</strong>頻道輸入<code>z g 10000000</code></p>
 
 <p><a name="getzeny"></a></p>
 
