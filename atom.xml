@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-04T09:04:07+08:00</updated>
+  <updated>2013-04-04T09:15:06+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -25,7 +25,7 @@
 
 <pre><code>    [公會] A測試員 : B測試員在嗎?
     [公會] B通訊員 : A測試員: B測試員在嗎?
-    [公會] B測試員: 我在呀
+    [公會] B測試員 : 我在呀
     [公會] A通訊員 : B測試員: 我在呀
 </code></pre>
 
