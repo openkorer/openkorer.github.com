@@ -9,8 +9,8 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="這是一個半自動的防具精煉巨集，適用於所有防具。武器建議用鐵匠系自己精煉比較好。
-先看一下運作，假如你有很多鈽鐳金盾 [1]又想把它精煉到+7，只要利用隊伍頻道輸入7次指就可以完成。當然機率還是看你自己人品跟NPC心情！ 巨集使用條件及注意事項: config.txt中XKore必須為1， &hellip;">
+  <meta name="description" content="在眾多openkore的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
+這巨集是設計給我自己N個商人用的，可利用隊伍及公會頻道同時查詢所有openkore指定物品在身上(包括已裝備的)，手推車及倉庫的數量。實用又方便！ 巨集使用條件及注意事項: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -28,8 +28,10 @@
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -77,6 +79,113 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/30/itemamount/">查詢物品數量及列出報告</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-30T23:34:00+08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/30/itemamount/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在眾多<a href="http://www.openkore.com">openkore</a>的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
+這巨集是設計給我自己N個商人用的，可利用隊伍及公會頻道同時查詢所有<a href="http://www.openkore.com">openkore</a>指定物品在<strong>身上(包括已裝備的)</strong>，<strong>手推車</strong>及<strong>倉庫</strong>的數量。實用又方便！</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>因為要輸入中文的關係，下達指令的人物必須用<a href="http://www.openkore.com/index.php/XKore">XKore</a>模式或<strong>官方遊戲程式</strong>，推薦用<a href="http://www.openkore.com/index.php/XKore">XKore</a>模式，其他<a href="http://www.openkore.com">openkore</a>不用。</li>
+<li>如要查詢倉庫的數量<strong>必須在開倉狀態</strong>，集體走到卡普拉附近跟開倉可參考此文章<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>。</li>
+<li>必須組隊或加入公會，巨集中已同時支持隊伍及公會頻道。</li>
+<li>倉庫數量為<strong>-1</strong>時代表沒有開倉</li>
+<li>同時可用配合<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>跟<a href="http://www.openkore.com/index.php/Storage">storage</a> get或add達到同時存取物品，例如我要每人從倉庫取500個紅蘿蔔出來的指令是<code>cmd storage get 紅蘿蔔 500</code></li>
+</ul>
+
+
+<p>使用方法:     <br/>
+e.g. 查詢紅蘿蔔      <br/>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>ia 紅蘿蔔</code> + <strong>Enter</strong>或在<strong>公會</strong>頻道輸入<code>ia 紅蘿蔔</code> + <strong>Ctrl+G</strong></p>
+
+<p>其他例子:</p>
+
+<ul>
+<li><code>ia 海神之憤怒</code></li>
+<li><code>ia 鈽鐳金盾 [1]</code></li>
+<li><code>ia +6 鈽鐳金盾 [異型卡片] [1]</code></li>
+<li><code>ia 歐羅萊昂的制服 [VIT+3] [1]</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>itemamount</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">itemamount</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: ia (.*)/</span>
+</span><span class='line'>  <span class="n">run</span><span class="o">-</span><span class="n">once</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$m</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
+</span><span class='line'>  <span class="nv">$i</span> <span class="o">=</span> <span class="nv">@invamount</span><span class="p">(</span><span class="nv">$m</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$c</span> <span class="o">=</span> <span class="nv">@cartamount</span><span class="p">(</span><span class="nv">$m</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="nv">$m</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$t</span> <span class="o">=</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$i</span><span class="o">+</span><span class="nv">$c</span><span class="o">+</span><span class="nv">$s</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">p</span> <span class="err">物品欄</span><span class="p">(</span><span class="nv">$i</span><span class="p">)</span><span class="err">手推車</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span><span class="err">倉庫</span><span class="p">(</span><span class="nv">$s</span><span class="p">)</span><span class="err">總共</span><span class="p">(</span><span class="nv">$t</span><span class="p">)</span>   <span class="c1"># 如要轉用公會頻出報告請用do g</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以下是<a href="http://www.openkore.com">openkore</a>例出隊伍物品報告的範本</p>
+
+<pre><code>    [隊伍] op01 : ia 紅蘿蔔
+    [隊伍] op01 : 物品欄(100)手推車(0)倉庫(10414)總共(10514)
+    [隊伍] op02 : 物品欄(0)手推車(0)倉庫(20414)總共(20414)
+    .
+    .
+    .
+    [隊伍] op11 : 物品欄(1)手推車(1)倉庫(0)總共(2)
+    [隊伍] op12 : 物品欄(0)手推車(0)倉庫(14)總共(14)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -556,117 +665,6 @@ e.g. save prontera    <br/>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/26/zangetsu/">月影忍者-變形的上弦月</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-26T23:18:00+08:00" pubdate data-updated="true">Mar 26<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/03/26/zangetsu/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/zangetsu.jpg" alt="" /></p>
-
-<p>先看一下<a href="http://dsfix.org">DS</a>的<a href="http://dsfix.org/%E5%BF%8D%E8%80%85%E7%B3%BB-%E6%9C%88%E5%BD%B1%E5%BF%8D%E8%80%85">技能說明</a>：     <br/>
-持續時間內依指定對象目前剩餘的HP和SP而變化ATK或MATK</p>
-
-<p>剩餘HP偶數時：ATK+(指定對象Base等級/3)+(技能等級x20)  <br/>
-剩餘HP奇數時：ATK-(指定對象Base等級/3)+(技能等級x20)  <br/>
-剩餘SP偶數時：MATK+(指定對象Base等級/3)+(技能等級x20) <br/>
-剩餘SP奇數時：MATK-(指定對象Base等級/3)+(技能等級x20)</p>
-
-<p>所以使用<strong>變形的上弦月</strong>的時機是十分重要，如果在奇數時使用會有反效果，甚至比沒有使用更差。</p>
-
-<p>不知道奇數跟偶數是什麼? 很簡單  <br/>
-奇數為1,3,5,7..<br/>
-偶數為2,4,6,8..</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li><a href="http://www.openkore.com">openkore</a>版本己支援日月影忍者。 就是不會把日月影忍者當成怪物來追殺！</li>
-<li>只對月影忍者<strong>(女)</strong>有效</li>
-<li>建議<strong>變形的上弦月</strong>等級3或以上才使用</li>
-<li>建議在<strong>第16個夜晚狀態</strong>下才使用，因為詠唱比較快，HP,SP回復變化比較少。成功率就比較高！</li>
-<li>如果巨集中的<strong>第16個夜晚狀態</strong>，<strong>變形的上弦月狀態</strong>字眼跟你的版本有出入，請自行修改。</li>
-<li>看個人需要修改第<strong>4</strong>,<strong>9</strong>行</li>
-</ul>
-
-
-<p>以下巨集是以剩餘HP，SP同時為偶數作為觸發，如果只要其一請自行修改第<strong>10</strong>行。</p>
-
-<figure class='code'><figcaption><span>zangetsu</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">zangetsu</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">class</span> <span class="n">Oboro</span>
-</span><span class='line'>  <span class="n">sp</span> <span class="o">&gt;</span> <span class="mi">100</span>
-</span><span class='line'>  <span class="n">aggressives</span> <span class="o">&lt;</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">status</span> <span class="err">第</span><span class="mi">16</span><span class="err">個夜晚狀態</span>
-</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">動作延遲</span>
-</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">明鏡止水狀態</span>
-</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="err">變形的上弦月狀態</span>
-</span><span class='line'>  <span class="n">location</span> <span class="n">man_fild02</span>
-</span><span class='line'>  <span class="nb">eval</span> <span class="p">(</span><span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;hp&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;hp&#39;</span><span class="p">}</span> <span class="sr">/ 2) * 2 &amp;&amp; $::char-&gt;{&#39;sp&#39;} == int($::char-&gt;{&#39;sp&#39;} /</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nb">log</span> <span class="n">HP:</span><span class="nv">$</span><span class="err">.</span><span class="nv">hp</span> <span class="n">SP:</span><span class="nv">$</span><span class="err">.</span><span class="nv">sp</span><span class="p">;</span><span class="k">do</span> <span class="n">ss</span> <span class="mi">3026</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'>  <span class="n">timeout</span> <span class="mi">30</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>成功觸發後<a href="http://www.openkore.com">openkore</a>會顯示如下</p>
-
-<pre><code>    [macro] automacro zangetsu triggered.
-    [macro log] HP:9828 SP:758
-    You are casting 變形的上弦月 on yourself (Delay: 737ms)
-    You use 變形的上弦月 (Lv: 5) on yourself (Delay: 520ms)
-    You are now: 變形的上弦月狀態 (Duration: 120s)
-    You use 變形的上弦月 on yourself (Lv: 5)
-    You are now: 變形的上弦月技能延遲 (Duration: 30s)
-    You are now: 動作延遲 (Duration: 1s)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -686,15 +684,19 @@ e.g. save prontera    <br/>
 <li class='category'><a href='/blog/categories/技能/'>技能 (2)</a></li>
 <li class='category'><a href='/blog/categories/活動/'>活動 (1)</a></li>
 <li class='category'><a href='/blog/categories/物品/'>物品 (2)</a></li>
-<li class='category'><a href='/blog/categories/管理/'>管理 (5)</a></li>
+<li class='category'><a href='/blog/categories/管理/'>管理 (6)</a></li>
 
   </ul>
 </section><section>
   <h1>標籤</h1>
-    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+26.0%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+18.0%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+18.0%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+18.0%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+18.0%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+18.0%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+18.0%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+26.0%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+18.0%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+18.0%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+18.0%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+18.0%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+18.0%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+18.0%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+18.0%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+18.0%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+18.0%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+18.0%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+26.0%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+18.0%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+18.0%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+16.666666666666668%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
 </section><section>
   <h1>最新文章</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/04/guildmsg/">同盟公會頻道互通</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/02/sharezeny/">查詢及平均分配金錢</a>
@@ -710,10 +712,6 @@ e.g. save prontera    <br/>
     
       <li class="post">
         <a href="/blog/2013/03/30/refine/">精煉大量防具</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/29/save/">管理儲存及倉庫位置</a>
       </li>
     
   </ul>
@@ -779,16 +777,6 @@ e.g. save prontera    <br/>
   </script>
 
 
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 

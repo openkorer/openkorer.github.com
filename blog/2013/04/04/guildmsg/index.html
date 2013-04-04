@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: map - 唔好巨集</title>
+  <title>同盟公會頻道互通 - 唔好巨集</title>
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="Tag: map">
+  <meta name="description" content="當你想跟分會或者同盟公會的朋友聊天時，很多時候都只是利用密頻，但只能一對一，有點可惜。
+很久之前有人找我幫他寫了一個公會頻道互通的巨集，今天跟大家說一下原理跟寫法。 首先兩個公會都要有一個人物專門做通訊員，當A公會通訊員收到A公會的任何聊天信息就會通過密頻把A公會的聊天信息傳給B公會通訊員， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://openkorer.github.comblog/tags/map">
+  <link rel="canonical" href="http://openkorer.github.com/blog/2013/04/04/guildmsg">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/openkorer" rel="alternate" title="唔好巨集" type="application/atom+xml">
@@ -77,36 +78,173 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: Map</h1>
+    
+      <h1 class="entry-title">同盟公會頻道互通</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-04T08:08:00+08:00" pubdate data-updated="true">Apr 4<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>當你想跟分會或者同盟公會的朋友聊天時，很多時候都只是利用密頻，但只能一對一，有點可惜。
+很久之前有人找我幫他寫了一個公會頻道互通的巨集，今天跟大家說一下原理跟寫法。</p>
 
-  
-  <h2>2013</h2>
+<p>首先兩個公會都要有一個人物專門做通訊員，當<strong>A公會通訊員</strong>收到<strong>A公會</strong>的任何聊天信息就會通過密頻把<strong>A公會</strong>的聊天信息傳給<strong>B公會通訊員</strong>，當<strong>B公會通訊員</strong>收到後就在<strong>B公會</strong>發言，相反B對A也相同原理，先看以下模擬聊天記錄會比較容易理解。</p>
 
-<article>
-  
-<h1><a href="/blog/2013/03/29/save/">管理儲存及倉庫位置</a></h1>
-<time datetime="2013-03-29T21:35:00+08:00" pubdate><span class='month'>Mar</span> <span class='day'>29</span> <span class='year'>2013</span></time>
+<pre><code>    [公會] A測試員 : B測試員在嗎?
+    [公會] B通訊員 : A測試員: B測試員在嗎?
+    [公會] B測試員: 我在呀
+    [公會] A通訊員 : B測試員: 我在呀
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/管理/'>管理</a></span>
-</footer>
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>兩個公會也要有一人當通訊員才能互通</li>
+<li>通訊員密頻要開</li>
+<li>必須修改<a href="#gmsg">gmsg</a>第<strong>5</strong>,<strong>6</strong>行，<a href="#pmsg">pmsg</a>第<strong>2</strong>行的通訊員名稱。</li>
+<li>兩個公會的通訊員都要有<a href="#gmsg">gmsg</a>，<a href="#pmsg">pmsg</a>兩個巨集</li>
+<li>這版本只支持兩個公會</li>
+<li>假如同時(<strong>秒</strong>)出現大量聊天信息有機會出現遺留情況</li>
+</ul>
 
 
-</article>
+<p>使用方法:     <br/>
+如果設定沒出錯，正常用公會頻道聊天就OK</p>
 
+<p><a name="gmsg"></a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">gmsg</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guild</span> <span class="sr">/(.*)/</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span>
+</span><span class='line'>  <span class="nv">$me</span> <span class="o">=</span> <span class="err">通訊員</span><span class="n">A</span> <span class="c1"># 本公會通訊員名稱</span>
+</span><span class='line'>  <span class="nv">$to</span> <span class="o">=</span> <span class="err">通訊員</span><span class="n">B</span> <span class="c1"># 對方公會通訊員名稱</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastguild</span> <span class="o">=</span> <span class="nv">$me</span><span class="p">)</span> <span class="n">stop</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">pm</span> <span class="nv">$to</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastguild:$</span><span class="err">.</span><span class="nv">lastguildMsg</span><span class="p">;</span><span class="n">stop</span>
+</span><span class='line'>  <span class="p">]</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a name="pmsg"></a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">pmsg</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">pm</span> <span class="sr">/(.*)/</span><span class="p">,</span><span class="err">通訊員</span><span class="n">B</span> <span class="c1"># 對方公會通訊員名稱</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">g</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastpmMsg</span><span class="p">;</span><span class="n">stop</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>`</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">openkorer</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-04T08:08:00+08:00" pubdate data-updated="true">Apr 4<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/管理/'>管理</a>
+  
+</span>
+
+
+      
+
+<span class="categories">
+  
+    <a class='tag' href='/blog/tags/guild/'>guild</a>, <a class='tag' href='/blog/tags/manage/'>manage</a>
+  
+</span>
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/02/sharezeny/" title="Previous Post: 查詢及平均分配金錢">&laquo; 查詢及平均分配金錢</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -182,7 +320,10 @@
       var disqus_shortname = 'openkorer';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://openkorer.github.com/blog/2013/04/04/guildmsg/';
+        var disqus_url = 'http://openkorer.github.com/blog/2013/04/04/guildmsg/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

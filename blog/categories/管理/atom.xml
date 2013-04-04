@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 管理 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/管理/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-03T01:04:32+08:00</updated>
+  <updated>2013-04-04T08:57:14+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[同盟公會頻道互通]]></title>
+    <link href="http://openkorer.github.com/blog/2013/04/04/guildmsg/"/>
+    <updated>2013-04-04T08:08:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/04/04/guildmsg</id>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
+[storage]: http://www.openkore.com/index.php/Storage
+[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
+[dealAuto]: http://www.openkore.com/index.php/DealAuto
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
+
+<p>當你想跟分會或者同盟公會的朋友聊天時，很多時候都只是利用密頻，但只能一對一，有點可惜。
+很久之前有人找我幫他寫了一個公會頻道互通的巨集，今天跟大家說一下原理跟寫法。</p>
+
+<p>首先兩個公會都要有一個人物專門做通訊員，當<strong>A公會通訊員</strong>收到<strong>A公會</strong>的任何聊天信息就會通過密頻把<strong>A公會</strong>的聊天信息傳給<strong>B公會通訊員</strong>，當<strong>B公會通訊員</strong>收到後就在<strong>B公會</strong>發言，相反B對A也相同原理，先看以下模擬聊天記錄會比較容易理解。</p>
+
+<pre><code>    [公會] A測試員 : B測試員在嗎?
+    [公會] B通訊員 : A測試員: B測試員在嗎?
+    [公會] B測試員: 我在呀
+    [公會] A通訊員 : B測試員: 我在呀
+</code></pre>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>兩個公會也要有一人當通訊員才能互通</li>
+<li>通訊員密頻要開</li>
+<li>必須修改<a href="#gmsg">gmsg</a>第<strong>5</strong>,<strong>6</strong>行，<a href="#pmsg">pmsg</a>第<strong>2</strong>行的通訊員名稱。</li>
+<li>兩個公會的通訊員都要有<a href="#gmsg">gmsg</a>，<a href="#pmsg">pmsg</a>兩個巨集</li>
+<li>這版本只支持兩個公會</li>
+<li>假如同時(<strong>秒</strong>)出現大量聊天信息有機會出現遺留情況</li>
+</ul>
+
+
+<p>使用方法:     <br/>
+如果設定沒出錯，正常用公會頻道聊天就OK</p>
+
+<p><a name="gmsg"></a>
+``` perl
+automacro gmsg {</p>
+
+<pre><code>guild /(.*)/
+call {
+[
+$me = 通訊員A # 本公會通訊員名稱
+$to = 通訊員B # 對方公會通訊員名稱
+if ($.lastguild = $me) stop
+do pm $to $.lastguild:$.lastguildMsg;stop
+]
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p><a name="pmsg"></a>
+``` perl
+automacro pmsg {</p>
+
+<pre><code>pm /(.*)/,通訊員B # 對方公會通訊員名稱
+call {
+do g $.lastpmMsg;stop
+}
+</code></pre>
+
+<p>}
+````</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[查詢及平均分配金錢]]></title>
@@ -537,114 +621,6 @@ stop
 
 <p>}
 ```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[一次控制多個openkore]]></title>
-    <link href="http://openkorer.github.com/blog/2013/03/25/sync/"/>
-    <updated>2013-03-25T07:06:00+08:00</updated>
-    <id>http://openkorer.github.com/blog/2013/03/25/sync</id>
-    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
-[XKore]: http://www.openkore.com/index.php/XKore
-[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
-[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
-[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
-[DS]: http://dsfix.org
-[p]: http://www.openkore.com/index.php/P
-[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
-[autostorage]: http://www.openkore.com/index.php/Autostorage
-[move]: http://www.openkore.com/index.php/Move
-[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
-[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
-[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
-[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
-[storage]: http://www.openkore.com/index.php/Storage
-[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
-[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
-[dealAuto]: http://www.openkore.com/index.php/DealAuto
-[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
-
-<p>本教學可以對多個以上的[openkore]同時下達指令，並且支援所有[openkore]的[Console Command]。
-我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個[automacro]。其實如果利用<code>console</code>作觸發只需一個[automacro]就可以，寫法如下。</p>
-
-<p>``` perl cmd
-automacro cmd {</p>
-
-<pre><code>console /\[(隊伍|公會)\] (.*) \: cmd (.*)/  # 任何人在隊伍或公會頻道中以cmd開始的字串時觸發巨集
-exclusive 1
-call {
-$cmd = $.lastMatch3
-do $cmd
-}
-</code></pre>
-
-<p>}
-```</p>
-
-<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。如果你正在用<code>console</code>就要考慮一下要不要繼續用。</p>
-
-<p><a name="partycmd"></a>
-``` perl partycmd
-automacro partycmd {</p>
-
-<pre><code>party /cmd (.*)/            # 隊伍頻道中有cmd字串時觸發巨集
-exclusive 1
-call {
-$cmd = $.lastMatch1         # 把cmd後的指令串代入$cmd中
-do $cmd                     # 執行指令串
-}
-</code></pre>
-
-<p>}
-```
-以上是利用隊伍頻道送出同步指令的巨集</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li>只要同一隊伍即可。</li>
-<li>最多支持12人。</li>
-<li>所有隊伍成員也會看到指令，還可以對你的[openkore]下達任何指令。</li>
-</ul>
-
-
-<p>使用方法:                 <br/>
-e.g. [move] prontera 移動到中央      <br/>
-[openkore][]: <code>p cmd move prontera</code>       <br/>
-官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>cmd move prontera</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd move prontera</code> + <strong>Ctrl+P</strong></p>
-
-<p><a name="guildcmd"></a>
-``` perl guildcmd
-automacro guildcmd {</p>
-
-<pre><code>guild /cmd (.*)/            # 公會頻道中有cmd字串時觸發巨集
-exclusive 1
-call {
-$cmd = $.lastMatch1         # 把cmd後的指令串代入$cmd中
-do $cmd                     # 執行指令串
-}
-</code></pre>
-
-<p>}
-```
-以上是利用公會頻道送出同步指令的巨集</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li>不需要同一隊伍，只需同一公會即可。</li>
-<li>最多支持50人，看公會擴充組合體制等級而定。</li>
-<li>所有公會成員也會看到指令，還可以對你的[openkore]下達任何指令。</li>
-</ul>
-
-
-<p>使用方法：   <br/>
-e.g. [autostorage] 自動存倉   <br/>
-[openkore][]: <code>g cmd autostorage</code>     <br/>
-官方遊戲程式: 在<strong>公會</strong>頻道直接輸入<code>cmd autostorage</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd autostorage</code> + <strong>Ctrl+G</strong></p>
-
-<p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最安全做法是自創隊伍跟公會！</strong></p>
 ]]></content>
   </entry>
   

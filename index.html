@@ -9,7 +9,8 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="有些活動好像命運? 機會? 塔羅占卜師幫你解惑！每次都要轉錢是不是很煩？假如你人物多花的時間相對多，而且容易出錯。 往往大量金錢都集中在一個人物身上，而其他人物都只有少量。一旦到了需要金錢的活動或任務就變得麻煩。針對這問題寫了一個金錢交易巨集。先看看什麼情況下適用。 如大量人物需要轉生， &hellip;">
+  <meta name="description" content="當你想跟分會或者同盟公會的朋友聊天時，很多時候都只是利用密頻，但只能一對一，有點可惜。
+很久之前有人找我幫他寫了一個公會頻道互通的巨集，今天跟大家說一下原理跟寫法。 首先兩個公會都要有一個人物專門做通訊員，當A公會通訊員收到A公會的任何聊天信息就會通過密頻把A公會的聊天信息傳給B公會通訊員， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,8 +28,10 @@
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
   
   <script type="text/javascript">
     var _gaq = _gaq || [];
@@ -76,6 +79,114 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/04/guildmsg/">同盟公會頻道互通</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-04T08:08:00+08:00" pubdate data-updated="true">Apr 4<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/04/guildmsg/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>當你想跟分會或者同盟公會的朋友聊天時，很多時候都只是利用密頻，但只能一對一，有點可惜。
+很久之前有人找我幫他寫了一個公會頻道互通的巨集，今天跟大家說一下原理跟寫法。</p>
+
+<p>首先兩個公會都要有一個人物專門做通訊員，當<strong>A公會通訊員</strong>收到<strong>A公會</strong>的任何聊天信息就會通過密頻把<strong>A公會</strong>的聊天信息傳給<strong>B公會通訊員</strong>，當<strong>B公會通訊員</strong>收到後就在<strong>B公會</strong>發言，相反B對A也相同原理，先看以下模擬聊天記錄會比較容易理解。</p>
+
+<pre><code>    [公會] A測試員 : B測試員在嗎?
+    [公會] B通訊員 : A測試員: B測試員在嗎?
+    [公會] B測試員: 我在呀
+    [公會] A通訊員 : B測試員: 我在呀
+</code></pre>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>兩個公會也要有一人當通訊員才能互通</li>
+<li>通訊員密頻要開</li>
+<li>必須修改<a href="#gmsg">gmsg</a>第<strong>5</strong>,<strong>6</strong>行，<a href="#pmsg">pmsg</a>第<strong>2</strong>行的通訊員名稱。</li>
+<li>兩個公會的通訊員都要有<a href="#gmsg">gmsg</a>，<a href="#pmsg">pmsg</a>兩個巨集</li>
+<li>這版本只支持兩個公會</li>
+<li>假如同時(<strong>秒</strong>)出現大量聊天信息有機會出現遺留情況</li>
+</ul>
+
+
+<p>使用方法:     <br/>
+如果設定沒出錯，正常用公會頻道聊天就OK</p>
+
+<p><a name="gmsg"></a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">gmsg</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guild</span> <span class="sr">/(.*)/</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span>
+</span><span class='line'>  <span class="nv">$me</span> <span class="o">=</span> <span class="err">通訊員</span><span class="n">A</span> <span class="c1"># 本公會通訊員名稱</span>
+</span><span class='line'>  <span class="nv">$to</span> <span class="o">=</span> <span class="err">通訊員</span><span class="n">B</span> <span class="c1"># 對方公會通訊員名稱</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastguild</span> <span class="o">=</span> <span class="nv">$me</span><span class="p">)</span> <span class="n">stop</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">pm</span> <span class="nv">$to</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastguild:$</span><span class="err">.</span><span class="nv">lastguildMsg</span><span class="p">;</span><span class="n">stop</span>
+</span><span class='line'>  <span class="p">]</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a name="pmsg"></a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">pmsg</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">pm</span> <span class="sr">/(.*)/</span><span class="p">,</span><span class="err">通訊員</span><span class="n">B</span> <span class="c1"># 對方公會通訊員名稱</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">g</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastpmMsg</span><span class="p">;</span><span class="n">stop</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>`</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -394,113 +505,6 @@ e.g. 要求每人身上都要有10000000zeny (一千萬)      <br/>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/30/itemamount/">查詢物品數量及列出報告</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-30T23:34:00+08:00" pubdate data-updated="true">Mar 30<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/03/30/itemamount/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在眾多<a href="http://www.openkore.com">openkore</a>的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
-這巨集是設計給我自己N個商人用的，可利用隊伍及公會頻道同時查詢所有<a href="http://www.openkore.com">openkore</a>指定物品在<strong>身上(包括已裝備的)</strong>，<strong>手推車</strong>及<strong>倉庫</strong>的數量。實用又方便！</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li>因為要輸入中文的關係，下達指令的人物必須用<a href="http://www.openkore.com/index.php/XKore">XKore</a>模式或<strong>官方遊戲程式</strong>，推薦用<a href="http://www.openkore.com/index.php/XKore">XKore</a>模式，其他<a href="http://www.openkore.com">openkore</a>不用。</li>
-<li>如要查詢倉庫的數量<strong>必須在開倉狀態</strong>，集體走到卡普拉附近跟開倉可參考此文章<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>。</li>
-<li>必須組隊或加入公會，巨集中已同時支持隊伍及公會頻道。</li>
-<li>倉庫數量為<strong>-1</strong>時代表沒有開倉</li>
-<li>同時可用配合<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>跟<a href="http://www.openkore.com/index.php/Storage">storage</a> get或add達到同時存取物品，例如我要每人從倉庫取500個紅蘿蔔出來的指令是<code>cmd storage get 紅蘿蔔 500</code></li>
-</ul>
-
-
-<p>使用方法:     <br/>
-e.g. 查詢紅蘿蔔      <br/>
-官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>ia 紅蘿蔔</code> + <strong>Enter</strong>或在<strong>公會</strong>頻道輸入<code>ia 紅蘿蔔</code> + <strong>Ctrl+G</strong></p>
-
-<p>其他例子:</p>
-
-<ul>
-<li><code>ia 海神之憤怒</code></li>
-<li><code>ia 鈽鐳金盾 [1]</code></li>
-<li><code>ia +6 鈽鐳金盾 [異型卡片] [1]</code></li>
-<li><code>ia 歐羅萊昂的制服 [VIT+3] [1]</code></li>
-</ul>
-
-
-<figure class='code'><figcaption><span>itemamount</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">itemamount</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: ia (.*)/</span>
-</span><span class='line'>  <span class="n">run</span><span class="o">-</span><span class="n">once</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$m</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
-</span><span class='line'>  <span class="nv">$i</span> <span class="o">=</span> <span class="nv">@invamount</span><span class="p">(</span><span class="nv">$m</span><span class="p">)</span>
-</span><span class='line'>  <span class="nv">$c</span> <span class="o">=</span> <span class="nv">@cartamount</span><span class="p">(</span><span class="nv">$m</span><span class="p">)</span>
-</span><span class='line'>  <span class="nv">$s</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="nv">$m</span><span class="p">)</span>
-</span><span class='line'>  <span class="nv">$t</span> <span class="o">=</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$i</span><span class="o">+</span><span class="nv">$c</span><span class="o">+</span><span class="nv">$s</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">p</span> <span class="err">物品欄</span><span class="p">(</span><span class="nv">$i</span><span class="p">)</span><span class="err">手推車</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span><span class="err">倉庫</span><span class="p">(</span><span class="nv">$s</span><span class="p">)</span><span class="err">總共</span><span class="p">(</span><span class="nv">$t</span><span class="p">)</span>   <span class="c1"># 如要轉用公會頻出報告請用do g</span>
-</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
-</span><span class='line'>  <span class="n">stop</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以下是<a href="http://www.openkore.com">openkore</a>例出隊伍物品報告的範本</p>
-
-<pre><code>    [隊伍] op01 : ia 紅蘿蔔
-    [隊伍] op01 : 物品欄(100)手推車(0)倉庫(10414)總共(10514)
-    [隊伍] op02 : 物品欄(0)手推車(0)倉庫(20414)總共(20414)
-    .
-    .
-    .
-    [隊伍] op11 : 物品欄(1)手推車(1)倉庫(0)總共(2)
-    [隊伍] op12 : 物品欄(0)手推車(0)倉庫(14)總共(14)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -518,15 +522,19 @@ e.g. 查詢紅蘿蔔      <br/>
 <li class='category'><a href='/blog/categories/技能/'>技能 (2)</a></li>
 <li class='category'><a href='/blog/categories/活動/'>活動 (1)</a></li>
 <li class='category'><a href='/blog/categories/物品/'>物品 (2)</a></li>
-<li class='category'><a href='/blog/categories/管理/'>管理 (5)</a></li>
+<li class='category'><a href='/blog/categories/管理/'>管理 (6)</a></li>
 
   </ul>
 </section><section>
   <h1>標籤</h1>
-    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+26.0%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+18.0%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+18.0%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+18.0%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+18.0%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+18.0%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+18.0%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+26.0%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+18.0%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+18.0%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+18.0%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+18.0%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+18.0%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+18.0%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+18.0%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+18.0%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+18.0%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+18.0%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+26.0%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+18.0%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+18.0%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+16.666666666666668%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
 </section><section>
   <h1>最新文章</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/04/guildmsg/">同盟公會頻道互通</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/02/sharezeny/">查詢及平均分配金錢</a>
@@ -542,10 +550,6 @@ e.g. 查詢紅蘿蔔      <br/>
     
       <li class="post">
         <a href="/blog/2013/03/30/refine/">精煉大量防具</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/29/save/">管理儲存及倉庫位置</a>
       </li>
     
   </ul>
@@ -611,16 +615,6 @@ e.g. 查詢紅蘿蔔      <br/>
   </script>
 
 
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 
