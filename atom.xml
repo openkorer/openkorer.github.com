@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-04T09:15:51+08:00</updated>
+  <updated>2013-04-06T19:51:51+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -12,6 +12,523 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[創造者-寬廣配藥]]></title>
+    <link href="http://openkorer.github.com/blog/2013/04/06/pharmacy/"/>
+    <updated>2013-04-06T16:44:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/04/06/pharmacy</id>
+    <content type="html"><![CDATA[<p>這教學只製作<strong>鹽酸瓶</strong>跟<strong>火煙瓶</strong>，並不包括其他合成物品。分別由6個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>組成。功能請看以下清單。</p>
+
+<ul>
+<li><a href="#tp3get">tp3get</a> 從倉儲取出<strong>1份寬廣配藥</strong>的材料</li>
+<li><a href="#tp3make">tp3make</a> 用寬廣配藥<strong>1次製作鹽酸瓶,火煙瓶,酒精各50份</strong></li>
+<li><a href="#demoget">demoget</a> 從倉儲取出<strong>100份火煙瓶</strong>的材料</li>
+<li><a href="#demomake">demomake</a> 用配藥製作<strong>火煙瓶100次</strong></li>
+<li><a href="#acidget">acidget</a> 從倉儲取出<strong>500份鹽酸瓶</strong>的材料</li>
+<li><a href="#acidmake">acidmake</a> 用寬廣配藥<strong>1次製作50份鹽酸瓶，分10次製作</strong>。</li>
+</ul>
+
+
+<p>巨集共同使用條件及注意事項:</p>
+
+<ul>
+<li>如果6個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>都放在macros.txt建議次序是:
+
+<ol>
+<li><a href="#tp3get">tp3get</a></li>
+<li><a href="#tp3make">tp3make</a> 寬廣配藥做火煙瓶+酒精+鹽酸瓶</li>
+<li><a href="#demoget">demoget</a></li>
+<li><a href="#demomake">demomake</a> 配藥單做火煙瓶，善用多出的酒精</li>
+<li><a href="#acidget">acidget</a></li>
+<li><a href="#acidmake">acidmake</a> 寬廣配藥做鹽酸瓶</li>
+</ol>
+</li>
+<li>必須為開倉狀態才會觸發拿取出材料巨集</li>
+<li>開倉後就會自動開始，如果沒有自動開始先清空身上材料。</li>
+<li>如果想中途停止可以用<strong>坐下</strong><code>sit</code>或<strong>關閉倉庫</strong><code>storage close</code>即可</li>
+<li>必須修改<a href="#tp3make">tp3make</a>,<a href="#demomake">demomake</a>,<a href="#acidmake">acidmake</a>中的人物<strong>後int,後dex,後luk</strong>數值，如果你有各種對int,dex,luk有加成的技能和裝備，請用上後抄下並修改。確保製作時以最高成功率製作。</li>
+<li>建議酒精製作說明書，火煙瓶製作說明書，鹽酸瓶製作說明書都放身上</li>
+<li>巨集只對<strong>創造者</strong>有效，如想改用<strong>鍊金術師</strong>或<strong>基因學者</strong>請修改或刪除每個巨集的第<strong>2</strong>行。</li>
+</ul>
+
+
+<p><a name="tp3get"></a></p>
+
+<figure class='code'><figcaption><span>tp3get</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">tp3get</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Creator</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="n">EFST_SIT</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空試管&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;透明之布&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;不死心臟&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">&gt;=</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">&gt;=</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;空試管&quot;</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">&gt;=</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">&gt;=</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;透明之布&quot;</span> <span class="o">&gt;=</span> <span class="mi">50</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;不死心臟&quot;</span> <span class="o">&gt;=</span> <span class="mi">50</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">鹽酸瓶</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">火煙瓶</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">酒精</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">藥缽</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">空瓶</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">空試管</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">植物梗</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">毒魔菇芽孢</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">透明之布</span> <span class="mi">50</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">不死心臟</span> <span class="mi">50</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="#tp3get">tp3get</a>使用條件及注意事項:</p>
+
+<ul>
+<li>身上所有材料的數量為0</li>
+<li>為開倉狀態</li>
+<li>倉庫有最少<strong>1</strong>份<strong>寬廣配藥</strong>的材料
+
+<ol>
+<li>藥缽 200</li>
+<li>空瓶 200</li>
+<li>空試管 100</li>
+<li>植物梗 500</li>
+<li>毒魔菇芽孢 500</li>
+<li>透明之布 50</li>
+<li>不死心臟 50</li>
+</ol>
+</li>
+</ul>
+
+
+<p><a name="tp3make"></a></p>
+
+<figure class='code'><figcaption><span>tp3make</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">tp3make</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Creator</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="n">EFST_SIT</span>
+</span><span class='line'>  <span class="n">status</span> <span class="n">EFST_SOULLINK</span>
+</span><span class='line'>  <span class="n">sp</span> <span class="o">&gt;</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;int_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">86</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;dex_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">103</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;luk_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">132</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;酒精製作說明書&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;火煙瓶製作說明書&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;鹽酸瓶製作說明書&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">&gt;=</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">&gt;=</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空試管&quot;</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">&gt;=</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">&gt;=</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;透明之布&quot;</span> <span class="o">&gt;=</span> <span class="mi">50</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;不死心臟&quot;</span> <span class="o">&gt;=</span> <span class="mi">50</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$s1</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">藥缽</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s2</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">空瓶</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s3</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">空試管</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s4</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">植物梗</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s5</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">毒魔菇芽孢</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s6</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">透明之布</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s7</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">不死心臟</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">倉庫材料</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">藥缽</span> <span class="nv">$s1</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">空瓶</span> <span class="nv">$s2</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">試管</span> <span class="nv">$s3</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">植物</span> <span class="nv">$s4</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">芽孢</span> <span class="nv">$s5</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">透布</span> <span class="nv">$s6</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">心臟</span> <span class="nv">$s7</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">ss</span> <span class="mi">498</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="#tp3make">tp3make</a>使用條件及注意事項:</p>
+
+<ul>
+<li>必須有靈魂狀態才能用寬廣配藥(靈悟士跟<strong>跆拳</strong>組隊再對創造者用靈魂就可以，之後<strong>跆拳</strong>下線也可以。但注意組<strong>拳聖是無效果的</strong>）</li>
+<li>身上有最少<strong>1份寬廣配藥</strong>的材料</li>
+<li>酒精製作說明書，火煙瓶製作說明書，鹽酸瓶製作說明書都放身上</li>
+</ul>
+
+
+<p><a name="demoget"></a></p>
+
+<figure class='code'><figcaption><span>demoget</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">demoget</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Creator</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="n">EFST_SIT</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;透明之布&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;酒精&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;透明之布&quot;</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;酒精&quot;</span> <span class="o">&gt;=</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">&lt;</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">&lt;</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;火煙瓶&quot;</span> <span class="o">&lt;=</span> <span class="mi">29900</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空試管&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;不死心臟&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">火煙瓶</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">藥缽</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">空瓶</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">透明之布</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">酒精</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="#demoget">demoget</a>使用條件及注意事項:</p>
+
+<ul>
+<li>身上所有材料的數量為0</li>
+<li>為開倉狀態</li>
+<li>倉庫中<strong>植物梗</strong>跟<strong>毒魔菇芽孢</strong>不足500</li>
+<li>倉庫有最少<strong>100份火煙瓶</strong>的材料
+
+<ol>
+<li>藥缽 100</li>
+<li>空瓶 100</li>
+<li>透明之布 100</li>
+<li>酒精 100</li>
+</ol>
+</li>
+</ul>
+
+
+<p><a name="demomake"></a></p>
+
+<figure class='code'><figcaption><span>demomake</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">demomake</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Creator</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="n">EFST_SIT</span>
+</span><span class='line'>  <span class="n">sp</span> <span class="o">&gt;</span> <span class="mi">20</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;int_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">86</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;dex_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">103</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;luk_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">132</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;火煙瓶製作說明書&quot;</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空試管&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;透明之布&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;不死心臟&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;酒精&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;火煙瓶&quot;</span> <span class="o">&lt;=</span> <span class="mi">29900</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$s1</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">藥缽</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s2</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">空瓶</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s6</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">透明之布</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s8</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">酒精</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">倉庫材料</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">藥缽</span> <span class="nv">$s1</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">空瓶</span> <span class="nv">$s2</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">透布</span> <span class="nv">$s6</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">酒精</span> <span class="nv">$s8</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">ss</span> <span class="mi">228</span> <span class="mi">10</span>
+</span><span class='line'>  <span class="n">pause</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">do</span> <span class="nb">send</span> <span class="mi">8</span><span class="n">E</span> <span class="mo">01</span> <span class="n">DF</span> <span class="mi">1</span><span class="n">B</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span> <span class="mo">00</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="#demomake">demomake</a>使用條件及注意事項:</p>
+
+<ul>
+<li>身上有最少<strong>100份火煙瓶</strong>的材料</li>
+<li>火煙瓶製作說明書放身上</li>
+<li>單獨做火煙瓶100次</li>
+</ul>
+
+
+<p><a name="acidget"></a></p>
+
+<figure class='code'><figcaption><span>acidget</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">acidget</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Creator</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="n">EFST_SIT</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">==</span> <span class="mi">150</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">==</span> <span class="mi">150</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空試管&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;透明之布&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;不死心臟&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">&gt;=</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">&gt;=</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;鹽酸瓶&quot;</span> <span class="o">&lt;=</span> <span class="mi">29500</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">storage</span> <span class="s">&quot;不死心臟&quot;</span> <span class="o">&gt;=</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">add</span> <span class="err">鹽酸瓶</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">藥缽</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">空瓶</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">storage</span> <span class="n">get</span> <span class="err">不死心臟</span> <span class="mi">500</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="#acidget">acidget</a>使用條件及注意事項:</p>
+
+<ul>
+<li>身上藥缽,空瓶數量為150,其他材料的數量為0</li>
+<li>為開倉狀態</li>
+<li>倉庫中<strong>植物梗</strong>跟<strong>毒魔菇芽孢</strong>不足500，而鹽酸瓶材料有500份或以上。</li>
+<li>倉庫有最少<strong>500</strong>份<strong>鹽酸瓶</strong>的材料
+
+<ol>
+<li>藥缽 500</li>
+<li>空瓶 500</li>
+<li>不死心臟 500</li>
+</ol>
+</li>
+</ul>
+
+
+<p><a name="acidmake"></a></p>
+
+<figure class='code'><figcaption><span>acidmake</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">acidmake</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">class</span> <span class="n">Creator</span>
+</span><span class='line'>  <span class="n">status</span> <span class="ow">not</span> <span class="n">EFST_SIT</span>
+</span><span class='line'>  <span class="n">status</span> <span class="n">EFST_SOULLINK</span>
+</span><span class='line'>  <span class="n">sp</span> <span class="o">&gt;</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;int_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">86</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;dex_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">103</span>
+</span><span class='line'>  <span class="nb">eval</span> <span class="nv">$::char</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;luk_bonus&#39;</span><span class="p">}</span> <span class="o">==</span> <span class="mi">132</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;鹽酸瓶製作說明書&quot;</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;藥缽&quot;</span> <span class="o">&gt;=</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空瓶&quot;</span> <span class="o">&gt;=</span> <span class="mi">200</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;空試管&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;植物梗&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;毒魔菇芽孢&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;透明之布&quot;</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="n">inventory</span> <span class="s">&quot;不死心臟&quot;</span> <span class="o">&gt;=</span> <span class="mi">50</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$s1</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">藥缽</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s2</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">空瓶</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">$s7</span> <span class="o">=</span> <span class="nv">@storamount</span><span class="p">(</span><span class="err">不死心臟</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">倉庫材料</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">藥缽</span> <span class="nv">$s1</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">空瓶</span> <span class="nv">$s2</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">心臟</span> <span class="nv">$s7</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">ss</span> <span class="mi">498</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="#acidmake">acidmake</a>使用條件及注意事項:</p>
+
+<ul>
+<li>必須有靈魂狀態才能用寬廣配藥(靈悟士跟<strong>跆拳</strong>組隊再對創造者用靈魂就可以，之後跆拳下線也可以。但注意組<strong>拳聖是無效果的</strong>）</li>
+<li>身上有最少<strong>50份鹽酸瓶</strong>的材料</li>
+<li>鹽酸瓶製作說明書都放身上</li>
+<li>注意這是用寬廣配藥做鹽酸瓶</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[同盟公會頻道互通]]></title>

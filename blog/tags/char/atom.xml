@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: char | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/char/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-04T09:15:51+08:00</updated>
+  <updated>2013-04-06T19:51:51+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -12,6 +12,374 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[創造者-寬廣配藥]]></title>
+    <link href="http://openkorer.github.com/blog/2013/04/06/pharmacy/"/>
+    <updated>2013-04-06T16:44:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/04/06/pharmacy</id>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
+[storage]: http://www.openkore.com/index.php/Storage
+[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
+[dealAuto]: http://www.openkore.com/index.php/DealAuto
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
+
+<p>這教學只製作<strong>鹽酸瓶</strong>跟<strong>火煙瓶</strong>，並不包括其他合成物品。分別由6個[automacro]組成。功能請看以下清單。</p>
+
+<ul>
+<li><a href="#tp3get">tp3get</a> 從倉儲取出<strong>1份寬廣配藥</strong>的材料</li>
+<li><a href="#tp3make">tp3make</a> 用寬廣配藥<strong>1次製作鹽酸瓶,火煙瓶,酒精各50份</strong></li>
+<li><a href="#demoget">demoget</a> 從倉儲取出<strong>100份火煙瓶</strong>的材料</li>
+<li><a href="#demomake">demomake</a> 用配藥製作<strong>火煙瓶100次</strong></li>
+<li><a href="#acidget">acidget</a> 從倉儲取出<strong>500份鹽酸瓶</strong>的材料</li>
+<li><a href="#acidmake">acidmake</a> 用寬廣配藥<strong>1次製作50份鹽酸瓶，分10次製作</strong>。</li>
+</ul>
+
+
+<p>巨集共同使用條件及注意事項:</p>
+
+<ul>
+<li>如果6個[automacro]都放在macros.txt建議次序是:
+
+<ol>
+<li><a href="#tp3get">tp3get</a></li>
+<li><a href="#tp3make">tp3make</a> 寬廣配藥做火煙瓶+酒精+鹽酸瓶</li>
+<li><a href="#demoget">demoget</a></li>
+<li><a href="#demomake">demomake</a> 配藥單做火煙瓶，善用多出的酒精</li>
+<li><a href="#acidget">acidget</a></li>
+<li><a href="#acidmake">acidmake</a> 寬廣配藥做鹽酸瓶</li>
+</ol>
+</li>
+<li>必須為開倉狀態才會觸發拿取出材料巨集</li>
+<li>開倉後就會自動開始，如果沒有自動開始先清空身上材料。</li>
+<li>如果想中途停止可以用<strong>坐下</strong><code>sit</code>或<strong>關閉倉庫</strong><code>storage close</code>即可</li>
+<li>必須修改<a href="#tp3make">tp3make</a>,<a href="#demomake">demomake</a>,<a href="#acidmake">acidmake</a>中的人物<strong>後int,後dex,後luk</strong>數值，如果你有各種對int,dex,luk有加成的技能和裝備，請用上後抄下並修改。確保製作時以最高成功率製作。</li>
+<li>建議酒精製作說明書，火煙瓶製作說明書，鹽酸瓶製作說明書都放身上</li>
+<li>巨集只對<strong>創造者</strong>有效，如想改用<strong>鍊金術師</strong>或<strong>基因學者</strong>請修改或刪除每個巨集的第<strong>2</strong>行。</li>
+</ul>
+
+
+<p><a name="tp3get"></a>
+``` perl tp3get
+automacro tp3get {</p>
+
+<pre><code>class Creator
+status not EFST_SIT
+inventory "藥缽" == 0
+inventory "空瓶" == 0
+inventory "空試管" == 0
+inventory "植物梗" == 0
+inventory "毒魔菇芽孢" == 0
+inventory "透明之布" == 0
+inventory "不死心臟" == 0
+storage "藥缽" &gt;= 200
+storage "空瓶" &gt;= 200
+storage "空試管" &gt;= 100
+storage "植物梗" &gt;= 500
+storage "毒魔菇芽孢" &gt;= 500
+storage "透明之布" &gt;= 50
+storage "不死心臟" &gt;= 50
+exclusive 1
+call {
+do storage add 鹽酸瓶
+do storage add 火煙瓶
+do storage add 酒精
+do storage get 藥缽 200
+do storage get 空瓶 200
+do storage get 空試管 100
+do storage get 植物梗 500
+do storage get 毒魔菇芽孢 500
+do storage get 透明之布 50
+do storage get 不死心臟 50
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p><a href="#tp3get">tp3get</a>使用條件及注意事項:</p>
+
+<ul>
+<li>身上所有材料的數量為0</li>
+<li>為開倉狀態</li>
+<li>倉庫有最少<strong>1</strong>份<strong>寬廣配藥</strong>的材料
+
+<ol>
+<li>藥缽 200</li>
+<li>空瓶 200</li>
+<li>空試管 100</li>
+<li>植物梗 500</li>
+<li>毒魔菇芽孢 500</li>
+<li>透明之布 50</li>
+<li>不死心臟 50</li>
+</ol>
+</li>
+</ul>
+
+
+<p><a name="tp3make"></a>
+``` perl tp3make
+automacro tp3make {</p>
+
+<pre><code>class Creator
+status not EFST_SIT
+status EFST_SOULLINK
+sp &gt; 200
+eval $::char-&gt;{'int_bonus'} == 86
+eval $::char-&gt;{'dex_bonus'} == 103
+eval $::char-&gt;{'luk_bonus'} == 132
+inventory "酒精製作說明書" &gt;= 1
+inventory "火煙瓶製作說明書" &gt;= 1
+inventory "鹽酸瓶製作說明書" &gt;= 1
+inventory "藥缽" &gt;= 200
+inventory "空瓶" &gt;= 200
+inventory "空試管" &gt;= 100
+inventory "植物梗" &gt;= 500
+inventory "毒魔菇芽孢" &gt;= 500
+inventory "透明之布" &gt;= 50
+inventory "不死心臟" &gt;= 50
+exclusive 1
+call {
+$s1 = @storamount(藥缽)
+$s2 = @storamount(空瓶)
+$s3 = @storamount(空試管)
+$s4 = @storamount(植物梗)
+$s5 = @storamount(毒魔菇芽孢)
+$s6 = @storamount(透明之布)
+$s7 = @storamount(不死心臟)
+log 倉庫材料
+log 藥缽 $s1
+log 空瓶 $s2
+log 試管 $s3
+log 植物 $s4
+log 芽孢 $s5
+log 透布 $s6
+log 心臟 $s7
+do ss 498
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p><a href="#tp3make">tp3make</a>使用條件及注意事項:</p>
+
+<ul>
+<li>必須有靈魂狀態才能用寬廣配藥(靈悟士跟<strong>跆拳</strong>組隊再對創造者用靈魂就可以，之後<strong>跆拳</strong>下線也可以。但注意組<strong>拳聖是無效果的</strong>）</li>
+<li>身上有最少<strong>1份寬廣配藥</strong>的材料</li>
+<li>酒精製作說明書，火煙瓶製作說明書，鹽酸瓶製作說明書都放身上</li>
+</ul>
+
+
+<p><a name="demoget"></a>
+``` perl demoget
+automacro demoget {</p>
+
+<pre><code>class Creator
+status not EFST_SIT
+inventory "藥缽" == 0
+inventory "空瓶" == 0
+inventory "透明之布" == 0
+inventory "酒精" == 0
+storage "藥缽" &gt;= 100
+storage "空瓶" &gt;= 100
+storage "透明之布" &gt;= 100
+storage "酒精" &gt;= 100
+storage "植物梗" &lt; 500
+storage "毒魔菇芽孢" &lt; 500
+storage "火煙瓶" &lt;= 29900
+inventory "空試管" == 0
+inventory "植物梗" == 0
+inventory "毒魔菇芽孢" == 0
+inventory "不死心臟" == 0
+exclusive 1
+call {
+do storage add 火煙瓶
+do storage get 藥缽 100
+do storage get 空瓶 100
+do storage get 透明之布 100
+do storage get 酒精 100
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p><a href="#demoget">demoget</a>使用條件及注意事項:</p>
+
+<ul>
+<li>身上所有材料的數量為0</li>
+<li>為開倉狀態</li>
+<li>倉庫中<strong>植物梗</strong>跟<strong>毒魔菇芽孢</strong>不足500</li>
+<li>倉庫有最少<strong>100份火煙瓶</strong>的材料
+
+<ol>
+<li>藥缽 100</li>
+<li>空瓶 100</li>
+<li>透明之布 100</li>
+<li>酒精 100</li>
+</ol>
+</li>
+</ul>
+
+
+<p><a name="demomake"></a>
+``` perl demomake
+automacro demomake {</p>
+
+<pre><code>class Creator
+status not EFST_SIT
+sp &gt; 20
+eval $::char-&gt;{'int_bonus'} == 86
+eval $::char-&gt;{'dex_bonus'} == 103
+eval $::char-&gt;{'luk_bonus'} == 132
+inventory "火煙瓶製作說明書" == 1
+inventory "藥缽" &gt;= 1
+inventory "空瓶" &gt;= 1
+inventory "空試管" == 0
+inventory "植物梗" == 0
+inventory "毒魔菇芽孢" == 0
+inventory "透明之布" &gt;= 1
+inventory "不死心臟" == 0
+inventory "酒精" &gt;= 1
+storage "火煙瓶" &lt;= 29900
+exclusive 1
+call {
+$s1 = @storamount(藥缽)
+$s2 = @storamount(空瓶)
+$s6 = @storamount(透明之布)
+$s8 = @storamount(酒精)
+log 倉庫材料
+log 藥缽 $s1
+log 空瓶 $s2
+log 透布 $s6
+log 酒精 $s8
+do ss 228 10
+pause 1
+do send 8E 01 DF 1B 00 00 00 00 00 00
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p><a href="#demomake">demomake</a>使用條件及注意事項:</p>
+
+<ul>
+<li>身上有最少<strong>100份火煙瓶</strong>的材料</li>
+<li>火煙瓶製作說明書放身上</li>
+<li>單獨做火煙瓶100次</li>
+</ul>
+
+
+<p><a name="acidget"></a>
+``` perl acidget
+automacro acidget {</p>
+
+<pre><code>class Creator
+status not EFST_SIT
+inventory "藥缽" == 150
+inventory "空瓶" == 150
+inventory "空試管" == 0
+inventory "植物梗" == 0
+inventory "毒魔菇芽孢" == 0
+inventory "透明之布" == 0
+inventory "不死心臟" == 0
+storage "藥缽" &gt;= 500
+storage "空瓶" &gt;= 500
+storage "鹽酸瓶" &lt;= 29500
+storage "植物梗" &lt; 0
+storage "毒魔菇芽孢" &lt; 0
+storage "不死心臟" &gt;= 500
+exclusive 1
+call {
+do storage add 鹽酸瓶
+do storage get 藥缽 500
+do storage get 空瓶 500
+do storage get 不死心臟 500
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p><a href="#acidget">acidget</a>使用條件及注意事項:</p>
+
+<ul>
+<li>身上藥缽,空瓶數量為150,其他材料的數量為0</li>
+<li>為開倉狀態</li>
+<li>倉庫中<strong>植物梗</strong>跟<strong>毒魔菇芽孢</strong>不足500，而鹽酸瓶材料有500份或以上。</li>
+<li>倉庫有最少<strong>500</strong>份<strong>鹽酸瓶</strong>的材料
+
+<ol>
+<li>藥缽 500</li>
+<li>空瓶 500</li>
+<li>不死心臟 500</li>
+</ol>
+</li>
+</ul>
+
+
+<p><a name="acidmake"></a>
+``` perl acidmake
+automacro acidmake {</p>
+
+<pre><code>class Creator
+status not EFST_SIT
+status EFST_SOULLINK
+sp &gt; 200
+eval $::char-&gt;{'int_bonus'} == 86
+eval $::char-&gt;{'dex_bonus'} == 103
+eval $::char-&gt;{'luk_bonus'} == 132
+inventory "鹽酸瓶製作說明書" &gt;= 1
+inventory "藥缽" &gt;= 200
+inventory "空瓶" &gt;= 200
+inventory "空試管" == 0
+inventory "植物梗" == 0
+inventory "毒魔菇芽孢" == 0
+inventory "透明之布" == 0
+inventory "不死心臟" &gt;= 50
+exclusive 1
+call {
+$s1 = @storamount(藥缽)
+$s2 = @storamount(空瓶)
+$s7 = @storamount(不死心臟)
+log 倉庫材料
+log 藥缽 $s1
+log 空瓶 $s2
+log 心臟 $s7
+do ss 498
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p><a href="#acidmake">acidmake</a>使用條件及注意事項:</p>
+
+<ul>
+<li>必須有靈魂狀態才能用寬廣配藥(靈悟士跟<strong>跆拳</strong>組隊再對創造者用靈魂就可以，之後跆拳下線也可以。但注意組<strong>拳聖是無效果的</strong>）</li>
+<li>身上有最少<strong>50份鹽酸瓶</strong>的材料</li>
+<li>鹽酸瓶製作說明書都放身上</li>
+<li>注意這是用寬廣配藥做鹽酸瓶</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[月影忍者-變形的上弦月]]></title>

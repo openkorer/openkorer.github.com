@@ -9,7 +9,15 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="本巨集分別由gotogeffen,getitem,helpgirl和nextchar組成，推薦有6個20級或以上人物使用。 簡單說明一下運作，利用openkore登入後gotogeffen就會偵測任務限制時間是否到達了，如果現在位置不是在吉芬塔外就會前往。 &hellip;">
+  <meta name="description" content="本教學可以對多個以上的openkore同時下達指令，並且支援所有openkore的Console Command。
+我分別寫了partycmd同guildcmd兩個automacro。其實如果利用console作觸發只需一個automacro就可以，寫法如下。 cmd1
+2
+3
+4
+5
+6
+7
+8 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +86,142 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/25/sync/">一次控制多個openkore</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-25T07:06:00+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/25/sync/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本教學可以對多個以上的<a href="http://www.openkore.com">openkore</a>同時下達指令，並且支援所有<a href="http://www.openkore.com">openkore</a>的<a href="http://www.openkore.com/index.php/Category:Console_Command">Console Command</a>。
+我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>。其實如果利用<code>console</code>作觸發只需一個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>就可以，寫法如下。</p>
+
+<figure class='code'><figcaption><span>cmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">cmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: cmd (.*)/</span>   <span class="c1"># 任何人在隊伍或公會頻道中以cmd開始的字串時觸發巨集</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。如果你正在用<code>console</code>就要考慮一下要不要繼續用。</p>
+
+<p><a name="partycmd"></a></p>
+
+<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 隊伍頻道中有cmd字串時觸發巨集</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上是利用隊伍頻道送出同步指令的巨集</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>只要同一隊伍即可。</li>
+<li>最多支持12人。</li>
+<li>所有隊伍成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</li>
+</ul>
+
+
+<p>使用方法:                 <br/>
+e.g. <a href="http://www.openkore.com/index.php/Move">move</a> prontera 移動到中央      <br/>
+<a href="http://www.openkore.com">openkore</a>: <code>p cmd move prontera</code>       <br/>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>cmd move prontera</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd move prontera</code> + <strong>Ctrl+P</strong></p>
+
+<p><a name="guildcmd"></a></p>
+
+<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">guildcmd</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 公會頻道中有cmd字串時觸發巨集</span>
+</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
+</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上是利用公會頻道送出同步指令的巨集</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>不需要同一隊伍，只需同一公會即可。</li>
+<li>最多支持50人，看公會擴充組合體制等級而定。</li>
+<li>所有公會成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</li>
+</ul>
+
+
+<p>使用方法：   <br/>
+e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自動存倉   <br/>
+<a href="http://www.openkore.com">openkore</a>: <code>g cmd autostorage</code>     <br/>
+官方遊戲程式: 在<strong>公會</strong>頻道直接輸入<code>cmd autostorage</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd autostorage</code> + <strong>Ctrl+G</strong></p>
+
+<p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最安全做法是自創隊伍跟公會！</strong></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -308,18 +452,22 @@
   <h1>分類</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/其他/'>其他 (1)</a></li>
-<li class='category'><a href='/blog/categories/技能/'>技能 (2)</a></li>
+<li class='category'><a href='/blog/categories/技能/'>技能 (3)</a></li>
 <li class='category'><a href='/blog/categories/活動/'>活動 (1)</a></li>
-<li class='category'><a href='/blog/categories/物品/'>物品 (2)</a></li>
+<li class='category'><a href='/blog/categories/物品/'>物品 (3)</a></li>
 <li class='category'><a href='/blog/categories/管理/'>管理 (6)</a></li>
 
   </ul>
 </section><section>
   <h1>標籤</h1>
-    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+16.666666666666668%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+30.0%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcreator%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecreator%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+30.0%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fpharmacy%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Epharmacy%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+16.666666666666668%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+30.0%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
 </section><section>
   <h1>最新文章</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/06/pharmacy/">創造者-寬廣配藥</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/04/guildmsg/">同盟公會頻道互通</a>
@@ -335,10 +483,6 @@
     
       <li class="post">
         <a href="/blog/2013/03/30/itemamount/">查詢物品數量及列出報告</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/30/refine/">精煉大量防具</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="先看一下DS的技能說明： 持續時間內依指定對象目前剩餘的HP和SP而變化ATK或MATK 剩餘HP偶數時：ATK+(指定對象Base等級/3)+(技能等級x20) 剩餘HP奇數時：ATK-(指定對象Base等級/3)+(技能等級x20) 剩餘SP偶數時：MATK+(指定對象Base等級/3)+( &hellip;">
+  <meta name="description" content="有沒有試過每次轉換練功地點都要重新儲存位置跟修改storageAuto_npc都覺得麻煩? 這巨集可以簡易利用一句指令就可以完成多個openkore的設定！ 巨集使用條件及注意事項: 支援地點有prontera, payon, geffen, gef_fild10, izlude, morocc &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,351 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/29/save/">管理儲存及倉庫位置</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-29T21:35:00+08:00" pubdate data-updated="true">Mar 29<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/03/29/save/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>有沒有試過每次轉換練功地點都要重新<strong>儲存位置</strong>跟修改<a href="http://www.openkore.com/index.php/StorageAuto_npc">storageAuto_npc</a>都覺得麻煩? 這巨集可以簡易利用一句指令就可以完成多個<a href="http://www.openkore.com">openkore</a>的設定！</p>
+
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>支援地點有prontera, payon, geffen, gef_fild10, izlude, morocc, alberta, alberta_in, aldebaran, yuno, comodo, rachel, einbech, lighthalzen, 其他地點請自行增加</li>
+<li>必須組隊或加入公會(須修改第2行)</li>
+<li>輸入英文地圖名稱必須正確</li>
+</ul>
+
+
+<p>使用方法:                 <br/>
+e.g. save prontera    <br/>
+<a href="http://www.openkore.com">openkore</a>: 隊伍用<code>p save prontera</code> 公會用<code>g save prontera</code>       <br/>
+官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>save prontera</code>或在<strong>公會</strong>頻道輸入<code>save prontera</code></p>
+
+<figure class='code'><figcaption><span>save</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">save</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">party</span> <span class="sr">/save (.*)/</span>            <span class="c1"># 如用公會頻請用 guild /save (.*)/</span>
+</span><span class='line'>  <span class="n">run</span><span class="o">-</span><span class="n">once</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nv">$savemap</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>
+</span><span class='line'>  <span class="nv">$random</span> <span class="o">=</span> <span class="nv">@rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>        <span class="c1"># 走到儲存NPC附近的x,y隨機值</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;alberta&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">alberta</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;alberta_in&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">alberta_in</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;aldebaran&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">aldebaran</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;comodo&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">comodo</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;einbech&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">einbech</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;gef_fild10&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">gef_fild</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;geffen&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">geffen</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;izlude&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">izlude</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;lighthalzen&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">lighthalzen</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;morocc&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">morocc</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;payon&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">payon</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;prontera&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">prontera</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;rachel&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">rachel</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;veins&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">veins</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$savemap</span> <span class="o">=</span> <span class="s">&quot;yuno&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">yuno</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">prontera</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">146</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">89</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">146</span> <span class="mi">89</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">146</span> <span class="mi">89</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">veins</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">208</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">128</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">208</span> <span class="mi">128</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">208</span> <span class="mi">128</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">aldebaran</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">143</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">119</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">143</span> <span class="mi">119</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">143</span> <span class="mi">119</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">alberta_in</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">21</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">141</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">32</span> <span class="mi">142</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">32</span> <span class="mi">142</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">alberta</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">113</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">60</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">113</span> <span class="mi">60</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">113</span> <span class="mi">60</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">payon</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">181</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">104</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">181</span> <span class="mi">104</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">181</span> <span class="mi">104</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">rachel</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">109</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">138</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">109</span> <span class="mi">138</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">109</span> <span class="mi">138</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">geffen</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">120</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">62</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">120</span> <span class="mi">62</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">120</span> <span class="mi">62</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">izlude</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">88</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">88</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">134</span> <span class="mi">88</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">134</span> <span class="mi">88</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">einbech</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">181</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">132</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">181</span> <span class="mi">132</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">181</span> <span class="mi">132</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">yuno</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">152</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">187</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">152</span> <span class="mi">187</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">152</span> <span class="mi">187</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">morocc</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">156</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">97</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">156</span> <span class="mi">97</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">156</span> <span class="mi">97</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">lighthalzen</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">164</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">100</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">164</span> <span class="mi">100</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">164</span> <span class="mi">100</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">gef_fild</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">73</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">340</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">73</span> <span class="mi">340</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">73</span> <span class="mi">340</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="p">:</span><span class="n">comodo</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">move</span> <span class="nv">$savemap</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">195</span><span class="p">)</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$random</span> <span class="o">+</span> <span class="mi">150</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">talknpc</span> <span class="mi">195</span> <span class="mi">150</span> <span class="n">r0</span> <span class="n">n</span>
+</span><span class='line'>  <span class="k">do</span> <span class="n">conf</span> <span class="n">storageAuto_npc</span> <span class="nv">$savemap</span> <span class="mi">195</span> <span class="mi">150</span>
+</span><span class='line'>  <span class="nb">log</span> <span class="err">已經儲存好</span> <span class="nv">$savemap</span>
+</span><span class='line'>  <span class="n">release</span> <span class="n">all</span>
+</span><span class='line'>  <span class="n">stop</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -285,142 +630,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/25/sync/">一次控制多個openkore</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-25T07:06:00+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/03/25/sync/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>本教學可以對多個以上的<a href="http://www.openkore.com">openkore</a>同時下達指令，並且支援所有<a href="http://www.openkore.com">openkore</a>的<a href="http://www.openkore.com/index.php/Category:Console_Command">Console Command</a>。
-我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>。其實如果利用<code>console</code>作觸發只需一個<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>就可以，寫法如下。</p>
-
-<figure class='code'><figcaption><span>cmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">cmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: cmd (.*)/</span>   <span class="c1"># 任何人在隊伍或公會頻道中以cmd開始的字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>但我不建議使用，因為並不安全，如果別人利用密頻對你說<code>[隊伍] 別人 : cmd xxx</code>也會被觸發。如果你正在用<code>console</code>就要考慮一下要不要繼續用。</p>
-
-<p><a name="partycmd"></a></p>
-
-<figure class='code'><figcaption><span>partycmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partycmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">party</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 隊伍頻道中有cmd字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以上是利用隊伍頻道送出同步指令的巨集</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li>只要同一隊伍即可。</li>
-<li>最多支持12人。</li>
-<li>所有隊伍成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</li>
-</ul>
-
-
-<p>使用方法:                 <br/>
-e.g. <a href="http://www.openkore.com/index.php/Move">move</a> prontera 移動到中央      <br/>
-<a href="http://www.openkore.com">openkore</a>: <code>p cmd move prontera</code>       <br/>
-官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>cmd move prontera</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd move prontera</code> + <strong>Ctrl+P</strong></p>
-
-<p><a name="guildcmd"></a></p>
-
-<figure class='code'><figcaption><span>guildcmd</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">guildcmd</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">guild</span> <span class="sr">/cmd (.*)/</span>         <span class="c1"># 公會頻道中有cmd字串時觸發巨集</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nv">$cmd</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>         <span class="c1"># 把cmd後的指令串代入$cmd中</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nv">$cmd</span>                      <span class="c1"># 執行指令串</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以上是利用公會頻道送出同步指令的巨集</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li>不需要同一隊伍，只需同一公會即可。</li>
-<li>最多支持50人，看公會擴充組合體制等級而定。</li>
-<li>所有公會成員也會看到指令，還可以對你的<a href="http://www.openkore.com">openkore</a>下達任何指令。</li>
-</ul>
-
-
-<p>使用方法：   <br/>
-e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自動存倉   <br/>
-<a href="http://www.openkore.com">openkore</a>: <code>g cmd autostorage</code>     <br/>
-官方遊戲程式: 在<strong>公會</strong>頻道直接輸入<code>cmd autostorage</code> + <strong>Enter</strong>或在<strong>公開</strong>頻道輸入<code>cmd autostorage</code> + <strong>Ctrl+G</strong></p>
-
-<p><strong>最後建議把<code>party</code>，<code>guild</code>後的觸發字串<code>cmd</code>改成其他字串，並不要讓人知道。最安全做法是自創隊伍跟公會！</strong></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -437,18 +646,22 @@ e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自
   <h1>分類</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/其他/'>其他 (1)</a></li>
-<li class='category'><a href='/blog/categories/技能/'>技能 (2)</a></li>
+<li class='category'><a href='/blog/categories/技能/'>技能 (3)</a></li>
 <li class='category'><a href='/blog/categories/活動/'>活動 (1)</a></li>
-<li class='category'><a href='/blog/categories/物品/'>物品 (2)</a></li>
+<li class='category'><a href='/blog/categories/物品/'>物品 (3)</a></li>
 <li class='category'><a href='/blog/categories/管理/'>管理 (6)</a></li>
 
   </ul>
 </section><section>
   <h1>標籤</h1>
-    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+16.666666666666668%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+30.0%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcreator%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecreator%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+30.0%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fpharmacy%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Epharmacy%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+16.666666666666668%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+30.0%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
 </section><section>
   <h1>最新文章</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/06/pharmacy/">創造者-寬廣配藥</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/04/guildmsg/">同盟公會頻道互通</a>
@@ -464,10 +677,6 @@ e.g. <a href="http://www.openkore.com/index.php/Autostorage">autostorage</a> 自
     
       <li class="post">
         <a href="/blog/2013/03/30/itemamount/">查詢物品數量及列出報告</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/30/refine/">精煉大量防具</a>
       </li>
     
   </ul>
