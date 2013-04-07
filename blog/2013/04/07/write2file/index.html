@@ -126,7 +126,7 @@ automacro &hellip;">
 </ol>
 
 
-<p>今天教大家利用perl sub產生excel報告</p>
+<p>今天教大家利用perl sub產生<a href="http://office.microsoft.com/zh-hk/excel/">excel</a>報告</p>
 
 <ul>
 <li><a href="#partyitemlog">partyitemlog</a>偵測隊伍成員撿了什麼</li>
@@ -182,14 +182,14 @@ automacro &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>以下是利用notepad打開partyitem.csv檔案的範本，符號&#8221;,&#8221;在excel csv是分隔作用。</p>
+<p>以下是利用notepad打開partyitem.csv檔案的範本，符號<code>,</code>是csv檔用作分隔。</p>
 
 <pre><code>    2013-04-05 18:42:47,1@tower23,隊員A,變形長靴
     2013-04-05 18:42:56,1@tower23,隊員B,血斧
     2013-04-05 18:42:58,1@tower55,隊員A,獸人英雄卡片
 </code></pre>
 
-<p>用excel直接開會如圖下，如出現亂碼請用notepad打開partyitem.csv再儲存一次就解決。做一次以後就再不會出現亂碼。</p>
+<p>用<a href="http://office.microsoft.com/zh-hk/excel/">excel</a>直接開會如圖下，如出現亂碼請用notepad打開partyitem.csv再儲存一次就解決。做一次以後就再不會出現亂碼。</p>
 
 <p><img src="/images/partyitemcsv.jpg" alt="" /></p>
 
@@ -201,7 +201,7 @@ automacro &hellip;">
 
 <p><img src="/images/partyitemcsv3.jpg" alt="" /></p>
 
-<p>假如我沒有excel怎麼辦? 改用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第3,10行就可以。</p>
+<p>假如我沒有<a href="http://office.microsoft.com/zh-hk/excel/">excel</a>怎麼辦? 改用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第3,10行就可以。</p>
 
 <pre><code>    open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.txt");
     my $log = "$time\t$name\t$cate\t$desc\n";                           

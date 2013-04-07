@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: playsound | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/playsound/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:30:28+08:00</updated>
+  <updated>2013-04-07T23:35:42+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -37,7 +37,8 @@
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
 [dealAuto]: http://www.openkore.com/index.php/DealAuto
 [dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names
-[perl]: http://www.perl.org</p>
+[perl]: http://www.perl.org
+[excel]: http://office.microsoft.com/zh-hk/excel/</p>
 
 <p>今日教大家用[openkore]播放音效，什麼意思？就是用[openkore]時利用巨集觸發來播放音效檔案。有什麼好處？ 看我以下的舉例！</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: playersList | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/playerslist/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:30:28+08:00</updated>
+  <updated>2013-04-07T23:35:42+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -37,7 +37,8 @@
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
 [dealAuto]: http://www.openkore.com/index.php/DealAuto
 [dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names
-[perl]: http://www.perl.org</p>
+[perl]: http://www.perl.org
+[excel]: http://office.microsoft.com/zh-hk/excel/</p>
 
 <p>有些活動好像<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a>每次都要轉錢是不是很煩？假如你人物多花的時間相對多，而且容易出錯。   <br/>
 往往大量金錢都集中在一個人物身上，而其他人物都只有少量。一旦到了需要金錢的活動或任務就變得麻煩。針對這問題寫了一個金錢交易巨集。先看看什麼情況下適用。</p>

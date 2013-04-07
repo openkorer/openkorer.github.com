@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: item | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/item/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:30:28+08:00</updated>
+  <updated>2013-04-07T23:35:42+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -37,7 +37,8 @@
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
 [dealAuto]: http://www.openkore.com/index.php/DealAuto
 [dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names
-[perl]: http://www.perl.org</p>
+[perl]: http://www.perl.org
+[excel]: http://office.microsoft.com/zh-hk/excel/</p>
 
 <p>這教學只製作<strong>鹽酸瓶</strong>跟<strong>火煙瓶</strong>，並不包括其他合成物品。分別由6個[automacro]組成。功能請看以下清單。</p>
 
@@ -406,7 +407,8 @@ do ss 498
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
 [dealAuto]: http://www.openkore.com/index.php/DealAuto
 [dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names
-[perl]: http://www.perl.org</p>
+[perl]: http://www.perl.org
+[excel]: http://office.microsoft.com/zh-hk/excel/</p>
 
 <p>在眾多[openkore]的倉庫裡尋找一件道具是非常痛苦的事，相信很多人都有試過買了東西後才發現自己倉庫已經擁有的經驗。
 這巨集是設計給我自己N個商人用的，可利用隊伍及公會頻道同時查詢所有[openkore]指定物品在<strong>身上(包括已裝備的)</strong>，<strong>手推車</strong>及<strong>倉庫</strong>的數量。實用又方便！</p>
@@ -494,7 +496,8 @@ stop
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
 [dealAuto]: http://www.openkore.com/index.php/DealAuto
 [dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names
-[perl]: http://www.perl.org</p>
+[perl]: http://www.perl.org
+[excel]: http://office.microsoft.com/zh-hk/excel/</p>
 
 <p>這是一個半自動的防具精煉巨集，適用於所有防具。武器建議用鐵匠系自己精煉比較好。
 先看一下運作，假如你有很多<strong>鈽鐳金盾 [1]</strong>又想把它精煉到+7，只要利用隊伍頻道輸入7次指就可以完成。當然機率還是看你自己人品跟NPC心情！</p>
