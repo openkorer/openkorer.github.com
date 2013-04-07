@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: sub | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/sub/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:42:09+08:00</updated>
+  <updated>2013-04-07T23:50:49+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -119,7 +119,7 @@ close(FILE);                            # 關閉檔案
 
 <p><img src="/images/partyitemcsv3.jpg" alt="" /></p>
 
-<p>假如我沒有[excel]怎麼辦? 改用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第<strong>3</strong>,<strong>10</strong>行就可以。</p>
+<p>假如我沒有[excel]怎麼辦? 改回用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第<strong>3</strong>,<strong>10</strong>行就可以。</p>
 
 <pre><code>    open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.txt");
     my $log = "$time\t$name\t$cate\t$desc\n";                           
