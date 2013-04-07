@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: sub | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/sub/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T22:31:04+08:00</updated>
+  <updated>2013-04-07T22:38:20+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -73,18 +73,16 @@ automacro partyitemlog {
 sub write2file {</p>
 
 <pre><code>my ($map, $name, $desc) = @_;           # 把partyitemlog送來的資料代入$map,$name,$desc
-open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.txt");
-#open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.csv");
-my @date  = localtime time;
+open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.csv"); # 打開logs資料夾下的csv檔，如沒有會自動產生。
+my @date  = localtime time;             # 讀取這一刻日期跟時間
 $date[5] += 1900;
 $date[4] += 1;
 my $time = sprintf(
-"%04d-%02d-%02d %02d:%02d:%02d", #YYYY-MM-DD HH:MM
-$date[5],$date[4],$date[3],$date[2],$date[1],$date[0]);
-my $log = "$time\t$map\t$name\t$desc\n";
-#my $log = "$time,$map,$name,$desc\n";
-print FILE $log;
-close(FILE);
+"%04d-%02d-%02d %02d:%02d:%02d",        # 自訂格式，個人比較喜歡用YYYY-MM-DD HH:MM:SS
+$date[5],$date[4],$date[3],$date[2],$date[1],$date[0]);     # 對應格式
+my $log = "$time,$map,$name,$desc\n";   # 自訂資料格式跟次序
+print FILE $log;                        # 把資料寫入檔案
+close(FILE);                            # 關閉檔案
 </code></pre>
 
 <p>}
