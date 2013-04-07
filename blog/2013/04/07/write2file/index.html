@@ -200,6 +200,19 @@ automacro &hellip;">
 <p>成功後就如圖下標題尾多了一個向下三角型按鈕，然後可以根據人物地圖物品過濾資料。</p>
 
 <p><img src="/images/partyitemcsv3.jpg" alt="" /></p>
+
+<p>假如我沒有excel怎麼辦? 改用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第3,10行就可以。</p>
+
+<pre><code>    open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.txt");
+    my $log = "$time\t$name\t$cate\t$desc\n";                           
+</code></pre>
+
+<p>修改後partyitem.txt內容如下，<code>\t</code>在<a href="http://www.perl.org">perl</a>語言是tab，<code>\n</code>是換行。</p>
+
+<pre><code>    2013-04-05 18:44:45 1@tower23   隊員A 變形長靴
+    2013-04-05 18:44:53 1@tower23   隊員B 血斧
+    2013-04-05 18:44:55 1@tower55   隊員A 獸人英雄卡片
+</code></pre>
 </div>
 
 

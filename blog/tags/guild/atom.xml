@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: guild | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/guild/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:19:32+08:00</updated>
+  <updated>2013-04-07T23:30:28+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -36,7 +36,8 @@
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
 [dealAuto]: http://www.openkore.com/index.php/DealAuto
-[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names
+[perl]: http://www.perl.org</p>
 
 <p>當你想跟分會或者同盟公會的朋友聊天時，很多時候都只是利用密頻，但只能一對一，有點可惜。
 很久之前有人找我幫他寫了一個公會頻道互通的巨集，今天跟大家說一下原理跟寫法。</p>
@@ -120,7 +121,8 @@ do g $.lastpmMsg;stop
 [一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
 [dealAuto]: http://www.openkore.com/index.php/DealAuto
-[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names
+[perl]: http://www.perl.org</p>
 
 <p>本教學可以對多個以上的[openkore]同時下達指令，並且支援所有[openkore]的[Console Command]。
 我分別寫了<a href="#partycmd">partycmd</a>同<a href="#guildcmd">guildcmd</a>兩個[automacro]。其實如果利用<code>console</code>作觸發只需一個[automacro]就可以，寫法如下。</p>
