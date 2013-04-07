@@ -12,13 +12,7 @@
   <meta name="description" content="爬塔結束時大家最想知道什麼，大概是以下三點吧? 誰撿了什麼？
 什麼時侯撿？
 撿了多少次？ 今天教大家利用perl sub產生excel報告 partyitemlog偵測隊伍成員撿了什麼
-write2file把資料寫入檔案裡。 partyitemlog1
-2
-3
-4
-5
-6
-automacro &hellip;">
+write2file把資料寫入檔案裡。 巨集使用條件及注意事項: 隊伍成員撿取了物品有效， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -134,6 +128,14 @@ automacro &hellip;">
 </ul>
 
 
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>隊伍成員撿取了物品有效，好像只對有貴重物或裝備才有效。</li>
+<li>必須與隊員同一地圖</li>
+</ul>
+
+
 <p><a name="partyitemlog"></a></p>
 
 <figure class='code'><figcaption><span>partyitemlog</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -145,7 +147,7 @@ automacro &hellip;">
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partyitemlog</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">console</span> <span class="sr">/隊伍成員 (.*) 撿取了物品 (.*)/</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">write2file</span><span class="p">(</span><span class="s">&quot;$.map&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch1&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch2&quot;</span><span class="p">)</span>   <span class="c1">#　呼叫perl sub並將地圖，人物，物品資料傳送</span>
+</span><span class='line'>    <span class="n">write2file</span><span class="p">(</span><span class="s">&quot;$.map&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch1&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch2&quot;</span><span class="p">)</span>   <span class="c1">#　呼叫perl sub並連帶地圖人物物品資料</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -201,7 +203,7 @@ automacro &hellip;">
 
 <p><img src="/images/partyitemcsv3.jpg" alt="" /></p>
 
-<p>假如我沒有<a href="http://office.microsoft.com/zh-hk/excel/">excel</a>怎麼辦? 改用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第3,10行就可以。</p>
+<p>假如我沒有<a href="http://office.microsoft.com/zh-hk/excel/">excel</a>怎麼辦? 改用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第<strong>3</strong>,<strong>10</strong>行就可以。</p>
 
 <pre><code>    open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.txt");
     my $log = "$time\t$name\t$cate\t$desc\n";                           

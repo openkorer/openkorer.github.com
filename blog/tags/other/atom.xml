@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: other | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/other/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:35:42+08:00</updated>
+  <updated>2013-04-07T23:40:00+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -59,13 +59,21 @@
 </ul>
 
 
+<p>巨集使用條件及注意事項:</p>
+
+<ul>
+<li>隊伍成員撿取了物品有效，好像只對有貴重物或裝備才有效。</li>
+<li>必須與隊員同一地圖</li>
+</ul>
+
+
 <p><a name="partyitemlog"></a>
 ``` perl partyitemlog
 automacro partyitemlog {
   console /隊伍成員 (.<em>) 撿取了物品 (.</em>)/
   call {</p>
 
-<pre><code>write2file("$.map","$.lastMatch1","$.lastMatch2")   #　呼叫perl sub並將地圖，人物，物品資料傳送
+<pre><code>write2file("$.map","$.lastMatch1","$.lastMatch2")   #　呼叫perl sub並連帶地圖人物物品資料
 </code></pre>
 
 <p>  }
@@ -111,7 +119,7 @@ close(FILE);                            # 關閉檔案
 
 <p><img src="/images/partyitemcsv3.jpg" alt="" /></p>
 
-<p>假如我沒有[excel]怎麼辦? 改用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第3,10行就可以。</p>
+<p>假如我沒有[excel]怎麼辦? 改用普通文字檔就可以，只需修<a href="#write2file">write2file</a>的第<strong>3</strong>,<strong>10</strong>行就可以。</p>
 
 <pre><code>    open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.txt");
     my $log = "$time\t$name\t$cate\t$desc\n";                           
