@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: other | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/other/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T22:38:20+08:00</updated>
+  <updated>2013-04-07T22:50:13+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -41,8 +41,8 @@
 <p>爬塔結束時大家最想知道什麼，大概是以下三點吧?</p>
 
 <ol>
-<li>隊員撿了什麼？</li>
-<li>什麼時侯撿的？</li>
+<li>誰撿了什麼？</li>
+<li>什麼時侯撿？</li>
 <li>撿了多少次？</li>
 </ol>
 
@@ -87,6 +87,12 @@ close(FILE);                            # 關閉檔案
 
 <p>}
 ```</p>
+
+<p>以下是利用notepad打開partyitem.csv檔案的範本，符號","在excel csv是分隔作用。</p>
+
+<p>2013-04-05 18:42:47,1@tower23,隊員A,變形長靴
+2013-04-05 18:42:56,1@tower23,隊員B,血斧
+2013-04-05 18:42:58,1@tower55,隊員A,隊伍,獸人英雄卡片</p>
 ]]></content>
   </entry>
   
