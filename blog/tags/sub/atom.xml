@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: sub | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/sub/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:40:00+08:00</updated>
+  <updated>2013-04-07T23:42:09+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -115,7 +115,7 @@ close(FILE);                            # 關閉檔案
 
 <p><img src="/images/partyitemcsv2.jpg" alt="" /></p>
 
-<p>成功後就如圖下標題尾多了一個向下三角型按鈕，然後可以根據人物地圖物品過濾資料。</p>
+<p>成功後就如下圖標題尾多了一個向下三角型按鈕，然後可以根據人物地圖物品過濾資料。</p>
 
 <p><img src="/images/partyitemcsv3.jpg" alt="" /></p>
 
@@ -125,7 +125,7 @@ close(FILE);                            # 關閉檔案
     my $log = "$time\t$name\t$cate\t$desc\n";                           
 </code></pre>
 
-<p>修改後partyitem.txt內容如下，<code>\t</code>在[perl]語言是tab，<code>\n</code>是換行。</p>
+<p>修改後partyitem.txt內容如下，<code>\t</code>在[perl]語言是tab分隔，<code>\n</code>是換行。</p>
 
 <pre><code>    2013-04-05 18:44:45 1@tower23   隊員A 變形長靴
     2013-04-05 18:44:53 1@tower23   隊員B 血斧
