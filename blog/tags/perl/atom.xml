@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: perl | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/perl/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:14:25+08:00</updated>
+  <updated>2013-04-07T23:19:32+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -37,6 +37,8 @@
 [data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
 [dealAuto]: http://www.openkore.com/index.php/DealAuto
 [dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
+
+<p><img src="/images/partyitemcsv4.jpg" alt="" /></p>
 
 <p>爬塔結束時大家最想知道什麼，大概是以下三點吧?</p>
 
@@ -95,7 +97,7 @@ close(FILE);                            # 關閉檔案
     2013-04-05 18:42:58,1@tower55,隊員A,獸人英雄卡片
 </code></pre>
 
-<p>用excel直接開會如圖下</p>
+<p>用excel直接開會如圖下，如出現亂碼請用notepad打開partyitem.csv再儲存一次就解決。做一次以後就再不會出現亂碼。</p>
 
 <p><img src="/images/partyitemcsv.jpg" alt="" /></p>
 
