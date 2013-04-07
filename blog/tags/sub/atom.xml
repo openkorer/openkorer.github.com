@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: sub | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/sub/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T22:21:19+08:00</updated>
+  <updated>2013-04-07T22:23:07+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -49,10 +49,14 @@
 
 <p>今天教大家利用perl sub產生excel報告</p>
 
-<p>-[partyitemlog]偵測隊伍成員撿了什麼
--[write2file]把資料寫入檔案裡。</p>
+<ul>
+<li><a href="#partyitemlog">partyitemlog</a>偵測隊伍成員撿了什麼</li>
+<li><a href="#write2file">write2file</a>把資料寫入檔案裡。</li>
+</ul>
 
-<p>``` perl partyitemlog
+
+<p><a name="partyitemlog"></a>
+``` perl partyitemlog
 automacro partyitemlog {
   console /隊伍成員 (.<em>) 撿取了物品 (.</em>)/
   call {</p>
@@ -64,7 +68,8 @@ automacro partyitemlog {
 }
 ```</p>
 
-<p>``` perl write2file
+<p><a name="write2file"></a>
+``` perl write2file
 sub write2file {</p>
 
 <pre><code>my ($cate, $name, $desc) = @_;
