@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: other | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/other/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:07:34+08:00</updated>
+  <updated>2013-04-07T23:14:25+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -99,9 +99,13 @@ close(FILE);                            # 關閉檔案
 
 <p><img src="/images/partyitemcsv.jpg" alt="" /></p>
 
-<p>只要在第一行加入標示然後選擇，再按filter。</p>
+<p>只要在第一行加入標題然後選擇，再按filter。</p>
 
 <p><img src="/images/partyitemcsv2.jpg" alt="" /></p>
+
+<p>成功後就如圖下標題尾多了一個向下三角型按鈕，然後可以根據人物地圖物品過濾資料。</p>
+
+<p><img src="/images/partyitemcsv3.jpg" alt="" /></p>
 ]]></content>
   </entry>
   
