@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 其他 | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/categories/其他/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-06T19:51:51+08:00</updated>
+  <updated>2013-04-07T22:21:19+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[利用Perl Sub產生excel報告]]></title>
+    <link href="http://openkorer.github.com/blog/2013/04/07/write2file/"/>
+    <updated>2013-04-07T21:52:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/04/07/write2file</id>
+    <content type="html"><![CDATA[<p>[openkore]: http://www.openkore.com
+[XKore]: http://www.openkore.com/index.php/XKore
+[config.txt]: http://www.openkore.com/index.php/Category:Config.txt
+[automacro]: http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros
+[items_control.txt]: http://www.openkore.com/index.php/Items_control.txt
+[DS]: http://dsfix.org
+[p]: http://www.openkore.com/index.php/P
+[Console Command]: http://www.openkore.com/index.php/Category:Console_Command
+[autostorage]: http://www.openkore.com/index.php/Autostorage
+[move]: http://www.openkore.com/index.php/Move
+[storageAuto_npc]: http://www.openkore.com/index.php/StorageAuto_npc
+[itemsMaxWeight]: http://www.openkore.com/index.php/ItemsMaxWeight
+[itemsMaxWeight_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxWeight_sellOrStore
+[itemsMaxNum_sellOrStore]: http://www.openkore.com/index.php/ItemsMaxNum_sellOrStore
+[storage]: http://www.openkore.com/index.php/Storage
+[一次控制多個openkore]: http://openkorer.github.com/blog/2013/03/25/sync
+[data.grf]: file:///C:/Program%20Files%20(x86)/Gravity/RO/
+[dealAuto]: http://www.openkore.com/index.php/DealAuto
+[dealAuto_names]: http://www.openkore.com/index.php/DealAuto_names</p>
+
+<p>爬塔結束時大家最想知道什麼，大概是以下三點吧?</p>
+
+<ol>
+<li>隊員撿了什麼？</li>
+<li>什麼時侯撿的？</li>
+<li>撿了多少次？</li>
+</ol>
+
+
+<p>今天教大家利用perl sub產生excel報告</p>
+
+<p>-[partyitemlog]偵測隊伍成員撿了什麼
+-[write2file]把資料寫入檔案裡。</p>
+
+<p>``` perl partyitemlog
+automacro partyitemlog {
+  console /隊伍成員 (.<em>) 撿取了物品 (.</em>)/
+  call {</p>
+
+<pre><code>write2file("物品","$.lastMatch1","$.lastMatch2")
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>``` perl write2file
+sub write2file {</p>
+
+<pre><code>my ($cate, $name, $desc) = @_;
+open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.txt");
+#open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.csv");
+my @date  = localtime time;
+$date[5] += 1900;
+$date[4] += 1;
+my $time = sprintf(
+"%04d-%02d-%02d %02d:%02d:%02d", #YYYY-MM-DD HH:MM
+$date[5],$date[4],$date[3],$date[2],$date[1],$date[0]);
+my $log = "$time\t$name\t$cate\t$desc\n";
+#my $log = "$time,$name,$cate,$desc\n";
+print FILE $log;
+close(FILE);
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[用巨集播放音效]]></title>

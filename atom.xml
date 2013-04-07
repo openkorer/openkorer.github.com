@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-06T19:51:51+08:00</updated>
+  <updated>2013-04-07T22:21:19+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[利用Perl Sub產生excel報告]]></title>
+    <link href="http://openkorer.github.com/blog/2013/04/07/write2file/"/>
+    <updated>2013-04-07T21:52:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/04/07/write2file</id>
+    <content type="html"><![CDATA[<p>爬塔結束時大家最想知道什麼，大概是以下三點吧?</p>
+
+<ol>
+<li>隊員撿了什麼？</li>
+<li>什麼時侯撿的？</li>
+<li>撿了多少次？</li>
+</ol>
+
+
+<p>今天教大家利用perl sub產生excel報告</p>
+
+<p>-[partyitemlog]偵測隊伍成員撿了什麼
+-[write2file]把資料寫入檔案裡。</p>
+
+<figure class='code'><figcaption><span>partyitemlog</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partyitemlog</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/隊伍成員 (.*) 撿取了物品 (.*)/</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">write2file</span><span class="p">(</span><span class="s">&quot;物品&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch1&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch2&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>write2file</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="k">sub </span><span class="nf">write2file</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">my</span> <span class="p">(</span><span class="nv">$cate</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$desc</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="s">&quot;&gt;&gt;:utf8&quot;</span><span class="p">,</span> <span class="s">&quot;$Settings::logs_folder/partyitem.txt&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">#open(FILE, &quot;&gt;&gt;:utf8&quot;, &quot;$Settings::logs_folder/partyitem.csv&quot;);</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">@date</span>  <span class="o">=</span> <span class="nb">localtime</span> <span class="nb">time</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1900</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">$time</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+</span><span class='line'>  <span class="s">&quot;%04d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="c1">#YYYY-MM-DD HH:MM</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">$log</span> <span class="o">=</span> <span class="s">&quot;$time\t$name\t$cate\t$desc\n&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">#my $log = &quot;$time,$name,$cate,$desc\n&quot;;</span>
+</span><span class='line'>  <span class="k">print</span> <span class="n">FILE</span> <span class="nv">$log</span><span class="p">;</span>
+</span><span class='line'>  <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[創造者-寬廣配藥]]></title>

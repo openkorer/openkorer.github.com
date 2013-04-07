@@ -5,11 +5,19 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: manage - 唔好巨集</title>
+  <title>利用Perl Sub產生excel報告 - 唔好巨集</title>
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="Tag: manage">
+  <meta name="description" content="爬塔結束時大家最想知道什麼，大概是以下三點吧? 隊員撿了什麼？
+什麼時侯撿的？
+撿了多少次？ 今天教大家利用perl sub產生excel報告 -[partyitemlog]偵測隊伍成員撿了什麼
+-[write2file]把資料寫入檔案裡。 partyitemlog1
+2
+3
+4
+5
+6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://openkorer.github.comblog/tags/manage">
+  <link rel="canonical" href="http://openkorer.github.com/blog/2013/04/07/write2file">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/openkorer" rel="alternate" title="唔好巨集" type="application/atom+xml">
@@ -77,106 +85,165 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: Manage</h1>
+    
+      <h1 class="entry-title">利用Perl Sub產生excel報告</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T21:52:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
+
+
+<div class="entry-content"><p>爬塔結束時大家最想知道什麼，大概是以下三點吧?</p>
+
+<ol>
+<li>隊員撿了什麼？</li>
+<li>什麼時侯撿的？</li>
+<li>撿了多少次？</li>
+</ol>
+
+
+<p>今天教大家利用perl sub產生excel報告</p>
+
+<p>-[partyitemlog]偵測隊伍成員撿了什麼
+-[write2file]把資料寫入檔案裡。</p>
+
+<figure class='code'><figcaption><span>partyitemlog</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partyitemlog</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/隊伍成員 (.*) 撿取了物品 (.*)/</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">write2file</span><span class="p">(</span><span class="s">&quot;物品&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch1&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch2&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
-  
-  <h2>2013</h2>
 
-<article>
-  
-<h1><a href="/blog/2013/04/04/guildmsg/">同盟公會頻道互通</a></h1>
-<time datetime="2013-04-04T08:08:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>04</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/管理/'>管理</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2013/04/02/sharezeny/">查詢及平均分配金錢</a></h1>
-<time datetime="2013-04-02T22:20:00+08:00" pubdate><span class='month'>Apr</span> <span class='day'>02</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/管理/'>管理</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2013/03/30/itemamount/">查詢物品數量及列出報告</a></h1>
-<time datetime="2013-03-30T23:34:00+08:00" pubdate><span class='month'>Mar</span> <span class='day'>30</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/物品/'>物品</a>, <a class='category' href='/blog/categories/管理/'>管理</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2013/03/30/refine/">精煉大量防具</a></h1>
-<time datetime="2013-03-30T01:01:00+08:00" pubdate><span class='month'>Mar</span> <span class='day'>30</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/物品/'>物品</a>, <a class='category' href='/blog/categories/管理/'>管理</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2013/03/29/save/">管理儲存及倉庫位置</a></h1>
-<time datetime="2013-03-29T21:35:00+08:00" pubdate><span class='month'>Mar</span> <span class='day'>29</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/管理/'>管理</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2013/03/25/sync/">一次控制多個openkore</a></h1>
-<time datetime="2013-03-25T07:06:00+08:00" pubdate><span class='month'>Mar</span> <span class='day'>25</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/管理/'>管理</a></span>
-</footer>
-
-
-</article>
+<figure class='code'><figcaption><span>write2file</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="k">sub </span><span class="nf">write2file</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">my</span> <span class="p">(</span><span class="nv">$cate</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$desc</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="s">&quot;&gt;&gt;:utf8&quot;</span><span class="p">,</span> <span class="s">&quot;$Settings::logs_folder/partyitem.txt&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">#open(FILE, &quot;&gt;&gt;:utf8&quot;, &quot;$Settings::logs_folder/partyitem.csv&quot;);</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">@date</span>  <span class="o">=</span> <span class="nb">localtime</span> <span class="nb">time</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1900</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">$time</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+</span><span class='line'>  <span class="s">&quot;%04d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="c1">#YYYY-MM-DD HH:MM</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">$log</span> <span class="o">=</span> <span class="s">&quot;$time\t$name\t$cate\t$desc\n&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">#my $log = &quot;$time,$name,$cate,$desc\n&quot;;</span>
+</span><span class='line'>  <span class="k">print</span> <span class="n">FILE</span> <span class="nv">$log</span><span class="p">;</span>
+</span><span class='line'>  <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">openkorer</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T21:52:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/其他/'>其他</a>
+  
+</span>
+
+
+      
+
+<span class="categories">
+  
+    <a class='tag' href='/blog/tags/other/'>other</a>, <a class='tag' href='/blog/tags/perl/'>perl</a>, <a class='tag' href='/blog/tags/sub/'>sub</a>
+  
+</span>
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/06/pharmacy/" title="Previous Post: 創造者-寬廣配藥">&laquo; 創造者-寬廣配藥</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -252,7 +319,10 @@
       var disqus_shortname = 'openkorer';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://openkorer.github.com/blog/2013/04/07/write2file/';
+        var disqus_url = 'http://openkorer.github.com/blog/2013/04/07/write2file/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

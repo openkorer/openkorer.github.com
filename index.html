@@ -9,10 +9,15 @@
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="這教學只製作鹽酸瓶跟火煙瓶，並不包括其他合成物品。分別由6個automacro組成。功能請看以下清單。 tp3get 從倉儲取出1份寬廣配藥的材料
-tp3make 用寬廣配藥1次製作鹽酸瓶,火煙瓶,酒精各50份
-demoget 從倉儲取出100份火煙瓶的材料
-demomake &hellip;">
+  <meta name="description" content="爬塔結束時大家最想知道什麼，大概是以下三點吧? 隊員撿了什麼？
+什麼時侯撿的？
+撿了多少次？ 今天教大家利用perl sub產生excel報告 -[partyitemlog]偵測隊伍成員撿了什麼
+-[write2file]把資料寫入檔案裡。 partyitemlog1
+2
+3
+4
+5
+6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +86,106 @@ demomake &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/07/write2file/">利用Perl Sub產生excel報告</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-07T21:52:00+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/07/write2file/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>爬塔結束時大家最想知道什麼，大概是以下三點吧?</p>
+
+<ol>
+<li>隊員撿了什麼？</li>
+<li>什麼時侯撿的？</li>
+<li>撿了多少次？</li>
+</ol>
+
+
+<p>今天教大家利用perl sub產生excel報告</p>
+
+<p>-[partyitemlog]偵測隊伍成員撿了什麼
+-[write2file]把資料寫入檔案裡。</p>
+
+<figure class='code'><figcaption><span>partyitemlog</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partyitemlog</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">console</span> <span class="sr">/隊伍成員 (.*) 撿取了物品 (.*)/</span>
+</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">write2file</span><span class="p">(</span><span class="s">&quot;物品&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch1&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch2&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>write2file</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="k">sub </span><span class="nf">write2file</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">my</span> <span class="p">(</span><span class="nv">$cate</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$desc</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="s">&quot;&gt;&gt;:utf8&quot;</span><span class="p">,</span> <span class="s">&quot;$Settings::logs_folder/partyitem.txt&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">#open(FILE, &quot;&gt;&gt;:utf8&quot;, &quot;$Settings::logs_folder/partyitem.csv&quot;);</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">@date</span>  <span class="o">=</span> <span class="nb">localtime</span> <span class="nb">time</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1900</span><span class="p">;</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">$time</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+</span><span class='line'>  <span class="s">&quot;%04d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="c1">#YYYY-MM-DD HH:MM</span>
+</span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">$log</span> <span class="o">=</span> <span class="s">&quot;$time\t$name\t$cate\t$desc\n&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">#my $log = &quot;$time,$name,$cate,$desc\n&quot;;</span>
+</span><span class='line'>  <span class="k">print</span> <span class="n">FILE</span> <span class="nv">$log</span><span class="p">;</span>
+</span><span class='line'>  <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -736,196 +841,6 @@ demomake &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/02/sharezeny/">查詢及平均分配金錢</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-02T22:20:00+08:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2013</time>
-        
-         | <a href="/blog/2013/04/02/sharezeny/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>有些活動好像<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a>每次都要轉錢是不是很煩？假如你人物多花的時間相對多，而且容易出錯。   <br/>
-往往大量金錢都集中在一個人物身上，而其他人物都只有少量。一旦到了需要金錢的活動或任務就變得麻煩。針對這問題寫了一個金錢交易巨集。先看看什麼情況下適用。</p>
-
-<ul>
-<li>如大量人物需要轉生，要指定為1285000zeny不多不少。</li>
-<li>解活動，如<a href="http://ro.gameflier.com/action/Tarot_20121214/index.html">命運? 機會? 塔羅占卜師幫你解惑！</a></li>
-<li>購買物品前為每人準備相等的金額</li>
-</ul>
-
-
-<p>了解後我們來看一看整個交易流程，先準備一個人物作<strong>派錢員</strong>跟數個收錢的人物，把他們移動到同一格，這是為了確保不超過交易距離。很簡單，一同轉換地圖時就會重疊在一起。集體移動可參考這篇文章<a href="http://openkorer.github.com/blog/2013/03/25/sync">一次控制多個openkore</a>。
-然後利用隊頻或公會頻說出今次想要的金額，<a href="#getzeny">getzeny</a>就會開始計算減去身上的差額，如果身上的金錢比想要的多就沒有動作，相反就會利用密頻通知<strong>派錢員</strong>派發多少錢，然後<strong>派錢員</strong><a href="#addzeny">addzeny</a>就會點缺錢的人物作交易並把差額加上。</p>
-
-<p>巨集使用條件及注意事項:</p>
-
-<ul>
-<li><strong>派錢員</strong>必須有足夠金錢</li>
-<li><strong>派錢員</strong>密頻要開</li>
-<li>建議利用<strong>隊伍</strong>或<strong>公會</strong>頻道</li>
-<li>跟<strong>派錢員</strong>距離不超過**2((格</li>
-<li>建議找一個比較少人的地方</li>
-<li>必須修改<strong>派錢員</strong>的名稱，getzeny第<strong>3</strong>,<strong>7</strong>行，名稱包含<strong>特別符號</strong>可能會出問題！</li>
-<li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/DealAuto">dealAuto</a>改<strong>2</strong></li>
-<li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/DealAuto_names">dealAuto_names</a>加上<strong>派錢員</strong>的名字，<strong>如果本身是空的就不用加</strong>！</li>
-<li>每<strong>7</strong>秒會密一次<strong>派錢員</strong>直到指定金錢才會停止。</li>
-</ul>
-
-
-<p>使用方法:                 <br/>
-e.g. 要求每人身上都要有10000000zeny (一千萬)      <br/>
-<a href="http://www.openkore.com">openkore</a>: 隊伍用<code>p z g 10000000</code> 公會用<code>g z g 10000000</code>         <br/>
-官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>z g 10000000</code>或在<strong>公會</strong>頻道輸入<code>z g 10000000</code></p>
-
-<p><a name="getzeny"></a></p>
-
-<figure class='code'><figcaption><span>getzeny</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">getzeny</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(隊伍|公會)\] (.*) \: z g (\d+)/</span>
-</span><span class='line'>  <span class="n">player</span> <span class="s">&quot;派錢員&quot;</span><span class="p">,</span><span class="mi">3</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span> <span class="o">&lt;</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span><span class="p">)</span> <span class="n">as</span> <span class="n">loop</span>        <span class="c1"># 比較身上的金錢</span>
-</span><span class='line'>  <span class="nv">$z</span> <span class="o">=</span> <span class="nv">@eval</span><span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch3</span> <span class="o">-</span> <span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span><span class="p">)</span>         <span class="c1"># 計算差額</span>
-</span><span class='line'>  <span class="nv">$n</span> <span class="o">=</span> <span class="err">派錢員</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$_player</span> <span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$::playersList</span><span class="o">-&gt;</span><span class="n">getItems</span><span class="p">()})</span> <span class="p">{</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">;</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">actorType</span><span class="p">}</span> <span class="ow">ne</span> <span class="s">&quot;Player&quot;</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;$n&quot;</span><span class="p">)</span> <span class="p">{</span><span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">name</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">};</span> <span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">id</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;binID&#39;</span><span class="p">};}}</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">pm</span> <span class="nv">$n</span> <span class="n">z</span> <span class="n">a</span> <span class="nv">$z</span>         <span class="c1"># 通知派錢員派錢</span>
-</span><span class='line'>  <span class="n">pause</span> <span class="mi">7</span>                  <span class="c1"># 密一次派錢員的相隔秒數</span>
-</span><span class='line'>  <span class="n">end</span> <span class="n">loop</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a name="addzeny"></a></p>
-
-<figure class='code'><figcaption><span>addzeny</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">addzeny</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">pm</span> <span class="sr">/z a (\d+)/</span>
-</span><span class='line'>  <span class="n">exclusive</span> <span class="mi">1</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span> <span class="o">&lt;</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span><span class="p">)</span> <span class="n">stop</span>         <span class="c1"># 比較身上跟要派的金額</span>
-</span><span class='line'>  <span class="nv">$n</span> <span class="o">=</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastpm</span>                           <span class="c1"># 最後密我的人的名字</span>
-</span><span class='line'>  <span class="k">do</span> <span class="nb">eval</span> <span class="k">foreach</span> <span class="k">my</span> <span class="nv">$_player</span> <span class="p">(</span><span class="nv">@</span><span class="p">{</span><span class="nv">$::playersList</span><span class="o">-&gt;</span><span class="n">getItems</span><span class="p">()})</span> <span class="p">{</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">;</span> <span class="k">next</span> <span class="k">if</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">actorType</span><span class="p">}</span> <span class="ow">ne</span> <span class="s">&quot;Player&quot;</span><span class="p">;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">}</span> <span class="ow">eq</span> <span class="s">&quot;$n&quot;</span><span class="p">)</span> <span class="p">{</span><span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">name</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">};</span> <span class="nv">$::Macro::Data::varStack</span><span class="p">{</span><span class="n">id</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$_player</span><span class="o">-&gt;</span><span class="p">{</span><span class="s">&#39;binID&#39;</span><span class="p">};}}</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">deal</span> <span class="nv">$id</span>                               <span class="c1"># 交易最後密我的人</span>
-</span><span class='line'>  <span class="n">pause</span> <span class="mi">3</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">deal</span> <span class="n">add</span> <span class="n">z</span> <span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span>             <span class="c1"># 放上金額</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">deal</span>
-</span><span class='line'>  <span class="n">pause</span> <span class="mi">3</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">deal</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>另外查詢<a href="http://www.openkore.com">openkore</a>們身上的zeny</p>
-
-<p>使用方法:                         <br/>
-<a href="http://www.openkore.com">openkore</a>: 隊伍用<code>p zeny</code> 公會用<code>g zeny</code>         <br/>
-官方遊戲程式: 在<strong>隊伍</strong>頻道直接輸入<code>zeny</code>或在<strong>公會</strong>頻道輸入<code>zeny</code></p>
-
-<p><a name="zenycheck"></a></p>
-
-<figure class='code'><figcaption><span>zenycheck</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">zenycheck</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">console</span> <span class="sr">/\[(公會|隊伍)\] (.*) \: zeny/</span>
-</span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span> <span class="o">==</span> <span class="s">&quot;公會&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">g</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="nv">$</span><span class="err">.</span><span class="nv">lastMatch1</span> <span class="o">==</span> <span class="s">&quot;隊伍&quot;</span><span class="p">)</span> <span class="nb">goto</span> <span class="n">p</span>
-</span><span class='line'>  <span class="n">stop</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="p">:</span><span class="n">g</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">g</span> <span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span>
-</span><span class='line'>  <span class="n">stop</span>
-</span><span class='line'>  
-</span><span class='line'>  <span class="p">:</span><span class="n">p</span>
-</span><span class='line'>  <span class="k">do</span> <span class="n">p</span> <span class="nv">$</span><span class="err">.</span><span class="nv">zeny</span>
-</span><span class='line'>  <span class="n">stop</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以下是<a href="http://www.openkore.com">openkore</a>例出隊伍金錢報告的範本</p>
-
-<pre><code>    [隊伍] op01 : 1400000
-    [隊伍] op01 : 500000
-    [隊伍] op02 : 100410
-    .
-    .
-    .
-    [隊伍] op11 : 241232
-    [隊伍] op12 : 5831323
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -939,7 +854,7 @@ e.g. 要求每人身上都要有10000000zeny (一千萬)      <br/>
     <section>
   <h1>分類</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/其他/'>其他 (1)</a></li>
+    <li class='category'><a href='/blog/categories/其他/'>其他 (2)</a></li>
 <li class='category'><a href='/blog/categories/技能/'>技能 (3)</a></li>
 <li class='category'><a href='/blog/categories/活動/'>活動 (1)</a></li>
 <li class='category'><a href='/blog/categories/物品/'>物品 (3)</a></li>
@@ -948,10 +863,14 @@ e.g. 要求每人身上都要有10000000zeny (一千萬)      <br/>
   </ul>
 </section><section>
   <h1>標籤</h1>
-    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+30.0%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcreator%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecreator%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+30.0%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fpharmacy%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Epharmacy%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+16.666666666666668%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+30.0%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+    <span id="tag-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#f2f2f2' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x000000&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fchar%27+style%3D%27font-size%3A+30.0%25%27%3Echar%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcharselect%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Echarselect%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcmd%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecmd%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fcreator%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ecreator%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fdeal%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Edeal%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fevent%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eevent%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fgeffen%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Egeffen%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fguild%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eguild%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fitem%27+style%3D%27font-size%3A+30.0%25%27%3Eitem%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmanage%27+style%3D%27font-size%3A+50.0%25%27%3Emanage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fmap%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Emap%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Foboro%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EOboro%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fother%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eother%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fparty%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eparty%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fperl%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eperl%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fpharmacy%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Epharmacy%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplayerslist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EplayersList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fplaysound%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Eplaysound%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fquestlist%27+style%3D%27font-size%3A+16.666666666666668%25%27%3EquestList%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Frefine%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Erefine%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Froyal-guard%27+style%3D%27font-size%3A+16.666666666666668%25%27%3ERoyal+Guard%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsave%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esave%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fskill%27+style%3D%27font-size%3A+30.0%25%27%3Eskill%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fstorage%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Estorage%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fsub%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Esub%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fopenkorer.github.com%2Fblog%2Ftags%2Fzeny%27+style%3D%27font-size%3A+16.666666666666668%25%27%3Ezeny%3C%2Fa%3E+%3C%2Ftags%3E"></span>
 </section><section>
   <h1>最新文章</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/04/07/write2file/">利用Perl Sub產生excel報告</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/04/06/pharmacy/">創造者-寬廣配藥</a>
@@ -967,10 +886,6 @@ e.g. 要求每人身上都要有10000000zeny (一千萬)      <br/>
     
       <li class="post">
         <a href="/blog/2013/04/01/playsound/">用巨集播放音效</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/30/itemamount/">查詢物品數量及列出報告</a>
       </li>
     
   </ul>
