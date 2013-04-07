@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T22:23:07+08:00</updated>
+  <updated>2013-04-07T22:31:04+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -46,7 +46,7 @@
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="n">automacro</span> <span class="n">partyitemlog</span> <span class="p">{</span>
 </span><span class='line'>  <span class="n">console</span> <span class="sr">/隊伍成員 (.*) 撿取了物品 (.*)/</span>
 </span><span class='line'>  <span class="n">call</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">write2file</span><span class="p">(</span><span class="s">&quot;物品&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch1&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch2&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">write2file</span><span class="p">(</span><span class="s">&quot;$.map&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch1&quot;</span><span class="p">,</span><span class="s">&quot;$.lastMatch2&quot;</span><span class="p">)</span>   <span class="c1">#　呼叫perl sub並將地圖，人物，物品資料傳送</span>
 </span><span class='line'>  <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -70,7 +70,7 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='perl'><span class='line'><span class="k">sub </span><span class="nf">write2file</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">my</span> <span class="p">(</span><span class="nv">$cate</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$desc</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">my</span> <span class="p">(</span><span class="nv">$map</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$desc</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>          <span class="c1"># 把partyitemlog送來的資料代入$map,$name,$desc</span>
 </span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="s">&quot;&gt;&gt;:utf8&quot;</span><span class="p">,</span> <span class="s">&quot;$Settings::logs_folder/partyitem.txt&quot;</span><span class="p">);</span>
 </span><span class='line'>  <span class="c1">#open(FILE, &quot;&gt;&gt;:utf8&quot;, &quot;$Settings::logs_folder/partyitem.csv&quot;);</span>
 </span><span class='line'>  <span class="k">my</span> <span class="nv">@date</span>  <span class="o">=</span> <span class="nb">localtime</span> <span class="nb">time</span><span class="p">;</span>
@@ -79,8 +79,8 @@
 </span><span class='line'>  <span class="k">my</span> <span class="nv">$time</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
 </span><span class='line'>  <span class="s">&quot;%04d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="c1">#YYYY-MM-DD HH:MM</span>
 </span><span class='line'>  <span class="nv">$date</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="nv">$date</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-</span><span class='line'>  <span class="k">my</span> <span class="nv">$log</span> <span class="o">=</span> <span class="s">&quot;$time\t$name\t$cate\t$desc\n&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="c1">#my $log = &quot;$time,$name,$cate,$desc\n&quot;;</span>
+</span><span class='line'>  <span class="k">my</span> <span class="nv">$log</span> <span class="o">=</span> <span class="s">&quot;$time\t$map\t$name\t$desc\n&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="c1">#my $log = &quot;$time,$map,$name,$desc\n&quot;;</span>
 </span><span class='line'>  <span class="k">print</span> <span class="n">FILE</span> <span class="nv">$log</span><span class="p">;</span>
 </span><span class='line'>  <span class="nb">close</span><span class="p">(</span><span class="n">FILE</span><span class="p">);</span>
 </span><span class='line'><span class="p">}</span>

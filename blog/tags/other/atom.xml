@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: other | 唔好巨集]]></title>
   <link href="http://openkorer.github.com/blog/tags/other/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T22:23:07+08:00</updated>
+  <updated>2013-04-07T22:31:04+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -61,7 +61,7 @@ automacro partyitemlog {
   console /隊伍成員 (.<em>) 撿取了物品 (.</em>)/
   call {</p>
 
-<pre><code>write2file("物品","$.lastMatch1","$.lastMatch2")
+<pre><code>write2file("$.map","$.lastMatch1","$.lastMatch2")   #　呼叫perl sub並將地圖，人物，物品資料傳送
 </code></pre>
 
 <p>  }
@@ -72,7 +72,7 @@ automacro partyitemlog {
 ``` perl write2file
 sub write2file {</p>
 
-<pre><code>my ($cate, $name, $desc) = @_;
+<pre><code>my ($map, $name, $desc) = @_;           # 把partyitemlog送來的資料代入$map,$name,$desc
 open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.txt");
 #open(FILE, "&gt;&gt;:utf8", "$Settings::logs_folder/partyitem.csv");
 my @date  = localtime time;
@@ -81,8 +81,8 @@ $date[4] += 1;
 my $time = sprintf(
 "%04d-%02d-%02d %02d:%02d:%02d", #YYYY-MM-DD HH:MM
 $date[5],$date[4],$date[3],$date[2],$date[1],$date[0]);
-my $log = "$time\t$name\t$cate\t$desc\n";
-#my $log = "$time,$name,$cate,$desc\n";
+my $log = "$time\t$map\t$name\t$desc\n";
+#my $log = "$time,$map,$name,$desc\n";
 print FILE $log;
 close(FILE);
 </code></pre>
