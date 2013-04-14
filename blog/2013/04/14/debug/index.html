@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: Oboro - 唔好巨集</title>
+  <title>利用debug觸發巨集 - 唔好巨集</title>
   <meta name="author" content="openkorer">
 
   
-  <meta name="description" content="Tag: Oboro">
+  <meta name="description" content="應該很多人知道在config.txt中有一個叫debug的設定，如果把它設成1 openkore就會多出很多訊息。 其他人物的移動
+其他人物望向的方向
+其他人物登出跟登入 當中比較有用的資料是其他人物的移動，因為就算人物偽裝或潛遁中，你也會收到他的位置。 Player Moved: 好事多研究員 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://openkorer.github.comblog/tags/oboro">
+  <link rel="canonical" href="http://openkorer.github.com/blog/2013/04/14/debug">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="http://feeds.feedburner.com/openkorer" rel="alternate" title="唔好巨集" type="application/atom+xml">
@@ -77,36 +79,138 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: Oboro</h1>
+    
+      <h1 class="entry-title">利用debug觸發巨集</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-14T17:47:00+08:00" pubdate data-updated="true">Apr 14<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>應該很多人知道在<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中有一個叫<a href="http://www.openkore.com/index.php/Debug">debug</a>的設定，如果把它設成1 <a href="http://www.openkore.com">openkore</a>就會多出很多訊息。</p>
 
-  
-  <h2>2013</h2>
-
-<article>
-  
-<h1><a href="/blog/2013/03/26/zangetsu/">月影忍者-變形的上弦月</a></h1>
-<time datetime="2013-03-26T23:18:00+08:00" pubdate><span class='month'>Mar</span> <span class='day'>26</span> <span class='year'>2013</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/技能/'>技能</a></span>
-</footer>
+<ul>
+<li>其他人物的移動</li>
+<li>其他人物望向的方向</li>
+<li>其他人物登出跟登入</li>
+</ul>
 
 
-</article>
+<p>當中比較有用的資料是<strong>其他人物的移動</strong>，因為就算人物偽裝或潛遁中，你也會收到他的位置。</p>
+
+<pre><code>    Player Moved: 好事多研究員 (17) Level 2 男孩 Novice - (116, 74) -&gt; (116, 84)
+</code></pre>
+
+<p>因為我個人用英文版所以會跟中文版有點出入，以上資料你可以看到LV2的男初心者由116 74準備移動到116 84</p>
+
+<p>這些資料可以幫我在PVP或GVG發揮無窮可能，只需配合<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>的[console]就可以觸發。</p>
+
+<p>以下是我用過的例子</p>
+
+<ul>
+<li>當有修羅進入我身邊14x14就人孔他或做其他動作</li>
+<li>當有指定偽裝人物移到我身邊5x5就隨機後退迴避</li>
+<li>用修羅一直弓身彈影對方作追殺人</li>
+</ul>
+
+
+<p>至於如何寫我就不公開了，看你個人創意。</p>
+
+<p>使用條件及注意事項:</p>
+
+<ul>
+<li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/Debug">debug</a>設1是為了方便你寫巨集，寫好後建議設回0，因為就算設0 <a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>一樣也可以觸發，避免收到太多資訊做成Lag。</li>
+<li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<code>macro_allowDebug</code>必須設 1，沒有請自行加入。</li>
+</ul>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">openkorer</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-14T17:47:00+08:00" pubdate data-updated="true">Apr 14<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/其他/'>其他</a>
+  
+</span>
+
+
+      
+
+<span class="categories">
+  
+    <a class='tag' href='/blog/tags/debug/'>debug</a>, <a class='tag' href='/blog/tags/other/'>other</a>
+  
+</span>
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/04/07/write2file/" title="Previous Post: 利用Perl Sub產生excel報告">&laquo; 利用Perl Sub產生excel報告</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -182,7 +286,10 @@
       var disqus_shortname = 'openkorer';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://openkorer.github.com/blog/2013/04/14/debug/';
+        var disqus_url = 'http://openkorer.github.com/blog/2013/04/14/debug/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

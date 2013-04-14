@@ -4,7 +4,7 @@
   <title><![CDATA[唔好巨集]]></title>
   <link href="http://openkorer.github.com/atom.xml" rel="self"/>
   <link href="http://openkorer.github.com/"/>
-  <updated>2013-04-07T23:50:49+08:00</updated>
+  <updated>2013-04-14T18:35:28+08:00</updated>
   <id>http://openkorer.github.com/</id>
   <author>
     <name><![CDATA[openkorer]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[利用debug觸發巨集]]></title>
+    <link href="http://openkorer.github.com/blog/2013/04/14/debug/"/>
+    <updated>2013-04-14T17:47:00+08:00</updated>
+    <id>http://openkorer.github.com/blog/2013/04/14/debug</id>
+    <content type="html"><![CDATA[<p>應該很多人知道在<a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中有一個叫<a href="http://www.openkore.com/index.php/Debug">debug</a>的設定，如果把它設成1 <a href="http://www.openkore.com">openkore</a>就會多出很多訊息。</p>
+
+<ul>
+<li>其他人物的移動</li>
+<li>其他人物望向的方向</li>
+<li>其他人物登出跟登入</li>
+</ul>
+
+
+<p>當中比較有用的資料是<strong>其他人物的移動</strong>，因為就算人物偽裝或潛遁中，你也會收到他的位置。</p>
+
+<pre><code>    Player Moved: 好事多研究員 (17) Level 2 男孩 Novice - (116, 74) -&gt; (116, 84)
+</code></pre>
+
+<p>因為我個人用英文版所以會跟中文版有點出入，以上資料你可以看到LV2的男初心者由116 74準備移動到116 84</p>
+
+<p>這些資料可以幫我在PVP或GVG發揮無窮可能，只需配合<a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>的[console]就可以觸發。</p>
+
+<p>以下是我用過的例子</p>
+
+<ul>
+<li>當有修羅進入我身邊14x14就人孔他或做其他動作</li>
+<li>當有指定偽裝人物移到我身邊5x5就隨機後退迴避</li>
+<li>用修羅一直弓身彈影對方作追殺人</li>
+</ul>
+
+
+<p>至於如何寫我就不公開了，看你個人創意。</p>
+
+<p>使用條件及注意事項:</p>
+
+<ul>
+<li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<a href="http://www.openkore.com/index.php/Debug">debug</a>設1是為了方便你寫巨集，寫好後建議設回0，因為就算設0 <a href="http://wiki.openkore.com/index.php?title=Macro_plugin#Automacros">automacro</a>一樣也可以觸發，避免收到太多資訊做成Lag。</li>
+<li><a href="http://www.openkore.com/index.php/Category:Config.txt">config.txt</a>中<code>macro_allowDebug</code>必須設 1，沒有請自行加入。</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[利用Perl Sub產生excel報告]]></title>
